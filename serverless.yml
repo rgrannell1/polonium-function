@@ -1,0 +1,23 @@
+service: gcf-nodejs
+
+provider:
+  name: google
+  runtime: nodejs
+  project: polonium-192717
+  credentials: ./credentials/keyfile.json
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - node_modules/**
+    - credentials/**
+    - .gitignore
+    - .git/**
+
+functions:
+  first:
+    handler: http
+    events:
+      - http: path
