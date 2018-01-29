@@ -12,12 +12,7 @@ const router = Router()
 
 router.use(routes.get.static)
 
-router.get('/', (req, res) => {
-  routes.get.primary(req, res)
-})
-
-router.get('*', (req, res) => {
-  routes.get.notFound(req, res)
-})
+router.get('/password', routes.get.password)
+router.get('*', routes.get.notFound)
 
 module.exports = router

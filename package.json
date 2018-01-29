@@ -6,17 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "invoke": "serverless invoke --function first",
-    "deploy": "serverless deploy",
-    "webpack:build": "./node_modules/.bin/webpack --config webpack/webpack.config.js"
+    "deploy": "serverless deploy"
   },
   "author": "Ryan Grannell",
   "license": "MIT",
   "dependencies": {
     "@rgrannell1/utils": "rgrannell1/utils",
     "chai": "^4.1.2",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-standard": "^3.0.1",
     "express": "^4.16.2",
     "mithril": "^1.1.6",
     "mithril-node-render": "^2.3.0",
+    "polonium": "rgrannell1/polonium-lib",
     "serverless-google-cloudfunctions": "^1.1.0",
     "standard": "^10.0.3"
   }
