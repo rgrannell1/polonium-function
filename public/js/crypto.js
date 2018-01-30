@@ -83,9 +83,9 @@ components.dropdown = {
     }
 
     return m('ul#settings-menu', dropdownOpts,
-      m('li', m('a', {href: ' #'}, 'Settings')),
-      m('li', m('a', {href: '#'}, 'Privacy')),
-      m('li', m('a', {href: '#'}, 'Help')))
+      m('li', m('a[href=/settings]', 'Settings')),
+      m('li', m('a[href=/terms]', 'Terms & Conditions')),
+      m('li', m('a[href=/help]', 'Help')))
   }
 }
 
@@ -162,7 +162,10 @@ components.terms = {
       m('h2', 'User Information'),
       m('p', 'We do not store any sensitive submitted data; namely the content of the website & password fields, the derived keys, or the options provided the derivation of the keys.'),
 
-      m('p', 'We do store metadata related to each used, such as the IP address, browser details, time, subpages visited, and bitrate of the incoming connection. This data is not shared with a third-party; it is used for analytical and security purposes.')
+      m('p', 'We do store metadata related to each used, such as the IP address, browser details, time, subpages visited, and bitrate of the incoming connection. This data is not shared with a third-party; it is used for analytical and security purposes.'),
+
+      m('Information Transfer'),
+      m('p', 'At the moment, both the provided website & password are transmitted to the server. In future, this transfer will not occur & all cryptography will be performed in-browser.')
     )
   }
 }
