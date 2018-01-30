@@ -3,7 +3,10 @@ const constants = {
   urls: {
     host: `https://${window.location.host}/http`
   },
-  state: {},
+  state: {
+    isActive: false,
+    showDropdown: false
+  },
   options: {
     rounds: 1000000,
     len: 20,
@@ -23,11 +26,13 @@ const sendPasswordRequest = async params => {
 
 const handlers = { }
 
-handlers.onSuccess = async response => {
+handlers.onSuccess = async (state, response) => {
+  state.isActive = false
   alert(await response.text())
 }
 
-handlers.onFailure = async err => {
+handlers.onFailure = async (state, err) => {
+  state.isActive = false
   console.error(err)
 }
 
@@ -39,17 +44,27 @@ const reactions = {
    * @return {promise} a result promise.
    */
   onSubmitClick (state) {
-    const params = {
-      password: constants.state.password,
-      rounds: constants.options.rounds,
-      salt: constants.state.website,
-      len: constants.options.len,
-      digest: constants.options.digest
-    }
+    if (!state.isActive) {
+      state.isActive = true
 
-    return sendPasswordRequest(params)
-      .then(handlers.onSuccess)
-      .catch(handlers.onFailure)
+      m.redraw()
+
+      const params = {
+        password: constants.state.password,
+        rounds: constants.options.rounds,
+        salt: constants.state.website,
+        len: constants.options.len,
+        digest: constants.options.digest
+      }
+
+      sendPasswordRequest(params)
+        .then(handlers.onSuccess.bind(null, state))
+        .catch(handlers.onFailure.bind(null, state))
+    }
+  },
+  onDropDownClick (state) {
+    state.showDropdown = !state.showDropdown
+    m.redraw()
   },
   onWebsiteUpdate (state, value) {
     constants.state.website = value
@@ -61,6 +76,19 @@ const reactions = {
 
 const components = { }
 
+components.dropdown = {
+  view (vnode) {
+    const dropdownOpts = {
+      class: constants.state.showDropdown ? 'active' : 'inactive'
+    }
+
+    return m('ul#settings-menu', dropdownOpts,
+      m('li', m('a', {href: ' #'}, 'Settings')),
+      m('li', m('a', {href: '#'}, 'Privacy')),
+      m('li', m('a', {href: '#'}, 'Help')))
+  }
+}
+
 /**
  * header components.
  *
@@ -68,11 +96,13 @@ const components = { }
  */
 components.header = {
   view (vnode) {
+    const onDropDownClick = reactions.onDropDownClick.bind(null, constants.state)
+
     return m('header#main-head',
       m('label.burger-menu', {for: 'slide', title: 'Main menu'}, '☰'),
       m('a', {href: '/#!#'},
         m('h1#icon-branch', {class: 'brand'}, 'Polonium')),
-      m('label.links', {for: 'slide', title: 'Main menu'}, '⋮')
+      m('label.links', {for: 'slide', title: 'Main menu', onclick: onDropDownClick}, '⋮')
     )
   }
 }
@@ -87,6 +117,10 @@ components.main = {
     const onButtonClick = reactions.onSubmitClick.bind(null, constants.state)
     const onWebsiteUpdate = reactions.onWebsiteUpdate.bind(null, constants.state)
     const onPasswordUpdate = reactions.onPasswordUpdate.bind(null, constants.state)
+
+    const buttonClass = constants.state.isActive
+      ? 'submit active'
+      : 'submit'
 
     return m('main',
       m('ul#settings-menu', {class: 'inactive'},
@@ -103,7 +137,7 @@ components.main = {
           })),
 
         m('#password-input-container', {class: 'password'},
-          m('label', {for: 'password'}, 'Master Password'),
+          m('label', {for: 'passwo-rd'}, 'Master Password'),
           m('input#password', {
             type: 'password',
             required: '',
@@ -111,8 +145,24 @@ components.main = {
           })),
 
         m('input#submit', {
-          type: 'button', value: 'Get Site Password', class: 'submit', onclick: onButtonClick})
+          type: 'button', value: 'Get Site Password', class: buttonClass, onclick: onButtonClick})
       )
+    )
+  }
+}
+
+components.terms = {
+  view (vnode) {
+    return m('main',
+      m('h1', 'Security & Privacy Policy'),
+
+      m('h2', 'Connection'),
+      m('p', 'Polonium uses HTTPS to ensure your data is secure during transmission.'),
+
+      m('h2', 'User Information'),
+      m('p', 'We do not store any sensitive submitted data; namely the content of the website & password fields, the derived keys, or the options provided the derivation of the keys.'),
+
+      m('p', 'We do store metadata related to each used, such as the IP address, browser details, time, subpages visited, and bitrate of the incoming connection. This data is not shared with a third-party; it is used for analytical and security purposes.')
     )
   }
 }
@@ -125,8 +175,19 @@ components.main = {
 components.body = {
   view (vnode) {
     return m('.container', {state: constants.state},
+      m(components.dropdown, {state: constants.state}),
       m(components.header),
       m(components.main)
+    )
+  }
+}
+
+components.termsOfService = {
+  view (vnode) {
+    return m('.container', {state: constants.state},
+      m(components.dropdown, {state: constants.state}),
+      m(components.header, {state: constants.state}),
+      m(components.terms, {state: constants.state})
     )
   }
 }
@@ -135,5 +196,6 @@ components.body = {
  * mount the body component to the router
  */
 m.route(document.body, '/', {
-  '/': components.body
+  '/': components.body,
+  '/terms': components.termsOfService
 })
