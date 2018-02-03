@@ -29,11 +29,15 @@ const handlers = { }
 handlers.onSuccess = async (state, response) => {
   state.isActive = false
   alert(await response.text())
+
+  m.redraw()
 }
 
 handlers.onFailure = async (state, err) => {
   state.isActive = false
   console.error(err)
+
+  m.redraw()
 }
 
 const reactions = {
@@ -71,6 +75,21 @@ const reactions = {
   },
   onPasswordUpdate (state, value) {
     constants.state.password = value
+  },
+  onDocumentClick (event) {
+    const $dropdown = document.getElementById('links')
+    const isInside = $dropdown === event.target || $dropdown.contains(event.target)
+
+    console.log({
+      inside: `inside ${isInside}`,
+      target: event.target,
+      dropdown: $dropdown
+    })
+
+    if (!isInside) {
+      constants.state.showDropdown = false
+      m.redraw()
+    }
   }
 }
 
@@ -83,9 +102,7 @@ components.dropdown = {
     }
 
     return m('ul#settings-menu', dropdownOpts,
-      m('li', m('a[href=/settings]', 'Settings')),
-      m('li', m('a[href=/terms]', 'Terms & Conditions')),
-      m('li', m('a[href=/help]', 'Help')))
+      m('li', m('a[href=/http/#!/terms]', 'Terms & Conditions')))
   }
 }
 
@@ -99,10 +116,9 @@ components.header = {
     const onDropDownClick = reactions.onDropDownClick.bind(null, constants.state)
 
     return m('header#main-head',
-      m('label.burger-menu', {for: 'slide', title: 'Main menu'}, '☰'),
-      m('a', {href: '/#!#'},
+      m('a[href=/http/]',
         m('h1#icon-branch', {class: 'brand'}, 'Polonium')),
-      m('label.links', {for: 'slide', title: 'Main menu', onclick: onDropDownClick}, '⋮')
+      m('label#links', {for: 'slide', title: 'Main menu', onclick: onDropDownClick}, '⋮')
     )
   }
 }
@@ -123,11 +139,6 @@ components.main = {
       : 'submit'
 
     return m('main',
-      m('ul#settings-menu', {class: 'inactive'},
-        m('li', m('a', {class: '#'}), 'Settings'),
-        m('li', m('a', {class: '#'}), 'Privacy'),
-        m('li', m('a', {class: '#'}), 'Help')
-      ),
       m('form.main-input',
         m('#website-input-container', {class: 'website'},
           m('label', {for: 'website'}, 'Site'),
@@ -135,6 +146,7 @@ components.main = {
             required: '',
             oninput: m.withAttr('value', onWebsiteUpdate)
           })),
+        m('p#website-input-error'),
 
         m('#password-input-container', {class: 'password'},
           m('label', {for: 'passwo-rd'}, 'Master Password'),
@@ -143,7 +155,7 @@ components.main = {
             required: '',
             oninput: m.withAttr('value', onPasswordUpdate)
           })),
-
+        m('p#password`-input-error'),
         m('input#submit', {
           type: 'button', value: 'Get Site Password', class: buttonClass, onclick: onButtonClick})
       )
@@ -151,20 +163,30 @@ components.main = {
   }
 }
 
+/**
+ * Display terms & conditions to users. Plain English where
+ * @type {Object}
+ */
 components.terms = {
   view (vnode) {
-    return m('main',
+    return m('main.text-body', {},
       m('h1', 'Security & Privacy Policy'),
 
       m('h2', 'Connection'),
       m('p', 'Polonium uses HTTPS to ensure your data is secure during transmission.'),
 
-      m('h2', 'User Information'),
+      m('h2', 'Information we collect'),
       m('p', 'We do not store any sensitive submitted data; namely the content of the website & password fields, the derived keys, or the options provided the derivation of the keys.'),
 
       m('p', 'We do store metadata related to each used, such as the IP address, browser details, time, subpages visited, and bitrate of the incoming connection. This data is not shared with a third-party; it is used for analytical and security purposes.'),
 
-      m('Information Transfer'),
+      m('h3', 'Device information'),
+      m('p', 'Details about your device information may be determined from your user-agent, and other data submitted to the Polonium server. Client code will not be run to determine details about device information.'),
+
+      m('h3', 'Location information'),
+      m('p', 'IP addresses & other information submitted to the Polonium server may be geolocated approximately, for analytic & security purposes.'),
+
+      m('h2', 'Information transfer'),
       m('p', 'At the moment, both the provided website & password are transmitted to the server. In future, this transfer will not occur & all cryptography will be performed in-browser.')
     )
   }
@@ -177,7 +199,7 @@ components.terms = {
  */
 components.body = {
   view (vnode) {
-    return m('.container', {state: constants.state},
+    return m('.container',
       m(components.dropdown, {state: constants.state}),
       m(components.header),
       m(components.main)
@@ -187,7 +209,7 @@ components.body = {
 
 components.termsOfService = {
   view (vnode) {
-    return m('.container', {state: constants.state},
+    return m('.container',
       m(components.dropdown, {state: constants.state}),
       m(components.header, {state: constants.state}),
       m(components.terms, {state: constants.state})
@@ -202,3 +224,5 @@ m.route(document.body, '/', {
   '/': components.body,
   '/terms': components.termsOfService
 })
+
+document.addEventListener('click', reactions.onDocumentClick)

@@ -17,7 +17,7 @@
 }
 
 html * {
-  font-size: 1.02em;
+  font-size: 1.015em;
   font-family: 'Noto Sans', sans-serif;
   webkit-text-security: square;
 }
@@ -47,7 +47,6 @@ ul {
 
 #settings-menu {
   background: white;
-  box-shadow: 0 0 4px rgba(0,0,0,0.010), 0 4px 8px rgba(0,0,0,0.20);
   margin: 0px;
   padding: 10px 30px;
   position: absolute;
@@ -83,6 +82,7 @@ noscript#fallback-message {
 h1.brand {
   font-size: 1.3em;
   font-weight: normal;
+  margin-left: 25px;
 }
 
 html, body {
@@ -113,7 +113,7 @@ form.main-input {
   grid-column:2;
   grid-row: 2;
   display: grid;
-  grid-gap: 30px 0px;
+  grid-gap: 0px 0px;
 }
 
 #main-head {
@@ -121,7 +121,6 @@ form.main-input {
   grid-row: 1;
   display: grid;
   grid-template-columns: 1fr 8.5fr 0.5fr;
-  box-shadow: 0 0 4px rgba(0,0,0,0.010), 0 4px 8px rgba(0,0,0,0.20);
 }
 
 #main-head h1.brand {
@@ -162,9 +161,9 @@ input#website:focus {
 .password {
   grid-column-start: 2;
   grid-column-end: 5;
-  grid-row:    3;
+  grid-row:    4;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 
 input#password {
@@ -182,28 +181,31 @@ input#password:focus {
   margin-bottom: 0px;
 }
 
+.text-body {
+  margin: 30px 16.6%
+}
+
 /*
   Password button styles
 */
 
 input.submit {
+  margin-top: 40px;
   width: 100%;
   max-width: 218px;
   min-width: 210px;
   padding: 0px 15px;
-  height: 50px;
+  height: 60px;
   grid-column-start: 2;
-  grid-row: 4;
+  grid-row: 6;
   background: none;
   border: 1px solid var(--black);
-  box-shadow: 0 0 4px rgba(0,0,0,0.07), 0 4px 8px rgba(0,0,0,0.14);
   color: white;
   border-radius: 4px;
 }
 
 input.submit:hover {
   background: var(--primary-colour-dark);
-  box-shadow: 0 0 4px rgba(0,0,0,0.014), 0 4px 8px rgba(0,0,0,0.28);
 }
 
 input.submit:focus {
@@ -226,4 +228,24 @@ input.submit.completed {
 input.submit.failed {
   background: var(--error-colour);
   border: 1px solid var(--error-colour-dark);
+}
+
+
+
+
+
+#website-input-error {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row: 3;
+  color: red;
+  font-size: 0.85em;
+}
+
+#password-input-error {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row: 5;
+  color: red;
+  font-size: 0.85em;
 }

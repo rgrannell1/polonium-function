@@ -3,13 +3,15 @@ const {Router} = require('express')
 
 const expect = require('chai').expect
 const routes = {
-  get: require('./get')
+  get: require('./get'),
+  use: require('./use')
 }
 
 expect(routes.get).to.have.property('notFound')
 
 const router = Router()
 
+router.use(routes.use.requestDetails)
 router.use(routes.get.static)
 
 router.get('/password', routes.get.password)

@@ -11,15 +11,18 @@
   "author": "Ryan Grannell",
   "license": "MIT",
   "dependencies": {
+    "@google-cloud/storage": "^1.5.2",
     "@rgrannell1/utils": "rgrannell1/utils",
     "chai": "^4.1.2",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-standard": "^3.0.1",
     "express": "^4.16.2",
+    "geoip-lite": "^1.2.1",
     "mithril": "^1.1.6",
     "mithril-node-render": "^2.3.0",
     "polonium": "rgrannell1/polonium-lib",
     "serverless-google-cloudfunctions": "^1.1.0",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "ua-parser-js": "^0.7.17"
   }
 }
