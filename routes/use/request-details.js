@@ -33,11 +33,11 @@ module.exports = (req, res, next) => {
     log.error({err: err.message})
   }
 
-  log.info({}, req.ctx, {
+  log.info(Object.assign({}, req.ctx, {
     ctx: {
       stage: 'request_received'
     }
-  })
+  }))
 
   next()
 }

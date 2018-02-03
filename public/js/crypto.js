@@ -5,12 +5,22 @@ const constants = {
   },
   state: {
     isActive: false,
-    showDropdown: false
+    showDropdown: false,
+    websiteError: '',
+    passwordError: ''
   },
   options: {
     rounds: 1000000,
     len: 20,
     digest: 'sha1'
+  },
+  limits: {
+    minimumPasswordLength: 12,
+    minimumWebsiteLength: 1
+  },
+  patterns: {
+    website: '[^ ]+',
+    password: '[^ ]+'
   }
 }
 
@@ -71,10 +81,16 @@ const reactions = {
     m.redraw()
   },
   onWebsiteUpdate (state, value) {
-    constants.state.website = value
+    constants.state.website = value.trim()
+    constants.state.websiteError = constants.state.website.length < constants.limits.minimumWebsiteLength
+      ? `Website must be at least ${constants.limits.minimumWebsiteLength} character long`
+      : ''
   },
   onPasswordUpdate (state, value) {
-    constants.state.password = value
+    constants.state.password = value.trim()
+    constants.state.passwordError = constants.state.password.length < constants.limits.minimumPasswordLength
+      ? `Password must be at least ${constants.limits.minimumPasswordLength} characters long`
+      : ''
   },
   onDocumentClick (event) {
     const $dropdown = document.getElementById('links')
@@ -138,24 +154,37 @@ components.main = {
       ? 'submit active'
       : 'submit'
 
+    const websiteClass = constants.state.websiteError
+      ? 'invalid'
+      : 'valid'
+    const passwordClass = constants.state.passwordError
+      ? 'invalid'
+      : 'valid'
+
     return m('main',
       m('form.main-input',
         m('#website-input-container', {class: 'website'},
           m('label', {for: 'website'}, 'Site'),
           m('input#website', {
             required: '',
-            oninput: m.withAttr('value', onWebsiteUpdate)
+            minlength: constants.limits.minimumWebsiteLength,
+            oninput: m.withAttr('value', onWebsiteUpdate),
+            pattern: constants.patterns.website,
+            class: websiteClass
           })),
-        m('p#website-input-error'),
+        m('p#website-input-error', constants.state.websiteError),
 
         m('#password-input-container', {class: 'password'},
-          m('label', {for: 'passwo-rd'}, 'Master Password'),
+          m('label', {for: 'password'}, 'Master Password'),
           m('input#password', {
             type: 'password',
             required: '',
-            oninput: m.withAttr('value', onPasswordUpdate)
+            maxlength: constants.limits.minimumPasswordLength,
+            oninput: m.withAttr('value', onPasswordUpdate),
+            pattern: constants.patterns.password,
+            class: passwordClass
           })),
-        m('p#password`-input-error'),
+        m('p#password-input-error', constants.state.passwordError),
         m('input#submit', {
           type: 'button', value: 'Get Site Password', class: buttonClass, onclick: onButtonClick})
       )

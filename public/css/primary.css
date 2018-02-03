@@ -141,17 +141,18 @@ form.main-input {
 
 input#website {
   padding: 10px 6px;
-  border: none;
-  border-bottom: 1px solid var(--black);
-  margin-bottom: 1px;
+  outline:none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   width: 100%;
 }
 
 input#website:focus {
   outline:none;
-  border: none;
-  border-bottom: 2px solid var(--black);
-  margin-bottom: 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 /*
@@ -163,21 +164,37 @@ input#website:focus {
   grid-column-end: 5;
   grid-row:    4;
   width: 100%;
-  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 input#password {
   padding: 10px 6px;
-  border: none;
-  border-bottom: 1px solid var(--black);
-  margin-bottom: 1px;
+  outline:none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   width: 100%;
 }
 
-input#password:focus {
+input.valid {
   outline:none;
   border: none;
+  border-bottom: 1px solid var(--black);
+  margin-bottom: 1px;
+}
+
+input.valid:focus {
   border-bottom: 2px solid var(--black);
+  margin-bottom: 0px;
+}
+
+input.invalid {
+  border-bottom: 1px solid var(--error-colour);
+  margin-bottom: 1px;
+}
+
+input.invalid:focus {
+  border-bottom: 2px solid var(--error-colour);
   margin-bottom: 0px;
 }
 
@@ -202,6 +219,7 @@ input.submit {
   border: 1px solid var(--black);
   color: white;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 input.submit:hover {
@@ -219,6 +237,7 @@ input.submit {
 
 input.submit.active {
   background: var(--primary-colour-dark);
+  cursor: not-allowed;
 }
 
 input.submit.completed {
@@ -233,12 +252,11 @@ input.submit.failed {
 
 
 
-
 #website-input-error {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row: 3;
-  color: red;
+  color: var(--error-colour);
   font-size: 0.85em;
 }
 
@@ -246,6 +264,10 @@ input.submit.failed {
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row: 5;
-  color: red;
+  color: var(--error-colour);
   font-size: 0.85em;
+}
+
+#website-input-error:empty::after, #password-input-error:empty::after {
+  content: '\200b';
 }
