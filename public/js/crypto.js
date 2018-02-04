@@ -38,7 +38,13 @@ const handlers = { }
 
 handlers.onSuccess = async (state, response) => {
   state.isActive = false
-  alert(await response.text())
+
+  const worker = new Worker('./js/notifications.js')
+
+  worker.postMessage({
+    topic: 'notify_password',
+    password: await response.text()
+  })
 
   m.redraw()
 }
@@ -71,9 +77,12 @@ const reactions = {
         digest: constants.options.digest
       }
 
-      sendPasswordRequest(params)
-        .then(handlers.onSuccess.bind(null, state))
-        .catch(handlers.onFailure.bind(null, state))
+      return Notification.requestPermission()
+        .then(() => {
+          return sendPasswordRequest(params)
+            .then(handlers.onSuccess.bind(null, state))
+            .catch(handlers.onFailure.bind(null, state))
+        })
     }
   },
   onDropDownClick (state) {
@@ -146,18 +155,28 @@ components.header = {
  */
 components.main = {
   view (vnode) {
-    const onButtonClick = reactions.onSubmitClick.bind(null, constants.state)
-    const onWebsiteUpdate = reactions.onWebsiteUpdate.bind(null, constants.state)
-    const onPasswordUpdate = reactions.onPasswordUpdate.bind(null, constants.state)
+    const state = constants.state
 
-    const buttonClass = constants.state.isActive
+    const onButtonClick = reactions.onSubmitClick.bind(null, state)
+    const onWebsiteUpdate = reactions.onWebsiteUpdate.bind(null, state)
+    const onPasswordUpdate = reactions.onPasswordUpdate.bind(null, state)
+
+    const anyInvalidInpug =
+      state.websiteError && state.websiteError.length > 0 ||
+      state.passwordError && state.passwordError.length > 0
+
+    let buttonClass = state.isActive
       ? 'submit active'
       : 'submit'
 
-    const websiteClass = constants.state.websiteError
+    if (anyInvalidInpug) {
+      buttonClass += ' invalid'
+    }
+
+    const websiteClass = state.websiteError
       ? 'invalid'
       : 'valid'
-    const passwordClass = constants.state.passwordError
+    const passwordClass = state.passwordError
       ? 'invalid'
       : 'valid'
 
@@ -166,27 +185,34 @@ components.main = {
         m('#website-input-container', {class: 'website'},
           m('label', {for: 'website'}, 'Site'),
           m('input#website', {
+            type: 'text',
             required: '',
             minlength: constants.limits.minimumWebsiteLength,
             oninput: m.withAttr('value', onWebsiteUpdate),
+            autocorrect: 'off',
+            autocapitalize: 'none',
             pattern: constants.patterns.website,
             class: websiteClass
           })),
-        m('p#website-input-error', constants.state.websiteError),
+        m('p#website-input-error', state.websiteError),
 
         m('#password-input-container', {class: 'password'},
           m('label', {for: 'password'}, 'Master Password'),
           m('input#password', {
             type: 'password',
             required: '',
-            maxlength: constants.limits.minimumPasswordLength,
+            minlength: constants.limits.minimumPasswordLength,
             oninput: m.withAttr('value', onPasswordUpdate),
             pattern: constants.patterns.password,
             class: passwordClass
           })),
-        m('p#password-input-error', constants.state.passwordError),
+        m('p#password-input-error', state.passwordError),
         m('input#submit', {
-          type: 'button', value: 'Get Site Password', class: buttonClass, onclick: onButtonClick})
+          type: 'button',
+          value: 'Get Site Password',
+          class: buttonClass,
+          onclick: onButtonClick
+        })
       )
     )
   }

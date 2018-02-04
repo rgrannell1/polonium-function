@@ -5,13 +5,20 @@ const geoip = require('geoip-lite')
 const url = require('url')
 
 module.exports = (req, res, next) => {
+  const parsedUrl = url.parse(req.url)
+
+  delete parsedUrl.search
+  delete parsedUrl.query
+  delete parsedUrl.path
+  delete parsedUrl.href
+
   req.ctx = {
     user: {
       address: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
       userAgent: req.headers['user-agent']
     },
     request: {
-      url: url.parse(req.url),
+      url: parsedUrl,
       urlLength: req.url ? req.url.length : 0
     },
     performance: {
@@ -21,7 +28,7 @@ module.exports = (req, res, next) => {
 
   // -- lookup user-agent details.
   try {
-    req.ctx.userAgentDetails = uaParser(req.headers['user-agent'])
+    req.ctx.user.userAgentDetails = uaParser(req.headers['user-agent'])
   } catch (err) {
     log.error({err: err.message})
   }

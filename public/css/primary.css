@@ -176,24 +176,24 @@ input#password {
   width: 100%;
 }
 
-input.valid {
+input[type=text].valid, input[type=password].valid {
   outline:none;
   border: none;
   border-bottom: 1px solid var(--black);
   margin-bottom: 1px;
 }
 
-input.valid:focus {
+input[type=text].valid:focus, input[type=password].valid:focus {
   border-bottom: 2px solid var(--black);
   margin-bottom: 0px;
 }
 
-input.invalid {
+input[type=text].invalid, input[type=password].invalid {
   border-bottom: 1px solid var(--error-colour);
   margin-bottom: 1px;
 }
 
-input.invalid:focus {
+input[type=text].invalid:focus, input[type=password].invalid:focus {
   border-bottom: 2px solid var(--error-colour);
   margin-bottom: 0px;
 }
@@ -249,8 +249,11 @@ input.submit.failed {
   border: 1px solid var(--error-colour-dark);
 }
 
-
-
+input.submit.invalid {
+  background: var(--black);
+  pointer-events: none;
+  cursor: not-allowed;
+}
 
 #website-input-error {
   grid-column-start: 2;
