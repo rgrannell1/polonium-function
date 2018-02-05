@@ -43,6 +43,7 @@ handlers.onSuccess = async (state, response) => {
 
   worker.postMessage({
     topic: 'notify_password',
+    website: constants.state.website,
     password: await response.text()
   })
 
