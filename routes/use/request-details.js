@@ -12,9 +12,11 @@ module.exports = (req, res, next) => {
   delete parsedUrl.path
   delete parsedUrl.href
 
+  const address = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+
   req.ctx = {
     user: {
-      address: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+      address: address.replace(' ', '').split(','),
       userAgent: req.headers['user-agent']
     },
     request: {

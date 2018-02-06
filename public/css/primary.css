@@ -6,9 +6,14 @@
   --error-colour: #ef4a4a;
   --font: #404040;
   --font-dark: #3a3a3a;
+  --primary-colour-desaturated: #514D77;
   --primary-colour-dark: #3b3392;
   --primary-colour-light: #908ace;
   --primary-colour: #5d51d6;
+
+  --bar-colour-one: #1cd6cd;
+  --bar-colour-two: #1c82d6;
+  --bar-colour-three: #1c25d6;
 }
 
 @font-face {
@@ -235,17 +240,8 @@ input.submit {
 }
 
 input.submit.active {
-  background: var(--primary-colour-dark);
+  background: var(--primary-colour-desaturated);
   cursor: not-allowed;
-}
-
-input.submit.completed {
-  background: var(--primary-colour-dark);
-}
-
-input.submit.failed {
-  background: var(--error-colour);
-  border: 1px solid var(--error-colour-dark);
 }
 
 input.submit.invalid {
@@ -277,3 +273,46 @@ input.submit.invalid {
 #website-input-error:empty::after, #password-input-error:empty::after {
   content: '\200b';
 }
+
+.load-bar.active {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: var(--bar-colour-one);
+}
+
+.load-bar.inactive {
+  height: 6px;
+}
+
+.load-bar.active .bar {
+  content: "";
+  display: inline;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 50%;
+  text-align: center;
+}
+
+.load-bar.active .bar:nth-child(1) {
+  background-color: var(--bar-colour-two);
+  animation: loading 3s linear infinite;
+}
+
+.load-bar.active .bar:nth-child(2) {
+  background-color: var(--bar-colour-three);
+  animation: loading 3s linear 1s infinite;
+}
+
+.load-bar.active .bar:nth-child(3) {
+  background-color: var(--bar-colour-one);
+  animation: loading 3s linear 2s infinite;
+}
+
+@keyframes loading {
+  from {left: 50%; width: 0;z-index:100;}
+  33.3333% {left: 0; width: 100%;z-index: 10;}
+  to {left: 0; width: 100%;}
+}
+

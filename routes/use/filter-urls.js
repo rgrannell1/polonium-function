@@ -3,25 +3,34 @@ const log = require('../../shared/logging')
 const constants = require('../../shared/constants')
 
 module.exports = (req, res, next) => {
-  for (let response of blacklist) {
+  for (let listName of Object.keys(blacklist)) {
+    const response = blacklist[listName]
+
     if (response(req, res, next)) {
-      log.info({
-
-      })
+      req.ctx.blacklist = {
+        listName,
+        matches: true
+      }
       break
-    } else {
-      log.info({
-
-      })
     }
   }
+
+  log.info(Object.assign({}, req.ctx, {
+    blacklist: {
+      matches: false
+    },
+    ctx: {
+      stage: 'filter_urls'
+    }
+  }))
 
   next()
 }
 
 const responses = {
-  errorBan (res) {
+  forbiddenBan (res) {
     res.send(403)
+    return true
   }
 }
 
@@ -29,12 +38,12 @@ const blacklist = {
   bannedTerms (req, res) {
     let isPhpRequest = req.ctx.request.url.pathname.indexOf('php') !== -1
     if (isPhpRequest) {
-      responses.errorBan(res)
+      responses.forbiddenBan(res)
     }
   },
   longUrl (req, res) {
     if (req.ctx.request.urlLength > constants.limits.urlLength) {
-      responses.errorBan(res)
+      responses.forbiddenBan(res)
     }
   }
 }

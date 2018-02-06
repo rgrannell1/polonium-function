@@ -36,14 +36,14 @@ const sendPasswordRequest = async params => {
 
 const handlers = { }
 
-handlers.onSuccess = async (state, response) => {
+handlers.onSuccess = async (params, state, response) => {
   state.isActive = false
 
   const worker = new Worker('./js/notifications.js')
 
   worker.postMessage({
     topic: 'notify_password',
-    website: constants.state.website,
+    website: params.salt,
     password: await response.text()
   })
 
@@ -81,7 +81,7 @@ const reactions = {
       return Notification.requestPermission()
         .then(() => {
           return sendPasswordRequest(params)
-            .then(handlers.onSuccess.bind(null, state))
+            .then(handlers.onSuccess.bind(null, params, state))
             .catch(handlers.onFailure.bind(null, state))
         })
     }
@@ -146,6 +146,17 @@ components.header = {
         m('h1#icon-branch', {class: 'brand'}, 'Polonium')),
       m('label#links', {for: 'slide', title: 'Main menu', onclick: onDropDownClick}, '⋮')
     )
+  }
+}
+
+components.loadingBar = {
+  view (vnode) {
+    const state = constants.state
+    const loadingBarClass = state.isActive
+      ? 'load-bar active'
+      : 'load-bar inactive'
+
+    return m('div', {class: loadingBarClass}, m('.bar'), m('.bar'), m('.bar'))
   }
 }
 
@@ -258,6 +269,7 @@ components.body = {
     return m('.container',
       m(components.dropdown, {state: constants.state}),
       m(components.header),
+      m(components.loadingBar),
       m(components.main)
     )
   }
