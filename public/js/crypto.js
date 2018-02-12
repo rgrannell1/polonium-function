@@ -1,5 +1,4 @@
 
-import constants from './constants.js'
 import {components, reactions} from './components.js'
 
 /**

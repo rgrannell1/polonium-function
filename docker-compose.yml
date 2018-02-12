@@ -1,0 +1,28 @@
+version: "2"
+services:
+  polonium_func_elasticsearch:
+    container_name: polonium_func_elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.zen.minimum_master_nodes=1
+      - cluster.name=polonium_func-logs
+      - cluster.routing.allocation.disk.watermark.low=2gb
+      - cluster.routing.allocation.disk.watermark.high=2gb
+      - cluster.routing.allocation.disk.watermark.flood_stage=2gb
+      - node.name='primary'
+      - node.master=true
+      - node.data=true
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  polonium_func_kibana:
+    container_name: polonium_func_kibana
+    image: docker.elastic.co/kibana/kibana:6.1.1
+    environment:
+      ELASTICSEARCH_URL: http://polonium_func_elasticsearch:9200
+    depends_on:
+      - polonium_func_elasticsearch
+    ports:
+      - 5601:5601
