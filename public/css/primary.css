@@ -27,11 +27,6 @@ html * {
   webkit-text-security: square;
 }
 
-a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
-}
-
 ul {
   list-style-type: none;
 }
@@ -83,29 +78,9 @@ noscript#fallback-message {
   padding: 0px 20px;
 }
 
-
-h1.brand {
-  font-size: 1.3em;
-  font-weight: normal;
-  margin-left: 25px;
-}
-
 html, body {
   margin: 0;
   color: var(--font);
-}
-
-label.burger-menu {
-  font-size: 1.4em;
-  grid-column-start: 1;
-  grid-row: 1;
-  grid-column-end: 2;
-  margin-top: 15px;
-  cursor: pointer;
-}
-
-label.burger-menu:hover {
-  font-weight: bold;
 }
 
 .container {
@@ -118,19 +93,6 @@ form.main-input {
   grid-row: 2;
   display: grid;
   grid-gap: 0px 0px;
-}
-
-#main-head {
-  grid-column: 1;
-  grid-row: 1;
-  display: grid;
-  grid-template-columns: 1fr 8.5fr 0.5fr;
-}
-
-#main-head h1.brand {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row: 1;
 }
 
 /*

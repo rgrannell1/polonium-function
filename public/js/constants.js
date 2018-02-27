@@ -21,5 +21,13 @@ export default {
   patterns: {
     website: '[^ ]+',
     password: '[^ ]+'
+  },
+  colours: {
+    primaryColour: '#5d51d6',
+    white: 'white',
+    font: '#404040',
+    barLight: '#1cd6cd',
+    barMedium: '#1c82d6',
+    barDark: '#1c25d6'
   }
 }
