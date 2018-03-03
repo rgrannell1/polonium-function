@@ -22,7 +22,7 @@ Header.propTypes = {
 }
 
 const mapStateToProps = state => {
-  return {title: state.title}
+  return {title: state.constants.title}
 }
 
 const mapDispatchToProps = dispatch => {

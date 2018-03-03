@@ -10,7 +10,7 @@ import Dropdown from './dropdown.jsx'
 import LoadingBar from './loading-bar.jsx'
 import app_css from './app.css.jsx'
 
-import store from './store.jsx'
+import createAppStore from './store.jsx'
 
 import PasswordForm from '../app-components/password-form.jsx'
 
@@ -32,12 +32,17 @@ App.propTypes = {
   links: PropTypes.array.isRequired
 }
 
-const links = [
-  {href: '/terms', text: 'Privacy & Security'}
-]
+
+const initialState = {
+  dropdownShown: false,
+  title: 'Polonium',
+  links: [
+    {href: '/terms', text: 'Privacy & Security'}
+  ]
+}
 
 const element = (
-  <Provider store={store}>
+  <Provider store={createAppStore(initialState)}>
     <App title="Polonium" links={links} />
   </Provider>
 )

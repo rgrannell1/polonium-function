@@ -3,11 +3,8 @@ import {createStore, combineReducers, applyMiddleware} from "redux"
 import logger from 'redux-logger'
 
 const reducers = {}
-const initialState = {
-  dropdownShown: false
-}
 
-reducers.toggleDropdown = (state = initialState, action) => {
+reducers.toggleDropdown = (state = {}, action) => {
   switch (action.type) {
     case 'TOGGLE_DROPDOWN':
       return {
@@ -18,12 +15,12 @@ reducers.toggleDropdown = (state = initialState, action) => {
   }
 }
 
-export default createStore(
-  combineReducers(reducers),
-  {
-    toggleDropdown: {
-      dropdownShown: false
-    }
-  },
-  applyMiddleware(logger)
-)
+const createAppStore = defaults => {
+  reducers.constants = () => {
+    return Object.assign({}, defaults)
+  }
+
+  return createStore(combineReducers(reducers), {}, applyMiddleware(logger))
+}
+
+export default createAppStore
