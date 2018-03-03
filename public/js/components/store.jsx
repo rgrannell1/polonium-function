@@ -1,5 +1,6 @@
 
-import {createStore, combineReducers} from "../libs/redux.min.js"
+import {createStore, combineReducers, applyMiddleware} from "redux"
+import logger from 'redux-logger'
 
 const reducers = {}
 const initialState = {
@@ -7,15 +8,20 @@ const initialState = {
 }
 
 reducers.toggleDropdown = (state = initialState, action) => {
-  if (state.dropdownShown === false) {
-    state.dropdownShown = true
-  } else if (state.dropdownShown === true) {
-    state.dropdownShown = false
+  switch (action.type) {
+    case 'TOGGLE_DROPDOWN':
+      return {
+        dropdownShown: state.dropdownShown === true ? false : true
+      }
+    default:
+      return state
   }
-  return state
 }
 
-const app = combineReducers(reducers)
+const store = createStore(
+  combineReducers(reducers),
+  {},
+  applyMiddleware(logger)
+  );
 
-const store = createStore(app);
 export default store;

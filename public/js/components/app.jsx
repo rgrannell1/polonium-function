@@ -1,5 +1,8 @@
 
-import j2c from '../../js/libs/j2c.js'
+import React from 'react'
+import {render} from 'react-dom'
+import PropTypes from 'prop-types'
+import {Provider} from 'react-redux'
 
 import constants from '../constants.js'
 import Header from './header.jsx'
@@ -13,14 +16,14 @@ import PasswordForm from '../app-components/password-form.jsx'
 
 class App extends React.Component {
   render () {
-    const {store, title, links} = this.props
+    const {title, links} = this.props
     return (
       <div style={app_css.container}>
-        <Header store={store} title={title} />
-        <LoadingBar store={store} active={true}></LoadingBar>
+        <Header title={title} />
+        <LoadingBar active={true}></LoadingBar>
         <main>
-          <Dropdown store={store} links={links} />
-          <PasswordForm store={store}/>
+          <Dropdown links={links} />
+          <PasswordForm/>
         </main>
       </div>
     )
@@ -29,12 +32,15 @@ class App extends React.Component {
 
 App.propTypes = {
   title: PropTypes.string.isRequired,
-  store: PropTypes.object.isRequired,
   links: PropTypes.array.isRequired
 }
 
 const app = props => {
-  return (<App title={props.title} links={props.links} store={props.store} />)
+  return (
+    <Provider store={props.store}>
+      <App title={props.title} links={props.links} />
+    </Provider>
+  )
 }
 
 const element = app({
@@ -46,4 +52,4 @@ const element = app({
   store
 })
 
-ReactDOM.render(element, document.getElementById('root'));
+render(element, document.getElementById('root'));

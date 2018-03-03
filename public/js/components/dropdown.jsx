@@ -1,10 +1,14 @@
 
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import constants from '../../js/constants.js'
 import dropdown_css from './dropdown.css.jsx'
 
-const Dropdown = ({store, links}) => {
-  const dropdownShown = store.getState().dropdownShown === true
-console.log('dropdown redraw')
+const Dropdown = ({links}) => {
+//  const dropdownShown = store.getState().dropdownShown === true
+  const dropdownShown = false
+
   if (!dropdownShown) {
     return null
   } else {
@@ -19,7 +23,6 @@ console.log('dropdown redraw')
 }
 
 Dropdown.propTypes = {
-  store: PropTypes.object,
   links: PropTypes.array
 }
 
