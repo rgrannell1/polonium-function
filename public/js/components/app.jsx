@@ -14,20 +14,17 @@ import store from './store.jsx'
 
 import PasswordForm from '../app-components/password-form.jsx'
 
-class App extends React.Component {
-  render () {
-    const {title, links} = this.props
-    return (
-      <div style={app_css.container}>
-        <Header title={title} />
-        <LoadingBar active={true}></LoadingBar>
-        <main>
-          <Dropdown links={links} />
-          <PasswordForm/>
-        </main>
-      </div>
-    )
-  }
+const App = props => {
+  return (
+    <div style={app_css.container}>
+      <Header title={props.title} />
+      <LoadingBar active={true}></LoadingBar>
+      <main>
+        <Dropdown links={props.links} />
+        <PasswordForm/>
+      </main>
+    </div>
+  )
 }
 
 App.propTypes = {
@@ -35,21 +32,14 @@ App.propTypes = {
   links: PropTypes.array.isRequired
 }
 
-const app = props => {
-  return (
-    <Provider store={props.store}>
-      <App title={props.title} links={props.links} />
-    </Provider>
-  )
-}
+const links = [
+  {href: '/terms', text: 'Privacy & Security'}
+]
 
-const element = app({
-  title: 'Polonium',
-  links: [
-    {href: '/terms', text: 'Privacy & Security'}
-  ],
-  colours: constants.colours,
-  store
-})
+const element = (
+  <Provider store={store}>
+    <App title="Polonium" links={links} />
+  </Provider>
+)
 
 render(element, document.getElementById('root'));

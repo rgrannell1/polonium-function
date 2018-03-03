@@ -18,10 +18,12 @@ reducers.toggleDropdown = (state = initialState, action) => {
   }
 }
 
-const store = createStore(
+export default createStore(
   combineReducers(reducers),
-  {},
+  {
+    toggleDropdown: {
+      dropdownShown: false
+    }
+  },
   applyMiddleware(logger)
-  );
-
-export default store;
+)

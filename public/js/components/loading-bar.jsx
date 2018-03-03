@@ -1,5 +1,6 @@
 
 import React from 'react'
+import {connect} from 'react-redux'
 
 import constants from '../../js/constants.js'
 import loading_bar_css from './loading-bar.css.jsx'
@@ -15,4 +16,8 @@ const LoadingBar = active => {
   )
 }
 
-export default LoadingBar
+const mapStateToProps = state => {
+  return {active: state.loadingBarActive}
+}
+
+export default connect(mapStateToProps)(LoadingBar)
