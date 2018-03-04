@@ -1,5 +1,5 @@
 
-const submit_button_css = () => {
+const submit_button_css = colours => {
   return {
     submit_button: {
       marginTop: '40px',
@@ -10,8 +10,8 @@ const submit_button_css = () => {
       height: '60px',
       gridColumnStart: 2,
       gridRow: 6,
-      border: '1px solid rgb(64, 64, 64)',
-      color: 'white',
+      border: `1px solid ${colours.font}`,
+      color: colours.white,
       borderRadius: '4px',
       cursor: 'pointer',
     },
@@ -20,15 +20,10 @@ const submit_button_css = () => {
       outline: 'none'
     },
     submit_button_default: {
-      background: '#5d51d6'
+      background: colours.primary
     },
     submit_button_active: {
-      background: 'red',
-      cursor: 'not-allowed'
-    },
-    submit_button_invalid: {
-      background: 'blue',
-      pointerEvents: 'none',
+      background: colours.primaryDark,
       cursor: 'not-allowed'
     }
   }

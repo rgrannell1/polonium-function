@@ -1,7 +1,7 @@
 
 import constants from '../constants.js'
 
-const header_css = props => {
+const header_css = colours => {
   return {
     '@font-face': {
       'font-family': 'Nunito',
@@ -16,11 +16,11 @@ const header_css = props => {
       marginBottom: '15px',
       marginTop: '15px',
       textDecoration: 'inherit',
-      color: constants.colours.white
+      color: colours.white
     },
     main_head: {
-      background: constants.colours.primaryColour,
-      colour: constants.colours.white,
+      background: colours.primary,
+      colour: colours.white,
       padding: '0px 20px',
       gridColumn: 1,
       gridRow: 1,
@@ -28,7 +28,7 @@ const header_css = props => {
       gridTemplateColumns: '1fr 8.5fr 0.5fr'
     },
     brand_title: {
-      background: constants.colours.primaryColour,
+      background: colours.primary,
       fontFamily: "'Nunito', sans-serif",
       fontWeight: 'normal',
       marginLeft: '25px',
@@ -43,7 +43,7 @@ const header_css = props => {
       gridColumnEnd: 4,
       marginTop: '15px',
       cursor: 'pointer',
-      color: constants.colours.white
+      color: colours.white
     }
   }
 }

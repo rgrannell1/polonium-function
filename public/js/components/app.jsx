@@ -41,7 +41,14 @@ const initialState = {
     {href: '/terms', text: 'Privacy & Security'}
   ],
   colours: {
-    font: 'red' // constants.colours.font
+    font: '#404040',
+    barLight: '#1cd6cd',
+    barMedium: '#1c82d6',
+    barDark: '#1c25d6',
+    primary: '#5d51d6',
+    primaryDark: '#5d51d6',
+    error: '#ef4a4a',
+    white: 'white'
   }
 }
 

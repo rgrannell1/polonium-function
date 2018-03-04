@@ -1,13 +1,13 @@
 
 import constants from '../constants.js'
 
-const loading_bar_css = () => {
+const loading_bar_css = colours => {
   return {
     loading_bar_active: {
       position: 'relative',
       height: '6px',
       width: '100%',
-      backgroundColor: constants.colours.barMedium
+      backgroundColor: colours.barMedium
     },
     loading_bar: {
       'height': '6px'
@@ -21,15 +21,15 @@ const loading_bar_css = () => {
       textAlign: 'center'
     },
     bar_one: {
-      backgroundColor: constants.colours.barLight,
+      backgroundColor: colours.barLight,
       animation: 'loading 3s linear infinite'
     },
     bar_two: {
-      backgroundColor: constants.colours.barMedium,
+      backgroundColor: colours.barMedium,
       animation: 'loading 1s linear infinite'
     },
     bar_three: {
-      backgroundColor: constants.colours.barDark,
+      backgroundColor: colours.barDark,
       animation: 'loading 3s linear 2s infinite'
     },
     '@keyframes loading': {

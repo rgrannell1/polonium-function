@@ -1,10 +1,10 @@
 
 import constants from '../constants.js'
 
-const dropdown_css = props => {
+const dropdown_css = colours => {
   return {
     settings_menu: {
-      background: 'white',
+      background: colours.white,
       margin: '0px',
       padding: '10px 30px',
       position: 'absolute',
@@ -13,7 +13,7 @@ const dropdown_css = props => {
     },
     link: {
       textDecoration: 'none',
-      color: props.colours.font
+      color: colours.font
     }
   }
 }

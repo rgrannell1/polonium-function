@@ -1,11 +1,11 @@
 
-const password_form_css = () => {
+const password_form_css = colours => {
   return {
     website_input_error: {
       gridColumnStart: 2,
       gridColumnEnd: 5,
       gridRow: 3,
-      color: '#ef4a4a',
+      color: colours.error,
       fontSize: '0.85em',
       marginTop: '1em',
       marginBottom: '1em',
@@ -14,7 +14,7 @@ const password_form_css = () => {
       gridColumnStart: 2,
       gridColumnEnd: 5,
       gridRow: 5,
-      color: '#ef4a4a',
+      color: colours.error,
       fontSize: '0.85em',
       marginTop: '1em',
       marginBottom: '1em',

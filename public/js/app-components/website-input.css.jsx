@@ -1,5 +1,5 @@
 
-const website_input_css = () => {
+const website_input_css = colours => {
   return {
     website_input_container: {
       gridColumnStart: 2,
