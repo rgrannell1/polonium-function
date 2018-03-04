@@ -17,7 +17,9 @@ const LoadingBar = active => {
 }
 
 const mapStateToProps = state => {
-  return {active: state.loadingBarActive}
+  return {
+    active: state.toggleLoadingBar.active
+  }
 }
 
 export default connect(mapStateToProps)(LoadingBar)

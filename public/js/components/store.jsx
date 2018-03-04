@@ -33,6 +33,28 @@ reducers.updatePassword = (state = {}, action) => {
   }
 }
 
+reducers.toggleLoadingBar = (state = {}, action) => {
+  switch (action.type) {
+    case 'TOGGLE_LOADING_BAR':
+      return {
+        active: state.loadingBar === true ? false : true
+      }
+    default:
+      return state
+  }
+}
+
+reducers.clickButton = (state = {}, action) => {
+  switch (action.type) {
+    case 'CLICK_BUTTON':
+      return {
+        active: state.loadingBar === true ? false : true
+      }
+    default:
+      return state
+  }
+}
+
 const createAppStore = defaults => {
   reducers.constants = () => {
     return Object.assign({}, defaults)

@@ -3,6 +3,7 @@ import React from 'react'
 import constants from '../../js/constants.js'
 import submit_button_css from './submit-button.css.jsx'
 import {connect} from 'react-redux'
+import actions from '../actions.js'
 
 const SubmitButton = props => {
   const style = Object.assign({}, submit_button_css.submit_button)
@@ -19,7 +20,7 @@ const SubmitButton = props => {
       style={style}
       type="button"
       value={buttonText}
-      onClick={() => reactions.handleSubmit()} />
+      onClick={() => props.clickButton()} />
   )
 }
 
@@ -29,4 +30,12 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(SubmitButton)
+const mapDispatchToProps = dispatch => {
+  return {
+    clickButton () {
+      dispatch(actions.toggle_dropdown())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SubmitButton)
