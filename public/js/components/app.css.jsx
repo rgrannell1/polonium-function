@@ -1,9 +1,11 @@
 
 import {colours} from '../constants.js'
 
-const app_css = {
-  container: {
-    display: 'grid'
+const app_css = () => {
+  return {
+    container: {
+      display: 'grid'
+    }
   }
 }
 

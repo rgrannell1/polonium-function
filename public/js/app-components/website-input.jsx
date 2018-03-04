@@ -7,12 +7,13 @@ import website_input_css from './website-input.css.jsx'
 import actions from '../actions.js'
 
 const WebsiteInput = props => {
+  const style = website_input_css()
   return (
-    <div style={website_input_css.website_input_container}>
+    <div style={style.website_input_container}>
       <label htmlFor="website">Site</label>
       <input
         id="website"
-        style={website_input_css.website_input}
+        style={style.website_input}
         type="text"
         required=""
         minLength={constants.limits.minimumWebsiteLength}

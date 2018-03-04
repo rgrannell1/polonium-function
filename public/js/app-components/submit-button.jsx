@@ -12,6 +12,11 @@ const SubmitButton = props => {
   if (props.buttonState === 'default') {
     buttonText = 'Get Password'
     Object.assign(style, submit_button_css.submit_button_default)
+  } else if (props.buttonState === 'active') {
+    buttonText = 'Fetching...'
+    Object.assign(style, submit_button_css.submit_button_active)
+  } else if (props.buttonState === 'blocked') {
+
   }
 
   return (

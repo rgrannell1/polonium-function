@@ -11,10 +11,11 @@ const Dropdown = ({links, dropdownShown}) => {
   if (!dropdownShown) {
     return null
   } else {
+    const style = dropdown_css()
     return (
-      <ul style={dropdown_css.settings_menu}>
+      <ul style={style.settings_menu}>
         {links.map(({text, href}) => (
-          <li><a style={dropdown_css.link} key={text} href={href}>{text}</a></li>
+          <li><a style={style.link} key={text} href={href}>{text}</a></li>
         ))}
       </ul>
     )

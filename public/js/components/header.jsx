@@ -3,16 +3,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import header from './header.css.jsx'
+import header_css from './header.css.jsx'
 import actions from '../actions.js'
 
 const Header = props => {
+  const style = header_css()
   return (
-    <header style={header.main_head}>
-      <a href="/" style={header.link}>
-        <h1 style={header.brand_title}>{props.title}</h1>
+    <header style={style.main_head}>
+      <a href="/" style={style.link}>
+        <h1 style={style.brand_title}>{props.title}</h1>
       </a>
-      <label style={header.burger_menu} onClick={props.clickBurgerMenu} htmlFor="slide" title="Main Menu">⋮</label>
+      <label style={style.burger_menu} onClick={props.clickBurgerMenu} htmlFor="slide" title="Main Menu">⋮</label>
     </header>
   )
 }

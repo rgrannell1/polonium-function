@@ -7,11 +7,12 @@ import loading_bar_css from './loading-bar.css.jsx'
 
 const LoadingBar = active => {
   const loadingBar = {}
+  const style = loading_bar_css()
   return (
     <div style={loadingBar}>
-      <div style={Object.assign({}, loading_bar_css.bar, loading_bar_css.bar_one)}></div>
-      <div style={Object.assign({}, loading_bar_css.bar, loading_bar_css.bar_two)}></div>
-      <div style={Object.assign({}, loading_bar_css.bar, loading_bar_css.bar_three)}></div>
+      <div style={Object.assign({}, style.bar, style.bar_one)}></div>
+      <div style={Object.assign({}, style.bar, style.bar_two)}></div>
+      <div style={Object.assign({}, style.bar, style.bar_three)}></div>
     </div>
   )
 }

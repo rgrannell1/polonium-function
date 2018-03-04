@@ -10,13 +10,14 @@ import Dropdown from './dropdown.jsx'
 import LoadingBar from './loading-bar.jsx'
 import app_css from './app.css.jsx'
 
-import createAppStore from './store.jsx'
+import createAppStore from '../store.jsx'
 
 import PasswordForm from '../app-components/password-form.jsx'
 
 const App = props => {
+  const style = app_css()
   return (
-    <div style={app_css.container}>
+    <div style={style.container}>
       <Header title={props.title} />
       <LoadingBar active={true}></LoadingBar>
       <main>
