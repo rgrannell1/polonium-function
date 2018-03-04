@@ -15,6 +15,24 @@ reducers.toggleDropdown = (state = {}, action) => {
   }
 }
 
+reducers.updateWebsite = (state = {}, action) => {
+  switch (action.type) {
+    case 'UPDATE_WEBSITE':
+      return {website: action.text}
+    default:
+      return state
+  }
+}
+
+reducers.updatePassword = (state = {}, action) => {
+  switch (action.type) {
+    case 'UPDATE_WEBSITEE':
+      return {password: action.text}
+    default:
+      return state
+  }
+}
+
 const createAppStore = defaults => {
   reducers.constants = () => {
     return Object.assign({}, defaults)

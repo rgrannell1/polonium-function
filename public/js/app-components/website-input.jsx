@@ -1,9 +1,12 @@
 
 import React from 'react'
+import {connect} from 'react-redux'
+
 import constants from '../../js/constants.js'
 import website_input_css from './website-input.css.jsx'
+import actions from '../actions.js'
 
-const WebsiteInput = () => {
+const WebsiteInput = props => {
   return (
     <div style={website_input_css.website_input_container}>
       <label htmlFor="website">Site</label>
@@ -13,7 +16,7 @@ const WebsiteInput = () => {
         type="text"
         required=""
         minLength={constants.limits.minimumWebsiteLength}
-        onInput={this.handleInput}
+        onInput={event => props.updateWebsite(event)}
         autoCorrect="off"
         autoCapitalize="none"
         pattern={constants.patterns.website}>
@@ -22,4 +25,18 @@ const WebsiteInput = () => {
   )
 }
 
-export default WebsiteInput
+const mapStateToProps = state => {
+  return {
+
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateWebsite (event) {
+      dispatch(actions.update_website(event.target.value))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WebsiteInput)
