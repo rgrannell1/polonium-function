@@ -9,12 +9,13 @@ import SubmitButton from './submit-button.jsx'
 import password_form_css from './password-form.css.jsx'
 
 const PasswordForm = props => {
+  const style = password_form_css(props.colours)
   return (
-    <form style={password_form_css.form}>
+    <form style={style.form}>
       <WebsiteInput/>
-      <p style={password_form_css.website_input_error}>{props.websiteError}</p>
+      <p style={style.website_input_error}>{props.websiteError}</p>
       <PasswordInput/>
-      <p style={password_form_css.password_input_error}>{props.passwordError}</p>
+      <p style={style.password_input_error}>{props.passwordError}</p>
       <SubmitButton/>
     </form>
   )
@@ -37,6 +38,7 @@ const mapStateToProps = state => {
   }
 
   return {
+    colours: state.constants.colours,
     websiteError: exists.password && tooShort.website ? 'Website must be provided' : '\xa0',
     passwordError: exists.password && tooShort.password ? 'Password must be at least 12 characters' : '\xa0',
   }

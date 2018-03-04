@@ -5,9 +5,9 @@ import {connect} from 'react-redux'
 import constants from '../../js/constants.js'
 import loading_bar_css from './loading-bar.css.jsx'
 
-const LoadingBar = active => {
+const LoadingBar = props => {
   const loadingBar = {}
-  const style = loading_bar_css()
+  const style = loading_bar_css(props.colours)
   return (
     <div style={loadingBar}>
       <div style={Object.assign({}, style.bar, style.bar_one)}></div>
@@ -19,6 +19,7 @@ const LoadingBar = active => {
 
 const mapStateToProps = state => {
   return {
+    colours: state.constants.colours,
     active: state.toggleLoadingBar.active
   }
 }

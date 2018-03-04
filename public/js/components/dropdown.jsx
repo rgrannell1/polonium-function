@@ -6,15 +6,15 @@ import {connect} from 'react-redux'
 import constants from '../../js/constants.js'
 import dropdown_css from './dropdown.css.jsx'
 
-const Dropdown = ({links, dropdownShown}) => {
+const Dropdown = props => {
 
-  if (!dropdownShown) {
+  if (!props.dropdownShown) {
     return null
   } else {
-    const style = dropdown_css()
+    const style = dropdown_css(props.colours)
     return (
       <ul style={style.settings_menu}>
-        {links.map(({text, href}) => (
+        {props.links.map(({text, href}) => (
           <li><a style={style.link} key={text} href={href}>{text}</a></li>
         ))}
       </ul>
@@ -28,6 +28,7 @@ Dropdown.propTypes = {
 
 const mapStateToProps = state => {
   return {
+    colours: state.constants.colours,
     links: [
       {text: 'Terms of Use', href: '/terms'}
     ],

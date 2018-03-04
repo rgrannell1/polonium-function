@@ -7,7 +7,7 @@ import website_input_css from './website-input.css.jsx'
 import actions from '../actions.js'
 
 const WebsiteInput = props => {
-  const style = website_input_css()
+  const style = website_input_css(props.colours)
   return (
     <div style={style.website_input_container}>
       <label htmlFor="website">Site</label>
@@ -28,7 +28,7 @@ const WebsiteInput = props => {
 
 const mapStateToProps = state => {
   return {
-
+    colours: state.constants.colours
   }
 }
 

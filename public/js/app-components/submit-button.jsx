@@ -6,15 +6,16 @@ import {connect} from 'react-redux'
 import actions from '../actions.js'
 
 const SubmitButton = props => {
-  let style = Object.assign({}, submit_button_css.submit_button)
+  const submitStyle = submit_button_css(props.colours)
+  let style = Object.assign({}, submitStyle.submit_button)
   let buttonText = ''
 
   if (props.buttonState === 'default') {
     buttonText = 'Get Password'
-    Object.assign(style, submit_button_css.submit_button_default)
+    Object.assign(style, submitStyle.submit_button_default)
   } else if (props.buttonState === 'active') {
     buttonText = 'Fetching...'
-    Object.assign(style, submit_button_css.submit_button_active)
+    Object.assign(style, submitStyle.submit_button_active)
   } else if (props.buttonState === 'blocked') {
 
   }
@@ -40,7 +41,10 @@ const mapStateToProps = state => {
     buttonState = 'default'
   }
 
-  return {buttonState}
+  return {
+    colours: state.constants.colours,
+    buttonState
+  }
 }
 
 const mapDispatchToProps = dispatch => {

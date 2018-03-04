@@ -6,13 +6,14 @@ import {connect} from 'react-redux'
 import actions from '../actions.js'
 
 const PasswordInput = props => {
+  const style = password_input_css(props.colours)
   return (
-    <div style={password_input_css.password_input_container}>
+    <div style={style.password_input_container}>
       <label htmlFor="password">Master Password</label>
       <input
         id="password"
         type="password"
-        style={password_input_css.password_input}
+        style={style.password_input}
         required=""
         minLength={constants.limits.minimumPasswordLength}
         onInput={event => props.updatePassword(event)}
@@ -24,7 +25,7 @@ const PasswordInput = props => {
 
 const mapStateToProps = state => {
   return {
-
+    colours: state.constants.colours
   }
 }
 

@@ -39,12 +39,15 @@ const initialState = {
   title: 'Polonium',
   links: [
     {href: '/terms', text: 'Privacy & Security'}
-  ]
+  ],
+  colours: {
+    font: 'red' // constants.colours.font
+  }
 }
 
 const element = (
   <Provider store={createAppStore(initialState)}>
-    <App title="Polonium" links={links} />
+    <App title="Polonium" links={initialState.links} />
   </Provider>
 )
 

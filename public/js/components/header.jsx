@@ -7,7 +7,7 @@ import header_css from './header.css.jsx'
 import actions from '../actions.js'
 
 const Header = props => {
-  const style = header_css()
+  const style = header_css(props.colours)
   return (
     <header style={style.main_head}>
       <a href="/" style={style.link}>
@@ -23,7 +23,10 @@ Header.propTypes = {
 }
 
 const mapStateToProps = state => {
-  return {title: state.constants.title}
+  return {
+    colours: state.constants.colours,
+    title: state.constants.title
+  }
 }
 
 const mapDispatchToProps = dispatch => {
