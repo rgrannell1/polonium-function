@@ -3,7 +3,7 @@ import constants from '../constants.js'
 
 const header_css = {
   '@font-face': {
-    'font-family': 'Noto Sans',
+    'font-family': 'Nunito',
     'src': 'url("fonts/NotoSans.ttf")'
   },
   link: {
@@ -28,7 +28,7 @@ const header_css = {
   },
   brand_title: {
     background: constants.colours.primaryColour,
-    fontFamily: "'Noto Sans', sans-serif",
+    fontFamily: "'Nunito', sans-serif",
     fontWeight: 'normal',
     marginLeft: '25px',
     gridColumnStart: 2,

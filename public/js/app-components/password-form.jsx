@@ -25,14 +25,20 @@ PasswordForm.propTypes = {
 }
 
 const mapStateToProps = state => {
+  const {website} = state.updateWebsite
+  const {password} = state.updatePassword
+  const exists = {
+    website: !!website && website.length > 0,
+    password: !!password && password.length > 0
+  }
   const tooShort = {
-    website: !state.updateWebsite.website,
-    password: !state.updateWebsite.password || state.updateWebsite.password < 12
+    website: !exists.website || website.length === 0,
+    password: !exists.password || password.length < 12
   }
 
   return {
-    websiteError: tooShort.website ? 'Website must be provided' : '\xa0',
-    passwordError: tooShort.password ? 'Password must be at least 12 characters' : '\xa0',
+    websiteError: exists.password && tooShort.website ? 'Website must be provided' : '\xa0',
+    passwordError: exists.password && tooShort.password ? 'Password must be at least 12 characters' : '\xa0',
   }
 }
 

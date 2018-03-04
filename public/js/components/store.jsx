@@ -26,7 +26,7 @@ reducers.updateWebsite = (state = {}, action) => {
 
 reducers.updatePassword = (state = {}, action) => {
   switch (action.type) {
-    case 'UPDATE_WEBSITEE':
+    case 'UPDATE_PASSWORD':
       return {password: action.text}
     default:
       return state
@@ -44,12 +44,16 @@ reducers.toggleLoadingBar = (state = {}, action) => {
   }
 }
 
-reducers.clickButton = (state = {}, action) => {
+reducers.clickSubmitButton = (state = {}, action) => {
   switch (action.type) {
-    case 'CLICK_BUTTON':
-      return {
-        active: state.loadingBar === true ? false : true
+    case 'CLICK_SUBMIT_BUTTON':
+      const newState = { }
+
+      if (!state.active) {
+        newState.active = true
       }
+
+      return newState
     default:
       return state
   }

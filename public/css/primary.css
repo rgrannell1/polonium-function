@@ -17,13 +17,13 @@
 }
 
 @font-face {
-  font-family: 'Noto Sans';
+  font-family: 'Nunito';
   src: url("../fonts/NotoSans.ttf");
 }
 
 html * {
   font-size: 1.015em;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   webkit-text-security: square;
 }
 

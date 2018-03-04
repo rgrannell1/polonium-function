@@ -21,4 +21,10 @@ actions.update_password = text => {
   }
 }
 
+actions.click_submit_button = () => {
+  return {
+    type: 'CLICK_SUBMIT_BUTTON'
+  }
+}
+
 export default actions

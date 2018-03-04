@@ -6,12 +6,12 @@ import {connect} from 'react-redux'
 import actions from '../actions.js'
 
 const SubmitButton = props => {
-  const style = Object.assign({}, submit_button_css.submit_button)
-
+  let style = Object.assign({}, submit_button_css.submit_button)
   let buttonText = ''
 
   if (props.buttonState === 'default') {
     buttonText = 'Get Password'
+    Object.assign(style, submit_button_css.submit_button_default)
   }
 
   return (
@@ -25,15 +25,23 @@ const SubmitButton = props => {
 }
 
 const mapStateToProps = state => {
-  return {
-    buttonState: 'default',
+  let buttonState = ''
+
+  if (state.clickSubmitButton.error) {
+    buttonState = 'error'
+  } else if (state.clickSubmitButton.active) {
+    buttonState = 'active'
+  } else {
+    buttonState = 'default'
   }
+
+  return {buttonState}
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     clickButton () {
-      dispatch(actions.toggle_dropdown())
+      dispatch(actions.click_submit_button())
     }
   }
 }

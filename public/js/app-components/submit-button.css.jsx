@@ -9,15 +9,17 @@ const submit_button_css = {
     height: '60px',
     gridColumnStart: 2,
     gridRow: 6,
-    border: '1px solid black',
+    border: '1px solid rgb(64, 64, 64)',
     color: 'white',
     borderRadius: '4px',
     cursor: 'pointer',
-    background: '#5d51d6'
   },
   'submit_button:focus': {
     border: 'none',
     outline: 'none'
+  },
+  submit_button_default: {
+    background: '#5d51d6'
   },
   submit_button_active: {
     background: 'red',
