@@ -1,6 +1,12 @@
 
 import constants from '../constants.js'
 
+/**
+ * The loading-bar css
+ *
+ * @param  {Object} colours an object containing colours
+ * @return {Object} an inline style
+ */
 const loading_bar_css = colours => {
   return {
     loading_bar_active: {

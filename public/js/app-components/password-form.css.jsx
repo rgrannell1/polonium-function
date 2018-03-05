@@ -7,7 +7,7 @@ const password_form_css = colours => {
       gridRow: 3,
       color: colours.error,
       fontSize: '0.85em',
-      marginTop: '1em',
+      marginTop: '3 em',
       marginBottom: '1em',
     },
     password_input_error: {
@@ -16,7 +16,7 @@ const password_form_css = colours => {
       gridRow: 5,
       color: colours.error,
       fontSize: '0.85em',
-      marginTop: '1em',
+      marginTop: '2.5em',
       marginBottom: '1em',
     },
     form: {
@@ -24,7 +24,7 @@ const password_form_css = colours => {
       gridColumn: '2',
       gridRow: '2',
       display: 'grid',
-      gridGap: '0px 0px',
+      gridGap: '0px',
       marginTop: '60px',
       content: ''
     }

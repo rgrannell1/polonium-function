@@ -1,6 +1,12 @@
 
 import constants from '../constants.js'
 
+/**
+ * The header css
+ *
+ * @param  {Object} colours an object containing colours
+ * @return {Object} an inline style
+ */
 const header_css = colours => {
   return {
     '@font-face': {

@@ -18,6 +18,12 @@ const Header = props => {
   )
 }
 
+/**
+ * Map the Redux state to this components properties
+ *
+ * @param  {Object} state the Redux state
+ * @return {Object} the component properties
+ */
 Header.propTypes = {
   title: PropTypes.string.isRequired
 }

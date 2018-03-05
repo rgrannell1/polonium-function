@@ -2,7 +2,7 @@
 const webpack = require('webpack')
 const path = require('path')
 
-const BUILD_DIR = path.resolve(__dirname, 'public/js/dist')
+const BUILD_DIR = path.resolve(__dirname, 'public/dist')
 const APP_DIR = path.resolve(__dirname, 'public/js/components')
 const JS_DIR = path.resolve(__dirname, 'public/js/')
 

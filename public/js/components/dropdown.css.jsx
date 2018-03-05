@@ -1,6 +1,12 @@
 
 import constants from '../constants.js'
 
+/**
+ * The dropdown css
+ *
+ * @param  {Object} colours an object containing colours
+ * @return {Object} an inline style
+ */
 const dropdown_css = colours => {
   return {
     settings_menu: {
