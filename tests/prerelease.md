@@ -16,8 +16,8 @@
 - [ ] Submit succeeds otherwise
 - [ ] Loading bar shows
 - [ ] Password shown
-- [ ] Responsive between `Galaxy S5` and standard resolution
-- [ ] No typo
+- [ ] Responsive between `Galaxy S5` and laptop resolution
+- [ ] No typos
 
 ## Documentation
 
