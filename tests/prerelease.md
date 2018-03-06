@@ -12,8 +12,8 @@
 - [ ] Home link works
 - [ ] Dropdown links work
 - [ ] Form error-text displays
-- [ ] Submission fails for poor input
-- [ ] Submission succeeds otherwise
+- [ ] Submit fails for poor input
+- [ ] Submit succeeds otherwise
 - [ ] Loading bar shows
 - [ ] Password shown
 - [ ] Responsive between `Galaxy S5` and standard resolution
