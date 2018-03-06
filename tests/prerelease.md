@@ -13,7 +13,7 @@
 - [ ] All routes load
 - [ ] Logs are normal
 
-## Site
+## Site Functionality
 
 - [ ] Home link works
 - [ ] Dropdown links work
@@ -23,8 +23,10 @@
 - [ ] Loading bar shows
 - [ ] Password shown
 - [ ] Responsive between `Galaxy S5` and laptop resolution
+- [ ] ToC updated
 - [ ] No typos
 
 ## Documentation
 
 - [ ] README update with release notes and changelog
+- [ ] Tagged in Git
