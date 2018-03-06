@@ -23,6 +23,13 @@ handlers.failure = (req, res, err) => {
   res.send(err.message, 500)
 }
 
+/**
+ * Derive a password for the client
+ *
+ * @param  {object} req
+ * @param  {object} res
+ * @return {Promise}
+ */
 module.exports = (req, res) => {
   return polonium(parseArgs(req, res))
     .then(

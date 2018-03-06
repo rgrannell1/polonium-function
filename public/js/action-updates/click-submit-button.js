@@ -1,4 +1,6 @@
 
+import services from '../services/index.js'
+
 /**
  * Update the state to handle the submit button click.
  *
@@ -13,6 +15,9 @@ const clickSubmitButton = (state = {}, action) => {
 
       if (!state.active) {
         newState.active = true
+        newState.retrievedPassword = services.fetchPassword({
+
+        })
       }
 
       return newState
