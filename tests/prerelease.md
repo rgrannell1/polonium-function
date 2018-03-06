@@ -6,8 +6,14 @@
 - [ ] Code compiles
 - [ ] Yarn modules clean-installed
 - [ ] Local server serves site
+- [ ] Deployment succeeds
 
-## UI
+## Deployment
+
+- [ ] All routes load
+- [ ] Logs are normal
+
+## Site
 
 - [ ] Home link works
 - [ ] Dropdown links work
