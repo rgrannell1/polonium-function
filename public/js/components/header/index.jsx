@@ -3,8 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import header_css from './header.css.jsx'
-import actions from '../actions.js'
+import header_css from './index.css.jsx'
+import actions from '../../actions.js'
 
 /**
  * The Polonium header component

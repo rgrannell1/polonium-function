@@ -1,9 +1,9 @@
 
 import React from 'react'
-import constants from '../../js/constants.js'
-import password_input_css from './password-input.css.jsx'
+import constants from '../../constants.js'
+import password_input_css from '../password-input/index.css.jsx'
 import {connect} from 'react-redux'
-import actions from '../actions.js'
+import actions from '../../actions.js'
 
 const PasswordInput = props => {
   const style = password_input_css(props.colours)

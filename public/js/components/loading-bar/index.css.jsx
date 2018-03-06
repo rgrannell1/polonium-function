@@ -1,5 +1,5 @@
 
-import constants from '../constants.js'
+import constants from '../../constants.js'
 
 /**
  * The loading-bar css

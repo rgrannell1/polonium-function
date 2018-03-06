@@ -4,15 +4,15 @@ import {render} from 'react-dom'
 import PropTypes from 'prop-types'
 import {Provider} from 'react-redux'
 
-import constants from '../constants.js'
-import Header from './header.jsx'
-import Dropdown from './dropdown.jsx'
-import LoadingBar from './loading-bar.jsx'
+import constants from '../../constants.js'
 
-import app_css from './app.css.jsx'
-import createAppStore from '../store.jsx'
+import Header from './../header/index.jsx'
+import Dropdown from '../dropdown/index.jsx'
+import LoadingBar from '../loading-bar/index.jsx'
+import PasswordForm from '../password-form/index.jsx'
 
-import PasswordForm from '../app-components/password-form.jsx'
+import app_css from './index.css.jsx'
+import createAppStore from '../../store.jsx'
 
 const initialState = {
   dropdownShown: false,

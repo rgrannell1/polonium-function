@@ -1,9 +1,9 @@
 
 import React from 'react'
-import constants from '../../js/constants.js'
-import submit_button_css from './submit-button.css.jsx'
+import constants from '../../constants.js'
+import submit_button_css from '../submit-button/index.css.jsx'
 import {connect} from 'react-redux'
-import actions from '../actions.js'
+import actions from '../../actions.js'
 
 const SubmitButton = props => {
   const submitStyle = submit_button_css(props.colours)

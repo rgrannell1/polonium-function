@@ -1,5 +1,5 @@
 
-import {colours} from '../constants.js'
+import {colours} from '../../constants.js'
 
 const app_css = () => {
   return {

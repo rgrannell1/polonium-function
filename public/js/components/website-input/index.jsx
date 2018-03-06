@@ -2,10 +2,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import constants from '../../js/constants.js'
-import website_input_css from './website-input.css.jsx'
-import actions from '../actions.js'
+import constants from '../../constants.js'
+import website_input_css from '../website-input/index.css.jsx'
+import actions from '../../actions.js'
 
+/**
+ * The Polonium website-input component
+ *
+ * @param  {object} props.
+ * @param {object} props.colours       an object containing colours
+ * @param {array} props.updateWebsite  a function that dispatches a redux action
+ *
+ * @return {Element}
+ */
 const WebsiteInput = props => {
   const style = website_input_css(props.colours)
   return (

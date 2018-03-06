@@ -1,9 +1,10 @@
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import constants from '../../js/constants.js'
-import loading_bar_css from './loading-bar.css.jsx'
+import constants from '../../constants.js'
+import loading_bar_css from '../loading-bar/index.css.jsx'
 
 
 /**
