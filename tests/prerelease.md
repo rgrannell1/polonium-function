@@ -1,5 +1,5 @@
 
-# Pre-Release Checklist
+# Release Checklist
 
 ## Build System
 
