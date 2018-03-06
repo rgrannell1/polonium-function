@@ -6,6 +6,7 @@
   "scripts": {
     "lint:depcheck": "node node_modules/.bin/depcheck",
     "lint:buddy": "node node_modules/.bin/buddy routes index.js index-local.js public/js shared/",
+    "lint:source": "node_modules/.bin/standard",
     "test": "echo \"Error: no test specified\" && exit 1",
     "invoke": "serverless invoke --function first",
     "watch": "./node_modules/.bin/webpack -w",
