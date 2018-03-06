@@ -41,5 +41,4 @@ mithril*.js
 data/
 dist/*
 
-public/js/dist/*
-public/js/libs/*
+public/dist/*

@@ -1,4 +1,6 @@
 
+import {dispatchAction} from '../utils.js'
+
 /**
  * Update the state to include the current password value
  *
@@ -6,13 +8,10 @@
  * @param  {Object} action The inbound action to be performed
  * @return {Object}        The new state
  */
-const updatePassword = (state = {}, action) => {
-  switch (action.type) {
-    case 'UPDATE_PASSWORD':
-      return {password: action.text}
-    default:
-      return state
+const updatePassword = dispatchAction({
+  UPDATE_PASSWORD (state, newState, action) {
+    return { password: action.text }
   }
-}
+})
 
 export default updatePassword
