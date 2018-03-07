@@ -20,7 +20,7 @@ const initialState = {
   dropdownShown: false,
   title: 'Polonium',
   links: [
-    {href: '/terms', text: 'Privacy & Security'}
+    {href: '/http/terms', text: 'Privacy & Security'}
   ],
   colours: {
     font: '#404040',
@@ -68,6 +68,7 @@ const element = (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/http" component={App}/>
+      <Route path="/http/terms" component={App}/>
     </Router>
   </Provider>
 )

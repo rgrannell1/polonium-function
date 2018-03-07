@@ -3,11 +3,11 @@ const webpack = require('webpack')
 const path = require('path')
 
 const BUILD_DIR = path.resolve(__dirname, 'src/client/dist')
-const APP_DIR = path.resolve(__dirname, 'src/client/js/components')
+const APP_DIR = path.resolve(__dirname, 'src/client/js/')
 const JS_DIR = path.resolve(__dirname, 'src/client/js/')
 
 const config = {
-  entry: APP_DIR + '/app/index.jsx',
+  entry: APP_DIR + '/index.jsx',
   module: {
     loaders: [
       {
