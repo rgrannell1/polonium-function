@@ -17,7 +17,7 @@ package:
     - .git/**
 
 functions:
-  first:
+  polonium:
     handler: http
     events:
       - http: path

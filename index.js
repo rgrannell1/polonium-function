@@ -1,6 +1,6 @@
 
-const router = require('./routes')
-const log = require('./shared/logging')
+const router = require('./src/server/routes')
+const log = require('./src/server/shared/logging')
 const express = require('express')
 
 const app = express()

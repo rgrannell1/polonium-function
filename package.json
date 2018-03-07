@@ -8,10 +8,11 @@
     "lint:buddy": "node node_modules/.bin/buddy routes index.js index-local.js public/js shared/",
     "lint:source": "node_modules/.bin/standard",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "invoke": "serverless invoke --function first",
-    "watch": "./node_modules/.bin/webpack -w",
-    "run_local": "node index-local.js",
-    "deploy": "serverless deploy"
+    "build": "./node_modules/.bin/webpack",
+    "build:watch": "./node_modules/.bin/webpack -w",
+    "run:remote": "serverless invoke --function first",
+    "run:local": "export NODE_ENV=development; node index-local.js",
+    "deploy:production": "serverless deploy"
   },
   "author": "Ryan Grannell",
   "license": "MIT",
@@ -41,6 +42,7 @@
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
+    "request-promise": "^4.2.2",
     "serverless-google-cloudfunctions": "^1.1.0",
     "sqlite": "^2.9.1",
     "standard": "^11.0.0",

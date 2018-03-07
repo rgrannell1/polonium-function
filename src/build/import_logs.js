@@ -1,6 +1,7 @@
 
 const {googleCloudStorage} = require('@rgrannell1/utils')
 const elasticSearch = require('elasticsearch')
+const request = require('request-promise')
 
 const storeLog = async (client, body) => {
   return client.index({
@@ -29,12 +30,26 @@ const parseLines = async (client, logs) => {
       await storeLog(client, log)
     } catch (err) {
       console.error(err)
+      process.exit(1)
       break
     }
   }
 }
 
+/**
+ * Import logs into an ElasticSearch server.
+ *
+ * @param  {string} name the name of the blob to download from.
+ * @return {Promise} a result promise
+ */
 const importLogs = async name => {
+  try {
+    await request('http://localhost:9200/_cluster/health')
+  } catch (err) {
+    console.error('Could not connect to ElasticSearch: is it running?')
+    process.exit(1)
+  }
+
   const client = new elasticSearch.Client({host: 'localhost:9200'})
 
   return googleCloudStorage.downloadBlobFiles(name)
@@ -45,7 +60,7 @@ const importLogs = async name => {
     })
 }
 
-importLogs('polonium-logs')
-  .catch(err => {
-    console.error(err)
-  })
+importLogs('polonium-logs').catch(err => {
+  console.error(err)
+  process.exit(1)
+})

@@ -3,8 +3,8 @@ const path = require('path')
 
 const constants = {
   paths: {
-    static: path.join(__dirname, '../public'),
-    database: path.join(__dirname, '../data/logs.sqlite')
+    static: path.join(__dirname, '../../client'),
+    database: path.join(__dirname, '../../data/logs.sqlite')
   },
   limits: {
     urlLength: 128
