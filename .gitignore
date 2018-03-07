@@ -39,6 +39,4 @@ node_modules
 mithril*.js
 
 data/
-dist/*
-
-public/dist/*
+bundle.js

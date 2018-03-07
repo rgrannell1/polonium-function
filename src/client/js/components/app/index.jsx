@@ -3,6 +3,8 @@ import React from 'react'
 import {render} from 'react-dom'
 import PropTypes from 'prop-types'
 import {Provider} from 'react-redux'
+import {Router, Route, browserHistory} from 'react-router'
+import {syncHistoryWithStore} from 'react-router-redux'
 
 import constants from '../../constants.js'
 
@@ -60,9 +62,13 @@ App.propTypes = {
   links: PropTypes.array.isRequired
 }
 
+const store = createAppStore(initialState)
+const history = syncHistoryWithStore(browserHistory, store)
 const element = (
-  <Provider store={createAppStore(initialState)}>
-    <App title="Polonium" links={initialState.links} />
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path="/http" component={App}/>
+    </Router>
   </Provider>
 )
 
