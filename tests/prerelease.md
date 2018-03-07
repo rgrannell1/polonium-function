@@ -30,3 +30,4 @@
 
 - [ ] README update with release notes and changelog
 - [ ] Tagged in Git
+- [ ] Package.json updated
