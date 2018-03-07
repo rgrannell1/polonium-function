@@ -3,6 +3,7 @@
 Badge | Status
 ----- | ------
 Build Status | [![Build Status](https://travis-ci.org/rgrannell1/polonium-function.svg?branch=master)](https://travis-ci.org/rgrannell1/polonium-function)
+License | MIT
 
 
 ## Releases
