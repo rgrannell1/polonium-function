@@ -9,3 +9,4 @@ License | MIT
 ## Releases
 
 #### v1.0.0 (commit ID)
+- Deployment time: TBD
