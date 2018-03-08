@@ -39,4 +39,5 @@ node_modules
 mithril*.js
 
 data/
-bundle.js
+*/bundle.js
+docs/*

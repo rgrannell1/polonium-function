@@ -8,10 +8,8 @@ import {dispatchAction} from '../utils.js'
  * @param  {Object} action The inbound action to be performed
  * @return {Object}        The new state
  */
-const updateWebsite = dispatchAction({
-  UPDATE_WEBSITE (state, newState, action) {
-    return { website: action.text }
-  }
-})
+const updateWebsite = (state, action) => {
+  return { website: action.text }
+}
 
 export default updateWebsite

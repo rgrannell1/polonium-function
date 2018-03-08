@@ -9,25 +9,22 @@ import {dispatchAction} from '../utils.js'
  * @param  {Object} action The inbound action to be performed
  * @return {Object}        The new state
  */
-const clickSubmitButton = dispatchAction({
-  CLICK_SUBMIT_BUTTON (state, newState) {
-    if (!state.updateWebsite || !state.updatePassword) {
-      return state
-    }
-    if (!state.updateWebsite.website || !state.updatePassword.password) {
-      return state
-    }
-
-    const fetchOpts = {
-      website: state.updateWebsite.website,
-      password: state.updatePassword.password
-    }
-    if (!state.active) {
-      newState.active = true
-      newState.retrievedPassword = services.fetchPassword(fetchOpts)
-    }
-    return newState
+const clickSubmitButton = (state, action) => {
+  if (!state.updateWebsite || !state.updatePassword) {
+    return state
   }
-})
+  if (!state.updateWebsite.website || !state.updatePassword.password) {
+    return state
+  }
+
+  const fetchOpts = {
+    website: state.updateWebsite.website,
+    password: state.updatePassword.password
+  }
+  if (!state.active) {
+    newState.active = true
+    newState.retrievedPassword = services.fetchPassword(fetchOpts)
+  }
+}
 
 export default clickSubmitButton

@@ -31,15 +31,15 @@ const SubmitButton = props => {
 }
 
 const mapStateToProps = state => {
-  let buttonState = ''
+  let buttonState = 'default'
 
-  if (state.clickSubmitButton.error) {
-    buttonState = 'error'
-  } else if (state.clickSubmitButton.active) {
-    buttonState = 'active'
-  } else {
-    buttonState = 'default'
-  }
+//  if (state.clickSubmitButton.error) {
+//    buttonState = 'error'
+//  } else if (state.clickSubmitButton.active) {
+//    buttonState = 'active'
+//  } else {
+//    buttonState = 'default'
+//  }
 
   return {
     colours: state.constants.colours,

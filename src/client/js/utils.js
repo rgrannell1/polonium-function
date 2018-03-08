@@ -6,9 +6,12 @@
  *
  * @return {object} the updated state
  */
-const dispatchAction = responses => (state = {}, action) => {
+const dispatchAction = responses => (state, action) => {
   if (!responses) {
     throw new Error('responses missing.')
+  }
+  if (!state) {
+    return {}
   }
 
   for (let [actionName, reducer] of Object.entries(responses)) {

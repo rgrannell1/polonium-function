@@ -8,12 +8,10 @@ import {dispatchAction} from '../utils.js'
  * @param  {Object} action The inbound action to be performed
  * @return {Object}        The new state
  */
-const toggleLoadingBar = dispatchAction({
-  TOGGLE_LOADING_BAR (state, newState) {
-    return {
-      active: state.loadingBar !== true
-    }
+const toggleLoadingBar = (state, newState) => {
+  return {
+    active: state.loadingBar !== true
   }
-})
+}
 
 export default toggleLoadingBar

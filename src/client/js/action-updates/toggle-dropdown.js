@@ -8,12 +8,10 @@ import {dispatchAction} from '../utils.js'
  * @param  {Object} action The inbound action to be performed
  * @return {Object}        The new state
  */
-const toggleDropdown = dispatchAction({
-  TOGGLE_DROPDOWN (state, newState) {
-    return {
-      dropdownShown: state.dropdownShown !== true
-    }
+const toggleDropdown = (state, action) => {
+  return {
+    dropdownShown: state.dropdownShown !== true
   }
-})
+}
 
 export default toggleDropdown

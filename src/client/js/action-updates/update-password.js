@@ -8,10 +8,8 @@ import {dispatchAction} from '../utils.js'
  * @param  {Object} action The inbound action to be performed
  * @return {Object}        The new state
  */
-const updatePassword = dispatchAction({
-  UPDATE_PASSWORD (state, newState, action) {
-    return { password: action.text }
-  }
-})
+const updatePassword = (state, action) => {
+  return { password: action.text }
+}
 
 export default updatePassword

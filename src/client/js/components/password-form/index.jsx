@@ -26,8 +26,9 @@ PasswordForm.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const {website} = state.updateWebsite
-  const {password} = state.updatePassword
+  const website = state.app.website
+  const password = state.app.password
+
   const exists = {
     website: !!website && website.length > 0,
     password: !!password && password.length > 0
