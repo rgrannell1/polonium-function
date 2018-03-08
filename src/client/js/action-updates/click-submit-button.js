@@ -10,17 +10,16 @@ import {dispatchAction} from '../utils.js'
  * @return {Object}        The new state
  */
 const clickSubmitButton = (state, action) => {
-  if (!state.updateWebsite || !state.updatePassword) {
-    return state
-  }
-  if (!state.updateWebsite.website || !state.updatePassword.password) {
+  if (!state.website || !state.password) {
     return state
   }
 
   const fetchOpts = {
-    website: state.updateWebsite.website,
-    password: state.updatePassword.password
+    website: state.website,
+    password: state.password
   }
+
+  const newState = Object.assign({}, state)
 
   if (state.submitButtonState === 'default') {
     newState.submitButtonState = 'active'

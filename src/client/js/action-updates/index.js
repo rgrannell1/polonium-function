@@ -13,7 +13,8 @@ const actions = {
   UPDATE_WEBSITE: updateWebsite
 }
 
-export default (state = {}, action) => {
+const initialState = {}
+export default (state = initialState, action) => {
   if (actions.hasOwnProperty(action.type)) {
     return actions[action.type](state, action)
   } else {

@@ -9,7 +9,9 @@ import {dispatchAction} from '../utils.js'
  * @return {Object}        The new state
  */
 const updatePassword = (state, action) => {
-  return { password: action.text }
+  const newState = Object.assign({}, state)
+  newState.password = action.text
+  return newState
 }
 
 export default updatePassword

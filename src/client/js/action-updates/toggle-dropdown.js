@@ -9,9 +9,10 @@ import {dispatchAction} from '../utils.js'
  * @return {Object}        The new state
  */
 const toggleDropdown = (state, action) => {
-  return {
-    dropdownShown: state.dropdownShown !== true
-  }
+  const newState = Object.assign({}, state)
+  newState.dropdownShown = state.dropdownShown !== true
+
+  return newState
 }
 
 export default toggleDropdown

@@ -8,10 +8,10 @@ import {dispatchAction} from '../utils.js'
  * @param  {Object} action The inbound action to be performed
  * @return {Object}        The new state
  */
-const toggleLoadingBar = (state, newState) => {
-  return {
-    active: state.loadingBar !== true
-  }
+const toggleLoadingBar = (state, action) => {
+  const newState = Object.assign({}, state)
+  newState.active = state.loadingBar !== true
+  return newState
 }
 
 export default toggleLoadingBar
