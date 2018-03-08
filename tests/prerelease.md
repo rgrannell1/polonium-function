@@ -34,5 +34,5 @@
 
 ## Automation
 
-## 1. Code Compiles
+## 1
 - Webpack code is validated (9ff91c6ef)
