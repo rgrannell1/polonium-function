@@ -21,10 +21,13 @@ const clickSubmitButton = (state, action) => {
     website: state.updateWebsite.website,
     password: state.updatePassword.password
   }
-  if (!state.active) {
-    newState.active = true
+
+  if (state.submitButtonState === 'default') {
+    newState.submitButtonState = 'active'
     newState.retrievedPassword = services.fetchPassword(fetchOpts)
   }
+
+  return newState
 }
 
 export default clickSubmitButton

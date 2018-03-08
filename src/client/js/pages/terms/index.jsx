@@ -31,9 +31,4 @@ const TermsPage = props => {
   )
 }
 
-TermsPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  links: PropTypes.array.isRequired
-}
-
 export default TermsPage

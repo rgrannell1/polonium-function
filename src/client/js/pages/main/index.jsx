@@ -32,9 +32,4 @@ const MainPage = props => {
   )
 }
 
-MainPage.propTypes = {
-  title: PropTypes.string.isRequired,
-  links: PropTypes.array.isRequired
-}
-
 export default MainPage

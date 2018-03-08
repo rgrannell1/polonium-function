@@ -34,16 +34,6 @@ const LoadingBar = props => {
 }
 
 /**
- * Assert header properties are set.
- *
- * @type {Object}
- */
-LoadingBar.propTypes = {
-  active: PropTypes.bool.isRequired,
-  colours: PropTypes.object.isRequired
-}
-
-/**
  * Map the Redux state to this components properties
  *
  * @param  {Object} state the Redux state

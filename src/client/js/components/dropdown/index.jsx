@@ -32,17 +32,6 @@ const Dropdown = props => {
 }
 
 /**
- * Assert dropdown properties are set.
- *
- * @type {Object}
- */
-Dropdown.propTypes = {
-  dropdownShown: PropTypes.bool.isRequired,
-  colours: PropTypes.object.isRequired,
-  links: PropTypes.array.isRequired,
-}
-
-/**
  * Map the Redux state to this components properties
  *
  * @param  {Object} state the Redux state

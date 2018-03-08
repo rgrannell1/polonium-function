@@ -5,45 +5,40 @@ import submit_button_css from '../submit-button/index.css.jsx'
 import {connect} from 'react-redux'
 import actions from '../../actions.js'
 
-const SubmitButton = props => {
-  const submitStyle = submit_button_css(props.colours)
-  let style = Object.assign({}, submitStyle.submit_button)
-  let buttonText = ''
-
-  if (props.buttonState === 'default') {
-    buttonText = 'Get Password'
-    Object.assign(style, submitStyle.submit_button_default)
-  } else if (props.buttonState === 'active') {
-    buttonText = 'Fetching...'
-    Object.assign(style, submitStyle.submit_button_active)
-  } else if (props.buttonState === 'blocked') {
-
+const buttonText = state => {
+  const text = {
+    default: 'Get Password',
+    active: 'Fetching...'
   }
 
+  return text[state]
+}
+
+const styleText = (state, colours) => {
+  const styles = Object.assign({}, submit_button_css(colours))
+  const specifics = {
+    default: styles.submit_button_default,
+    active: styles.submit_button_active
+  }
+
+  return Object.assign(styles.submit_button, specifics[state])
+}
+
+const SubmitButton = ({colours, state, clickButton}) => {
   return (
     <input
       id="submit"
-      style={style}
+      style={styleText(state, colours)}
       type="button"
-      value={buttonText}
-      onClick={() => props.clickButton()} />
+      value={buttonText(state)}
+      onClick={() => clickButton()} />
   )
 }
 
 const mapStateToProps = state => {
-  let buttonState = 'default'
-
-//  if (state.clickSubmitButton.error) {
-//    buttonState = 'error'
-//  } else if (state.clickSubmitButton.active) {
-//    buttonState = 'active'
-//  } else {
-//    buttonState = 'default'
-//  }
-
   return {
     colours: state.constants.colours,
-    buttonState
+    state: state.submitButtonState || 'default'
   }
 }
 
