@@ -3,7 +3,7 @@
 
 ## Build System
 
-- [ ] Code compiles
+- [ ] Code compiles [1]
 - [ ] Yarn modules clean-installed
 - [ ] Local server serves site
 - [ ] Deployment succeeds
@@ -31,3 +31,8 @@
 - [ ] README update with release notes and changelog
 - [ ] Tagged in Git
 - [ ] Package.json updated
+
+## Automation
+
+## 1. Code Compiles
+- Webpack code is validated (9ff91c6ef)
