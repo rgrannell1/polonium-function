@@ -31,8 +31,3 @@
 - [ ] README update with release notes and changelog
 - [ ] Tagged in Git
 - [ ] Package.json updated
-
-## Automation
-
-## 1
-- Webpack code is validated (9ff91c6ef)
