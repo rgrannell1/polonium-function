@@ -15,13 +15,15 @@ const buttonText = state => {
 }
 
 const styleText = (state, colours) => {
-  const styles = Object.assign({}, submit_button_css(colours))
+  const styles = submit_button_css(colours)
   const specifics = {
     default: styles.submit_button_default,
     active: styles.submit_button_active
   }
 
-  return Object.assign(styles.submit_button, specifics[state])
+console.log(state)
+
+  return Object.assign({}, styles.submit_button, specifics[state])
 }
 
 const SubmitButton = ({colours, state, clickButton}) => {
@@ -38,7 +40,7 @@ const SubmitButton = ({colours, state, clickButton}) => {
 const mapStateToProps = state => {
   return {
     colours: state.constants.colours,
-    state: state.submitButtonState || 'default'
+    state: state.app.submitButtonState || 'default'
   }
 }
 
