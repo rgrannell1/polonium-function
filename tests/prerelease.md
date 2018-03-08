@@ -3,7 +3,7 @@
 
 ## Build System
 
-- [ ] Code compiles
+- [ ] Code compiles [1]
 - [ ] Yarn modules clean-installed
 - [ ] Local server serves site
 - [ ] Deployment succeeds
