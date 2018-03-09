@@ -9,7 +9,12 @@ const constants = {
   limits: {
     urlLength: 128
   },
-  queries: {}
+  queries: {},
+  fixedParameters: {
+    rounds: 100000,
+    len: 20,
+    digest: 'sha1'
+  }
 }
 
 constants.queries.createTable = `

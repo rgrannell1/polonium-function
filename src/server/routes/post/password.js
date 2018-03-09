@@ -1,26 +1,27 @@
 
 const {polonium} = require('polonium')
+const constants = require('../../shared/constants')
 
 const parseArgs = req => {
   const qs = req.query
 
   return {
     password: qs.password,
-    rounds: parseInt(qs.rounds),
+    rounds: constants.fixedParameters.rounds,
     salt: qs.salt,
-    len: parseInt(qs.len),
-    digest: qs.digest
+    len: constants.fixedParameters.len,
+    digest: constants.fixedParameters.digest
   }
 }
 
 const handlers = { }
 
 handlers.success = (req, res, password) => {
-  res.send(password, 200)
+  res.status(200).send(password)
 }
 
 handlers.failure = (req, res, err) => {
-  res.send(err.message, 500)
+  res.status(500).send(err.message)
 }
 
 /**

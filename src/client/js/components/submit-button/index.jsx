@@ -33,7 +33,7 @@ const SubmitButton = ({colours, state, clickButton}) => {
       style={styleText(state, colours)}
       type="button"
       value={buttonText(state)}
-      onClick={() => clickButton()} />
+      onClick={() => clickButton(state)} />
   )
 }
 
@@ -46,8 +46,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    clickButton () {
-      dispatch(actions.click_submit_button())
+    clickButton (state) {
+      dispatch(actions.click_submit_button(state))
     }
   }
 }

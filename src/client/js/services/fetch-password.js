@@ -10,7 +10,7 @@ if (!window.fetch || typeof window.fetch !== 'function') {
  * @return {Promise} a promise yielding the fetched password, or an error
  */
 const fetchPassword = opts => {
-  return window.fetch('./', {
+  return window.fetch('/http/password', {
     method: 'POST',
     referrer: 'no-referrer',
     cache: 'no-store',

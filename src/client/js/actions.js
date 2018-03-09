@@ -52,9 +52,10 @@ actions.update_password = text => {
  *
  * @return {Object} The associated action.
  */
-actions.click_submit_button = () => {
+actions.click_submit_button = state => {
   return {
-    type: 'CLICK_SUBMIT_BUTTON'
+    type: 'CLICK_SUBMIT_BUTTON',
+    state
   }
 }
 

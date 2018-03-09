@@ -15,6 +15,10 @@ const clickSubmitButton = (state, action) => {
     password: state.password
   }
 
+  if (action.state === 'active') {
+    return state
+  }
+
   const newState = Object.assign({}, state)
 
   if (!state.submitButtonState || state.submitButtonState === 'default') {

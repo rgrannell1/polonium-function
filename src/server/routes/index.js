@@ -16,7 +16,7 @@ router.use(routes.use.requestDetails)
 router.use(routes.use.filterUrls)
 router.use(routes.get.static)
 
-router.get('/password', routes.post.password)
+router.post('/password', routes.post.password)
 router.get('*', routes.get.notFound)
 
 router.use(routes.use.requestEnd)

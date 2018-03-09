@@ -18,14 +18,14 @@ const initialState = {
     {href: '/http#terms', text: 'Privacy & Security'}
   ],
   colours: {
-    font: '#404040',
-    barLight: '#1cd6cd',
-    barMedium: '#1c82d6',
-    barDark: '#1c25d6',
+    font: 'rgb(64, 64, 64)',
+    barLight: 'rgb(28, 214, 205)',
+    barMedium: 'rgb(28, 130, 214)',
+    barDark: 'rgb(28, 37, 214)',
     primary: 'rgb(61, 41, 255)',
     primaryDark: 'rgb(40, 26, 168)',
-    error: '#ef4a4a',
-    white: 'white'
+    error: 'rgb(239, 74, 74)',
+    white: 'rgb(255, 255, 255)'
   }
 }
 
