@@ -21,10 +21,14 @@
 - [ ] Submit fails for poor input
 - [ ] Submit succeeds otherwise
 - [ ] Loading bar shows
-- [ ] Password shown
+- [ ] Password shown-
 - [ ] Responsive between `Galaxy S5` and laptop resolution
 - [ ] ToC updated
 - [ ] No typos
+
+## Server Functionality
+
+- [ ] Erroneous passwords fail as expected
 
 ## Documentation
 
