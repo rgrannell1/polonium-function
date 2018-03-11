@@ -11,10 +11,12 @@ if (!window.fetch || typeof window.fetch !== 'function') {
  */
 const fetchPassword = opts => {
   if (!opts.password) {
-    throw new Error('password not provided.')
+    console.error('password not provided.')
+    return Promise.resolve()
   }
   if (!opts.salt) {
-    throw new Error('salt not provided.')
+    console.error('salt not provided.')
+    return Promise.resolve()
   }
   const onFetch = window.fetch('/http/password', {
     method: 'POST',

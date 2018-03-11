@@ -19,14 +19,20 @@ const clickSubmitButton = (state, action) => {
     return state
   }
 
-  const newState = Object.assign({}, state)
+  const newState = Object.assign({}, state, {
+    triggered: true
+  })
 
   if (!state.submitButtonState || state.submitButtonState === 'default') {
     newState.submitButtonState = 'active'
 
     services.fetchPassword(fetchOpts)
       .then(password => {
-        alert(password)
+        if (password) {
+          alert(password)
+        } else {
+          console.error('no password recieved')
+        }
       })
       .catch(err => {
         alert(err)
