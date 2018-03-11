@@ -2,7 +2,9 @@
 const log = require('../../shared/logging')
 const constants = require('../../shared/constants')
 
-module.exports = (req, res, next) => {
+const filterUrls = (req, res, next) => {
+  req.ctx.routes.push(filterUrls.name)
+
   for (let listName of Object.keys(blacklist)) {
     const response = blacklist[listName]
 
@@ -47,3 +49,5 @@ const blacklist = {
     }
   }
 }
+
+module.exports = filterUrls

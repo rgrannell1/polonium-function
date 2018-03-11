@@ -1,8 +1,9 @@
 
 const log = require('../../shared/logging')
 
-module.exports = (req, res, next) => {
+const requestEnd = (req, res, next) => {
   const [seconds, nanoSeconds] = process.hrtime(req.ctx.performance.startTime)
+  req.ctx.routes.push(requestEnd.name)
 
   delete req.ctx.performance.startTime
   req.ctx.performance.elapsedTime = seconds + nanoSeconds / 1e-9
@@ -15,3 +16,5 @@ module.exports = (req, res, next) => {
 
   next()
 }
+
+module.exports = requestEnd

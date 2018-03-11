@@ -11,7 +11,7 @@
     "build": "./node_modules/.bin/webpack",
     "build:watch": "./node_modules/.bin/webpack -w",
     "run:remote": "serverless invoke --function first",
-    "run:local": "export NODE_ENV=development; node index-local.js",
+    "run:local": "export NODE_ENV=development; find src -name '*.js' -type f -follow -print | entr -r node index-local.js",
     "deploy:production": "serverless deploy"
   },
   "author": "Ryan Grannell",

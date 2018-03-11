@@ -31,7 +31,9 @@ handlers.failure = (req, res, err) => {
  * @param  {object} res
  * @return {Promise}
  */
-module.exports = (req, res) => {
+const password = (req, res) => {
+  req.ctx.routes.push(password.name)
+
   const args = parseArgs(req, res)
   console.log(args)
   return polonium(args)
@@ -40,3 +42,5 @@ module.exports = (req, res) => {
     .catch(
       handlers.failure.bind(null, req, res))
 }
+
+module.exports = password

@@ -14,8 +14,9 @@ const router = Router()
 
 router.use(routes.use.requestDetails)
 router.use(routes.use.filterUrls)
-router.get(routes.get.static)
 router.use(routes.use.parseJsonBody)
+
+router.use(routes.get.static)
 
 router.post('/password', routes.post.password)
 router.get('*', routes.get.notFound)

@@ -1,6 +1,10 @@
 
 const bodyParser = require('body-parser')
 
-module.exports = (...args) => {
+const parseJsonBody = (...args) => {
+  const [req] = [...args]
+  req.ctx.routes.push(parseJsonBody.name)
   return bodyParser.json()(...args)
 }
+
+module.exports = parseJsonBody

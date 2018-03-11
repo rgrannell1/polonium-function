@@ -9,10 +9,13 @@ const log = require('../../shared/logging')
  *
  * @return {undefined}
  */
-module.exports = (req, res) => {
+const notFound = (req, res) => {
+  req.ctx.routes.push(notFound.name)
   log.info(Object.assign({}, req.ctx, {
     message: 'content not found'
   }))
 
   res.status(404).send('no content found')
 }
+
+module.exports = notFound

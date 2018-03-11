@@ -4,7 +4,7 @@ const uaParser = require('ua-parser-js')
 const geoip = require('geoip-lite')
 const url = require('url')
 
-module.exports = (req, res, next) => {
+const requestDetails = (req, res, next) => {
   const parsedUrl = url.parse(req.url)
 
   delete parsedUrl.search
@@ -25,7 +25,8 @@ module.exports = (req, res, next) => {
     },
     performance: {
       startTime: process.hrtime()
-    }
+    },
+    routes: [requestDetails.name]
   }
 
   // -- lookup user-agent details.
@@ -50,3 +51,5 @@ module.exports = (req, res, next) => {
 
   next()
 }
+
+module.exports = requestDetails
