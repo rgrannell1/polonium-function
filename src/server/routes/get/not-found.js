@@ -14,5 +14,5 @@ module.exports = (req, res) => {
     message: 'content not found'
   }))
 
-  res.send('no content found', 404)
+  res.status(404).send('no content found')
 }

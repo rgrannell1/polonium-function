@@ -3,12 +3,12 @@ const {polonium} = require('polonium')
 const constants = require('../../shared/constants')
 
 const parseArgs = req => {
-  const qs = req.query
+  const body = req.body
 
   return {
-    password: qs.password,
+    password: body.password,
     rounds: constants.fixedParameters.rounds,
-    salt: qs.salt,
+    salt: body.salt,
     len: constants.fixedParameters.len,
     digest: constants.fixedParameters.digest
   }
@@ -21,7 +21,7 @@ handlers.success = (req, res, password) => {
 }
 
 handlers.failure = (req, res, err) => {
-  res.status(500).send(err.message)
+  res.status(500).send(err.code + ':' + err.message)
 }
 
 /**
@@ -32,7 +32,9 @@ handlers.failure = (req, res, err) => {
  * @return {Promise}
  */
 module.exports = (req, res) => {
-  return polonium(parseArgs(req, res))
+  const args = parseArgs(req, res)
+  console.log(args)
+  return polonium(args)
     .then(
       handlers.success.bind(null, req, res))
     .catch(

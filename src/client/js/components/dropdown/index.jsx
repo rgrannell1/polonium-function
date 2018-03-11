@@ -41,7 +41,7 @@ const mapStateToProps = state => {
   return {
     colours: state.constants.colours,
     links: state.constants.links,
-    dropdownShown: state.app.dropdownActive
+    dropdownShown: state.app.dropdownShown
   }
 }
 
