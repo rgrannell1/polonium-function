@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy:production": "serverless deploy",
+
+    "build": "./node_modules/.bin/webpack",
+    "build:watch": "./node_modules/.bin/webpack -w",
+
     "lint:depcheck": "node node_modules/.bin/depcheck",
     "lint:buddy": "node node_modules/.bin/buddy routes index.js index-local.js public/js shared/",
     "lint:source": "node_modules/.bin/standard",
-    "test": "npm run build",
-    "build": "./node_modules/.bin/webpack",
-    "build:watch": "./node_modules/.bin/webpack -w",
+
     "run:remote": "serverless invoke --function first",
     "run:local": "export NODE_ENV=development; find src -name '*.js' -type f -follow -print | entr -r node index-local.js",
-    "deploy:production": "serverless deploy"
+
+    "test": "npm run build",
+    "test:no_salt": "echo '{\"salt\": \"\", \"password\": \"0123456789abcdef\"}' | http POST localhost:3000/http/password",
+    "test:no_password": "echo '{\"salt\": \"abc\", \"password\": \"\"}' | http POST localhost:3000/http/password"
   },
   "author": "Ryan Grannell",
   "license": "MIT",

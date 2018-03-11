@@ -11,7 +11,7 @@ import {dispatchAction} from '../utils.js'
  */
 const clickSubmitButton = (state, action) => {
   const fetchOpts = {
-    website: state.website,
+    salt: state.website,
     password: state.password
   }
 
@@ -23,7 +23,14 @@ const clickSubmitButton = (state, action) => {
 
   if (!state.submitButtonState || state.submitButtonState === 'default') {
     newState.submitButtonState = 'active'
-    newState.retrievedPassword = services.fetchPassword(fetchOpts)
+
+    services.fetchPassword(fetchOpts)
+      .then(password => {
+        alert(password)
+      })
+      .catch(err => {
+        alert(err)
+      })
   }
 
   return newState
