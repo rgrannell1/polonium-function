@@ -9,7 +9,7 @@ import {dispatchAction} from '../utils.js'
  * @param  {Object} action The inbound action to be performed
  * @return {Object}        The new state
  */
-const clickSubmitButton = (state, action) => {
+const clickSubmitButtonDeprecated = (state, action) => {
   const fetchOpts = {
     salt: state.website,
     password: state.password
@@ -37,6 +37,23 @@ const clickSubmitButton = (state, action) => {
       .catch(err => {
         alert(err)
       })
+  }
+
+  return newState
+}
+
+const clickSubmitButton = (state, action) => {
+  const fetchOpts = {
+    salt: state.website,
+    password: state.password
+  }
+
+  const newState = Object.assign({}, state, {
+    triggered: true
+  })
+
+  if (state.buttonState === 'default') {
+    return transition.defaultToActive(state, newState, action)
   }
 
   return newState

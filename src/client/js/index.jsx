@@ -14,6 +14,7 @@ import createAppStore from './store.jsx'
 const initialState = {
   dropdownShown: false,
   title: 'Polonium',
+  baseUrl: '/http',
   links: [
     {href: '/http#terms', text: 'Privacy & Security'}
   ],

@@ -20,7 +20,7 @@ const Header = props => {
   const style = header_css(props.colours)
   return (
     <header style={style.main_head}>
-      <a href="/" style={style.link}>
+      <a href={props.link} style={style.link}>
         <h1 style={style.brand_title}>{props.title}</h1>
       </a>
       <label style={style.burger_menu} onClick={props.clickBurgerMenu} htmlFor="slide" title="Main Menu">⋮</label>
@@ -46,7 +46,8 @@ Header.propTypes = {
 const mapStateToProps = state => {
   return {
     colours: state.constants.colours,
-    title: state.constants.title
+    title: state.constants.title,
+    link: state.constants.baseUrl
   }
 }
 

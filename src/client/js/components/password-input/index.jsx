@@ -17,10 +17,24 @@ const PasswordInput = props => {
         required=""
         minLength={constants.limits.minimumPasswordLength}
         onInput={event => props.updatePassword(event)}
-        pattern={constants.patterns.website}>
+        pattern={constants.patterns.password}>
       </input>
     </div>
   )
+}
+
+const validatePassword = text => {
+  let error = ''
+  const isCorrectLength = text && text.length >= constants.limits.minimumPasswordLength
+  const matchesPattern = (new RegExp(constants.patterns.password)).test(text)
+
+  if (!isCorrectLength) {
+    error = `Password must be at least ${constants.limits.minimumPasswordLength} characters long`
+  } else if (!matchesPattern) {
+    error = `Invalid character set in password`
+  }
+
+  return error
 }
 
 const mapStateToProps = state => {
@@ -32,7 +46,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     updatePassword (event) {
-      dispatch(actions.update_password(event.target.value))
+      const text = event.target.value
+      dispatch(actions.update_password({
+        text,
+        error: validatePassword(text)
+      }))
     }
   }
 }

@@ -9,9 +9,12 @@ import {dispatchAction} from '../utils.js'
  * @return {Object}        The new state
  */
 const updateWebsite = (state, action) => {
-  const newState = Object.assign({}, state)
-  newState.website = action.text
-  return newState
+  return Object.assign({}, state, {
+    website: {
+      text: action.text,
+      error: action.error
+    }
+  })
 }
 
 export default updateWebsite

@@ -21,8 +21,6 @@ const styleText = (state, colours) => {
     active: styles.submit_button_active
   }
 
-console.log(state)
-
   return Object.assign({}, styles.submit_button, specifics[state])
 }
 

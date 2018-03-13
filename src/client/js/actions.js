@@ -28,10 +28,11 @@ actions.toggle_dropdown = () => {
  *
  * @return {Object} The associated action.
  */
-actions.update_website = text => {
+actions.update_website = ({text, error}) => {
   return {
     type: 'UPDATE_WEBSITE',
-    text
+    text,
+    error
   }
 }
 
@@ -40,10 +41,11 @@ actions.update_website = text => {
  *
  * @return {Object} The associated action.
  */
-actions.update_password = text => {
+actions.update_password = ({text, error}) => {
   return {
     type: 'UPDATE_PASSWORD',
-    text
+    text,
+    error
   }
 }
 

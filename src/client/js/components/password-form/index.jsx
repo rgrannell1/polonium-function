@@ -28,28 +28,21 @@ PasswordForm.propTypes = {
 const mapStateToProps = state => {
   const {website, password, triggered} = state.app
 
-  const exists = {
-    website: !!website && website.length > 0,
-    password: !!password && password.length > 0
-  }
-  const tooShort = {
-    website: !exists.website || website.length === 0,
-    password: !exists.password || password.length < 12
-  }
+  let websiteError = '\xa0'
+  let passwordError = '\xa0'
 
-  const shouldDisplayError = {
-    website: (exists.password && tooShort.website) || (triggered && tooShort.website),
-    password: (exists.password && tooShort.password) || (triggered && tooShort.password)
+
+  if (website && website.error) {
+    websiteError = website.error
+  }
+  if (password && password.error) {
+    passwordError = password.error
   }
 
   return {
     colours: state.constants.colours,
-    websiteError: shouldDisplayError.website
-      ? 'Website must be provided'
-      : '\xa0',
-    passwordError: shouldDisplayError.password
-      ? 'Password must be at least 12 characters'
-      : '\xa0',
+    websiteError,
+    passwordError
   }
 }
 
