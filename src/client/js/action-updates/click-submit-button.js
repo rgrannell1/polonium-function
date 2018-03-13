@@ -48,12 +48,42 @@ const clickSubmitButton = (state, action) => {
     password: state.password
   }
 
+  // -- already active, just return the old-state
+  if (state.submitButton && state.submitButton.state === 'active') {
+    return state
+  }
+
+  let newButtonState = 'default'
+
+  // -- an initial click. If the data is valid trigger a password fetch,
+  // -- otherwise block
+
+  if (!state.submitButton || state.submitButton.state === 'default') {
+    const websiteError = state && state.website && state.website.error
+    const passwordError = state && state.password && state.password.error
+    const valid = !(websiteError || passwordError)
+
+    if (valid) {
+      newButtonState = 'active'
+    } else {
+      newButtonState = 'blocked'
+    }
+  } else if (state.submitButton.state === 'blocked') {
+    newButtonState = 'blocked'
+  }
+
   const newState = Object.assign({}, state, {
-    triggered: true
+    submitButton: {
+      triggered: true,
+      state: newButtonState
+    }
   })
 
-  if (state.buttonState === 'default') {
-    return transition.defaultToActive(state, newState, action)
+  // -- now, fetch the password. This promise can be consumed by a
+  if (newButtonState === 'active') {
+    newState.retrievedPassword = services.fetchPassword({salt: state.website.text, password: state.password.text})
+  } else {
+    newState.retrievedPassword = Promise.resolve(null)
   }
 
   return newState

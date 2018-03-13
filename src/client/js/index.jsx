@@ -24,7 +24,7 @@ const initialState = {
     barMedium: 'rgb(28, 130, 214)',
     barDark: 'rgb(28, 37, 214)',
     primary: 'rgb(61, 41, 255)',
-    primaryDark: 'rgb(40, 26, 168)',
+    primaryDark: 'rgb(53, 49, 89)',
     error: 'rgb(239, 74, 74)',
     white: 'rgb(255, 255, 255)'
   }

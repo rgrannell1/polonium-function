@@ -44,11 +44,9 @@ const validateWebsite = text => {
   const isCorrectLength = text && text.length >= constants.limits.minimumWebsiteLength
   const matchesPattern = (new RegExp(constants.patterns.website)).test(text)
 
-  if (!isCorrectLength) {
-    error = `Website must be at least ${constants.limits.minimumWebsiteLength} character long`
-  } else if (!matchesPattern) {
-    error = `Invalid character set in website`
-  }
+  if (!isCorrectLength) { error = `Website must be at least
+  ${constants.limits.minimumWebsiteLength} character long` } else if
+  (!matchesPattern) { error = `Invalid character set in website` }
 
   return error
 }

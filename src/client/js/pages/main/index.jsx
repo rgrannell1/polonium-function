@@ -26,6 +26,7 @@ const MainPage = props => {
       <LoadingBar active={true}></LoadingBar>
       <main>
         <Dropdown links={props.links} />
+        <CopyDialog/>
         <PasswordForm/>
       </main>
     </div>

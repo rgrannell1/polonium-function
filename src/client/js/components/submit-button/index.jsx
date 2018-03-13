@@ -44,14 +44,10 @@ const SubmitButton = ({colours, buttonState, clickButton}) => {
 }
 
 const mapStateToProps = state => {
-  const websiteError = state.app && state.app.website && state.app.website.error
-  const passwordError = state.app && state.app.password && state.app.password.error
-  const valid = !(websiteError || passwordError)
-
   let buttonState = 'default'
 
-  if (!valid) {
-    buttonState = 'blocked'
+  if (state.app && state.app.submitButton && state.app.submitButton.state) {
+    buttonState = state.app.submitButton.state
   }
 
   return {
@@ -62,11 +58,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    clickButton (state) {
-      const isAllowed = false
+    clickButton (buttonState) {
+      const isAllowed = buttonState !== 'active'
 
       if (isAllowed) {
-        dispatch(actions.click_submit_button(state))
+        dispatch(actions.click_submit_button(buttonState))
       }
     }
   }
