@@ -5,17 +5,13 @@
   "main": "index.js",
   "scripts": {
     "deploy:production": "serverless deploy",
-
     "build": "./node_modules/.bin/webpack",
     "build:watch": "./node_modules/.bin/webpack -w",
-
     "lint:depcheck": "node node_modules/.bin/depcheck",
     "lint:buddy": "node node_modules/.bin/buddy routes index.js index-local.js public/js shared/",
     "lint:source": "node_modules/.bin/standard",
-
     "run:remote": "serverless invoke --function first",
     "run:local": "export NODE_ENV=development; find src -name '*.js' -type f -follow -print | entr -r node index-local.js",
-
     "test": "npm run build",
     "test:no_salt": "echo '{\"salt\": \"\", \"password\": \"0123456789abcdef\"}' | http POST localhost:3000/http/password",
     "test:no_password": "echo '{\"salt\": \"abc\", \"password\": \"\"}' | http POST localhost:3000/http/password"
@@ -32,6 +28,7 @@
     "babel-preset-react": "^6.24.1",
     "buddy.js": "^0.9.3",
     "chai": "^4.1.2",
+    "clipboard": "^2.0.0",
     "depcheck": "^0.6.9",
     "docco": "^0.8.0",
     "documentation": "^6.0.0",

@@ -6,6 +6,7 @@ import Header from '../../components/header/index.jsx'
 import Dropdown from '../../components/dropdown/index.jsx'
 import LoadingBar from '../../components/loading-bar/index.jsx'
 import PasswordForm from '../../components/password-form/index.jsx'
+import CopyDialog from '../../components/copy-dialog/index.jsx'
 
 import main_css from './index.css.jsx'
 

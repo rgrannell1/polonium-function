@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import {Provider} from 'react-redux'
 import {Router, Route, browserHistory} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
+import Clipboard from 'clipboard'
 
 import MainPage from './pages/main/index.jsx'
 import TermsPage from './pages/terms/index.jsx'
@@ -24,9 +25,13 @@ const initialState = {
     barMedium: 'rgb(28, 130, 214)',
     barDark: 'rgb(28, 37, 214)',
     primary: 'rgb(61, 41, 255)',
+    primaryLight: 'rgb(23, 0, 252)',
     primaryDark: 'rgb(53, 49, 89)',
     error: 'rgb(239, 74, 74)',
     white: 'rgb(255, 255, 255)'
+  },
+  copyDialog: {
+    title: 'Derived Password'
   }
 }
 
