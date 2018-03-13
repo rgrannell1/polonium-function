@@ -10,6 +10,7 @@ import {dispatchAction} from '../utils.js'
  */
 const updatePassword = (state, action) => {
   return Object.assign({}, state, {
+    formModified: true,
     password: {
       text: action.text,
       error: action.error

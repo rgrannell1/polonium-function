@@ -31,7 +31,6 @@ const mapStateToProps = state => {
   let websiteError = '\xa0'
   let passwordError = '\xa0'
 
-
   if (website && website.error) {
     websiteError = website.error
   }

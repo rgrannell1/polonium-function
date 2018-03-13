@@ -35,6 +35,24 @@ const WebsiteInput = props => {
   )
 }
 
+WebsiteInput.propTypes = {
+
+}
+
+const validateWebsite = text => {
+  let error = ''
+  const isCorrectLength = text && text.length >= constants.limits.minimumWebsiteLength
+  const matchesPattern = (new RegExp(constants.patterns.website)).test(text)
+
+  if (!isCorrectLength) {
+    error = `Website must be at least ${constants.limits.minimumWebsiteLength} character long`
+  } else if (!matchesPattern) {
+    error = `Invalid character set in website`
+  }
+
+  return error
+}
+
 const mapStateToProps = state => {
   return {
     colours: state.constants.colours
@@ -44,7 +62,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     updateWebsite (event) {
-      dispatch(actions.update_website(event.target.value))
+      const text = event.target.value
+      dispatch(actions.update_website({
+        text,
+        error: validateWebsite(text)
+      }))
     }
   }
 }
