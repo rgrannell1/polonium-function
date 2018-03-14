@@ -40,9 +40,15 @@ const LoadingBar = props => {
  * @return {Object} the component properties
  */
 const mapStateToProps = state => {
+  let active = false
+
+  if (state.app && state.app.submitButton && state.app.submitButton.state === 'active') {
+    active = true
+  }
+
   return {
     colours: state.constants.colours,
-    active: state.app.loadingBarActive
+    active
   }
 }
 
