@@ -2,13 +2,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import Clipboard from 'clipboard'
 
 import constants from '../../constants.js'
 import copy_dialog_css from './index.css.jsx'
 import actions from '../../actions.js'
 
 const CopyDialog = props => {
+  if (!props.display) {
+    return null
+  }
+
   const style = copy_dialog_css(props.colours)
   return (
     <div style={style.modal}>
@@ -18,7 +21,7 @@ const CopyDialog = props => {
       <input
         id="derived_password"
         style={style.derived_password_field}
-        type="password"
+        type="text"
         value="xxxxx" />
       <input
         id="copy"
@@ -26,6 +29,11 @@ const CopyDialog = props => {
         type="button"
         data-clipboard-target="#derived_password"
         value="Copy" />
+      <input
+        id="close_modal"
+        style={style.close_modal}
+        type="button"
+        value="X" />
     </div>
   )
 }
@@ -38,7 +46,8 @@ CopyDialog.propTypes = {
 const mapStateToProps = state => {
   return {
     colours: state.constants.colours,
-    title: state.constants.copyDialog.title
+    title: state.constants.copyDialog.title,
+    display: false
   }
 }
 

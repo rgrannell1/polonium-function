@@ -13,34 +13,50 @@ const copy_dialog_css = colours => {
       'font-family': 'Nunito',
       'src': 'url("fonts/NotoSans.ttf")'
     },
-    modal_title: {
-      marginBottom: '30px',
-      color: colours.font
-    },
     modal: {
       position: 'absolute',
-      display: 'block',
+      display: 'grid',
+      gridTemplateColumns: '8.5fr 1.5fr',
       fontFamily: "'Nunito', sans-serif",
-      width: '33%',
       left: '50%',
       minWidth: '200px',
       transform: 'translateX(-50%)',
       border: '1px solid grey',
-      padding: '35px',
+      padding: '0px 0px 35px 35px',
       background: 'white',
-      color: colours.font
+      color: colours.font,
+      zIndex: '100'
+    },
+    modal_title: {
+      marginBottom: '30px',
+      color: colours.font,
+      marginTop: '25px',
+      gridRow: 1,
+      gridColumnStart: 1,
+      gridColumnEnd: 2
     },
     derived_password_field: {
       background: 'white',
       border: `1px solid ${colours.font}`,
+      gridRow: 2,
+      gridColumnStart: 1,
       color: colours.font,
       padding: '5px 10px'
     },
     copy_button: {
+      border: 'none',
+      gridRow: 2,
+      gridColumnStart: 2,
+      background: 'rgb(61, 41, 255)',
+      color: 'white',
+      padding: '10px',
+      cursor: 'pointer',
+      marginRight: '25px'
+    },
+    close_modal: {
       background: 'white',
       border: 'none',
-      color: colours.primary,
-      padding: '10px'
+      fontWeight: 'bold'
     }
   }
 }
