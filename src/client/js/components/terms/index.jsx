@@ -44,7 +44,7 @@ Terms.propTypes = {
  */
 const mapStateToProps = state => {
   return {
-
+    colours: state.constants.colours
   }
 }
 

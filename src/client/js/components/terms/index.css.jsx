@@ -17,7 +17,8 @@ const terms_css = colours => {
       gridTemplateColumns: '1.25fr 7.5fr 1.25fr',
       display: 'grid',
       gridGap: '0px',
-      marginTop: '60px'
+      marginTop: '60px',
+      color: colours.font
     },
     article: {
       gridColumn: 2,

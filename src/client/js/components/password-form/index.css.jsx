@@ -25,7 +25,7 @@ const password_form_css = colours => {
       gridRow: '2',
       display: 'grid',
       gridGap: '0px',
-      marginTop: '60px',
+      marginTop: '100px',
       content: ''
     }
   }
