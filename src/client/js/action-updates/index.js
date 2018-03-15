@@ -5,6 +5,7 @@ import toggleLoadingBar from './toggle-loading-bar.js'
 import updatePassword from './update-password.js'
 import updateWebsite from './update-website.js'
 import setDerivedPassword from './set-derived-password.js'
+import closeDialog from './close-dialog.js'
 
 const actions = {
   CLICK_SUBMIT_BUTTON: clickSubmitButton,
@@ -12,7 +13,8 @@ const actions = {
   TOGGLE_LOADING_BAR: toggleLoadingBar,
   UPDATE_PASSWORD: updatePassword,
   UPDATE_WEBSITE: updateWebsite,
-  SET_DERIVED_PASSWORD: setDerivedPassword
+  SET_DERIVED_PASSWORD: setDerivedPassword,
+  CLOSE_DIALOG: closeDialog
 }
 
 const initialState = {}

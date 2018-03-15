@@ -4,7 +4,7 @@ const prop = (prop, obj, fallback = undefined) => {
   let ref = obj
 
   for (let part of parts) {
-    if (!ref.hasOwnProperty(part)) {
+    if (ref === null || typeof ref === 'undefined' || !ref.hasOwnProperty(part)) {
       return fallback
     }
     ref = ref[part]
@@ -17,7 +17,7 @@ const hasProp = (prop, obj) => {
   let ref = obj
 
   for (let part of parts) {
-    if (!ref.hasOwnProperty(part)) {
+    if (ref === null || typeof ref === 'undefined' || !ref.hasOwnProperty(part)) {
       return false
     }
     ref = ref[part]

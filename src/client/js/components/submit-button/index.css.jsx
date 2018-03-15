@@ -29,6 +29,9 @@ const submit_button_css = colours => {
     submit_button_blocked: {
       background: colours.primary,
       cursor: 'not-allowed'
+    },
+    submit_button_done: {
+      background: colours.primary
     }
   }
 }

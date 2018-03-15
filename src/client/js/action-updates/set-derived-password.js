@@ -13,6 +13,7 @@ const setDerivedPassword = (state, action) => {
       text: action.text
     }
   })
+  newState.submitButton.state = 'done'
   return newState
 }
 

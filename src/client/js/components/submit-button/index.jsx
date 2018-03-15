@@ -11,7 +11,8 @@ const buttonText = state => {
   const text = {
     default: 'Get Password',
     blocked: 'Get Password',
-    active: 'Fetching...'
+    active: 'Fetching...',
+    done: 'Done'
   }
 
   return text[state]
@@ -22,7 +23,8 @@ const styleText = (buttonState, colours) => {
   const specifics = {
     default: styles.submit_button_default,
     active: styles.submit_button_active,
-    blocked: styles.submit_button_blocked
+    blocked: styles.submit_button_blocked,
+    done: styles.submit_button_done
   }
 
   if (!specifics.hasOwnProperty(buttonState)) {
