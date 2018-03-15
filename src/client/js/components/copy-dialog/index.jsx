@@ -27,14 +27,14 @@ const CopyDialog = props => {
         id="derived_password"
         style={style.derived_password_field}
         type="text"
-        autofocus="autofocus"
+        autoFocus="autofocus"
         onFocus={onFocus}
         value={props.derivedPassword} />
       <input
         id="copy"
         style={style.copy_button}
         type="button"
-        spellcheck="false"
+        spellCheck="false"
         data-clipboard-target="#derived_password"
         value="Copy" />
       <input
