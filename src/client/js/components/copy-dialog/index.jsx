@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import constants from '../../constants.js'
 import copy_dialog_css from './index.css.jsx'
+import {hasProp} from '../../utils.js'
 import actions from '../../actions.js'
 
 const CopyDialog = props => {
@@ -47,13 +48,15 @@ const mapStateToProps = state => {
   return {
     colours: state.constants.colours,
     title: state.constants.copyDialog.title,
-    display: false
+    display: hasProp('app.derivedPassword.text', state)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    closeDialog () {
+      dispatch(actions.close_dialog())
+    }
   }
 }
 

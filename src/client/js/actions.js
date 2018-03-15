@@ -61,4 +61,18 @@ actions.click_submit_button = state => {
   }
 }
 
+actions.set_derived_password = ({text, error}) => {
+  return {
+    type: 'SET_DERIVED_PASSWORD',
+    text,
+    error
+  }
+}
+
+actions.close_dialog = () => {
+  return {
+    type: 'CLOSE_DIALOG'
+  }
+}
+
 export default actions

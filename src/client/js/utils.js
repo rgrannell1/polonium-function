@@ -1,25 +1,28 @@
 
-/**
- * Dispatch a Redux reducer
- *
- * @param  {object<function>} responses an object containing functions
- *
- * @return {object} the updated state
- */
-const dispatchAction = responses => (state, action) => {
-  if (!responses) {
-    throw new Error('responses missing.')
-  }
-  if (!state) {
-    return {}
-  }
+const prop = (prop, obj, fallback = undefined) => {
+  const parts = prop.split('.')
+  let ref = obj
 
-  for (let [actionName, reducer] of Object.entries(responses)) {
-    if (action && action.type === actionName) {
-      return reducer(state, {}, action)
+  for (let part of parts) {
+    if (!ref.hasOwnProperty(part)) {
+      return fallback
     }
+    ref = ref[part]
   }
-  return state
+  return ref
 }
 
-export {dispatchAction}
+const hasProp = (prop, obj) => {
+  const parts = prop.split('.')
+  let ref = obj
+
+  for (let part of parts) {
+    if (!ref.hasOwnProperty(part)) {
+      return false
+    }
+    ref = ref[part]
+  }
+  return true
+}
+
+export {prop, hasProp}

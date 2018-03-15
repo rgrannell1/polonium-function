@@ -79,13 +79,6 @@ const clickSubmitButton = (state, action) => {
     }
   })
 
-  // -- now, fetch the password. This promise can be consumed by a
-  if (newButtonState === 'active') {
-    newState.retrievedPassword = services.fetchPassword({salt: state.website.text, password: state.password.text})
-  } else {
-    newState.retrievedPassword = Promise.resolve(null)
-  }
-
   return newState
 }
 

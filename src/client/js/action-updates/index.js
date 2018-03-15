@@ -4,13 +4,15 @@ import toggleDropdown from './toggle-dropdown.js'
 import toggleLoadingBar from './toggle-loading-bar.js'
 import updatePassword from './update-password.js'
 import updateWebsite from './update-website.js'
+import setDerivedPassword from './set-derived-password.js'
 
 const actions = {
   CLICK_SUBMIT_BUTTON: clickSubmitButton,
   TOGGLE_DROPDOWN: toggleDropdown,
   TOGGLE_LOADING_BAR: toggleLoadingBar,
   UPDATE_PASSWORD: updatePassword,
-  UPDATE_WEBSITE: updateWebsite
+  UPDATE_WEBSITE: updateWebsite,
+  SET_DERIVED_PASSWORD: setDerivedPassword
 }
 
 const initialState = {}

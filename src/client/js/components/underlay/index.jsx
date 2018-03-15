@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import constants from '../../constants.js'
+import {hasProp} from '../../utils.js'
 import underlay_css from './index.css.jsx'
 import actions from '../../actions.js'
 
@@ -29,8 +30,8 @@ const Underlay = props => {
 
 const mapStateToProps = state => {
   return {
-    display: !!state.retrievedPassword,
+    display: hasProp('app.derivedPassword.text', state)
   }
 }
 
-export default connect()(Underlay)
+export default connect(mapStateToProps)(Underlay)
