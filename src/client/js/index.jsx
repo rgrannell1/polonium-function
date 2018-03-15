@@ -3,8 +3,12 @@ import React from 'react'
 import {render} from 'react-dom'
 import PropTypes from 'prop-types'
 import {Provider} from 'react-redux'
-import {Router, Route, browserHistory} from 'react-router'
-import {syncHistoryWithStore} from 'react-router-redux'
+import {
+  BrowserRouter,
+  HashRouter,
+  Route,
+  Switch
+} from 'react-router-dom'
 import Clipboard from 'clipboard'
 
 import MainPage from './pages/main/index.jsx'
@@ -19,7 +23,7 @@ const initialState = {
   title: 'Polonium',
   baseUrl: '/http',
   links: [
-    {href: '/http#terms', text: 'Privacy & Security'}
+    {href: '/http/terms', text: 'Privacy & Security'}
   ],
   colours: {
     font: rgb(64, 64, 64),
@@ -38,13 +42,14 @@ const initialState = {
 }
 
 const store = createAppStore(initialState)
-const history = syncHistoryWithStore(browserHistory, store)
 const element = (
   <Provider store={store}>
-    <Router history={history}>
-      <Route path="/http" component={MainPage}/>
-      <Route path="/http#terms" component={TermsPage}/>
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/http" component={MainPage}/>
+        <Route exact path="/http/terms" component={TermsPage}/>
+      </Switch>
+    </BrowserRouter>
   </Provider>
 )
 

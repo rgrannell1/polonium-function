@@ -11,7 +11,7 @@ const constants = {
   },
   queries: {},
   fixedParameters: {
-    rounds: 100000,
+    rounds: 1000000,
     len: 20,
     digest: 'sha1'
   }

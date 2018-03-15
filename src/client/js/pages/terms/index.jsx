@@ -1,4 +1,5 @@
 
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import Header from '../../components/header/index.jsx'
@@ -18,11 +19,10 @@ import terms_css from './index.css.jsx'
  * @return {Element}
  */
 const TermsPage = props => {
-  const style = terms_css(initialState.colours)
+  const style = terms_css(props.colours)
   return (
     <div style={style.container}>
       <Header title={props.title} />
-      <LoadingBar active={true}></LoadingBar>
       <main>
         <Dropdown links={props.links} />
         <Terms/>

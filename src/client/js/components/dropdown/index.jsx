@@ -2,7 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-
+import {
+  Link
+} from 'react-router-dom'
 import constants from '../../constants.js'
 import dropdown_css from './index.css.jsx'
 
@@ -24,7 +26,9 @@ const Dropdown = props => {
     return (
       <ul style={style.settings_menu}>
         {props.links.map(({text, href}) => (
-          <li key={text}><a style={style.link} href={href}>{text}</a></li>
+          <li key={text}>
+            <Link to={href}>{text}</Link>
+          </li>
         ))}
       </ul>
     )

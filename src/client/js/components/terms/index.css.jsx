@@ -1,27 +1,38 @@
 
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-
-const Terms = props => {
-  return (
-    <article>
-    </article>
-  )
-}
-
-Terms.propTypes = {
-}
+import constants from '../../constants.js'
 
 /**
- * Map the Redux state to this components properties
+ * The header css
  *
- * @param  {Object} state the Redux state
- * @return {Object} the component properties
+ * @param  {Object} colours an object containing colours
+ * @return {Object} an inline style
  */
-const mapStateToProps = state => {
+const terms_css = colours => {
   return {
-
+    '@font-face': {
+      'font-family': 'Nunito',
+      'src': 'url("fonts/NotoSans.ttf")'
+    },
+    container: {
+      gridTemplateColumns: '1.25fr 7.5fr 1.25fr',
+      display: 'grid',
+      gridGap: '0px',
+      marginTop: '60px'
+    },
+    article: {
+      gridColumn: 2,
+      gridRow: 1
+    },
+    h2: {
+      margin: '1.2em 0'
+    },
+    h3: {
+      margin: '1.2em 0'
+    },
+    p: {
+      lineSpacing: '1.2em'
+    }
   }
 }
 
-export default connect(mapStateToProps)(Terms)
+export default terms_css
