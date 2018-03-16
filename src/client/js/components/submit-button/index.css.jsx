@@ -1,5 +1,5 @@
 
-const submit_button_css = colours => {
+const submitButtonCss = colours => {
   return {
     submit_button: {
       marginTop: '40px',
@@ -36,4 +36,4 @@ const submit_button_css = colours => {
   }
 }
 
-export default submit_button_css
+export default submitButtonCss

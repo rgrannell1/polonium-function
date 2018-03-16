@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import header_css from './index.css.jsx'
+import headerCss from './index.css.jsx'
 import actions from '../../actions.js'
 
 /**
@@ -17,7 +17,7 @@ import actions from '../../actions.js'
  * @return {Element}
  */
 const Header = props => {
-  const style = header_css(props.colours)
+  const style = headerCss(props.colours)
   return (
     <header style={style.main_head}>
       <a href={props.link} style={style.link}>

@@ -5,7 +5,7 @@
  * @param  {Object} colours an object containing colours
  * @return {Object} an inline style
  */
-const copy_dialog_css = colours => {
+const copyDialogCss = colours => {
   return {
     '@font-face': {
       'font-family': 'Nunito',
@@ -59,4 +59,4 @@ const copy_dialog_css = colours => {
   }
 }
 
-export default copy_dialog_css
+export default copyDialogCss

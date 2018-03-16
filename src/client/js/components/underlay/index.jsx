@@ -1,12 +1,9 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
 
-import constants from '../../constants.js'
 import {hasProp} from '../../utils.js'
-import underlay_css from './index.css.jsx'
-import actions from '../../actions.js'
+import underlayCss from './index.css.jsx'
 
 /**
  * A component for darkening a page's background
@@ -22,7 +19,7 @@ const Underlay = props => {
     return null
   }
 
-  const style = underlay_css(props.colours)
+  const style = underlayCss(props.colours)
   return (
     <div style={style.underlay} />
   )

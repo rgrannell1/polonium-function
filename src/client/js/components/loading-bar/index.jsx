@@ -2,7 +2,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import loading_bar_css from '../loading-bar/index.css.jsx'
+import loadingBarCss from '../loading-bar/index.css.jsx'
 
 /**
  * The Polonium loading-bar component
@@ -14,7 +14,7 @@ import loading_bar_css from '../loading-bar/index.css.jsx'
  * @return {Element}
  */
 const LoadingBar = props => {
-  const style = loading_bar_css(props.colours)
+  const style = loadingBarCss(props.colours)
   const loadingBarStyle = Object.assign({}, style.loading_bar_active)
 
   if (!props.active) {

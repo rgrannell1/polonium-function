@@ -1,13 +1,11 @@
 
-import constants from '../../constants.js'
-
 /**
  * The copy-dialog css
  *
  * @param  {Object} colours an object containing colours
  * @return {Object} an inline style
  */
-const underlay_css = colours => {
+const underlayCss = colours => {
   return {
     underlay: {
       position: 'fixed',
@@ -23,4 +21,4 @@ const underlay_css = colours => {
   }
 }
 
-export default underlay_css
+export default underlayCss

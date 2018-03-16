@@ -5,7 +5,7 @@
  * @param  {Object} colours an object containing colours
  * @return {Object} an inline style
  */
-const header_css = colours => {
+const headerCss = colours => {
   return {
     '@font-face': {
       'font-family': 'Nunito',
@@ -52,4 +52,4 @@ const header_css = colours => {
   }
 }
 
-export default header_css
+export default headerCss

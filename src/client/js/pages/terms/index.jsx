@@ -5,7 +5,7 @@ import Header from '../../components/header/index.jsx'
 import Dropdown from '../../components/dropdown/index.jsx'
 import Terms from '../../components/terms/index.jsx'
 
-import terms_css from './index.css.jsx'
+import termsCss from './index.css.jsx'
 
 /**
  * The Polonium app component
@@ -17,7 +17,7 @@ import terms_css from './index.css.jsx'
  * @return {Element}
  */
 const TermsPage = props => {
-  const style = terms_css(props.colours)
+  const style = termsCss(props.colours)
   return (
     <div style={style.container}>
       <Header title={props.title} />

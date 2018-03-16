@@ -31,7 +31,6 @@ const parseLines = async (client, logs) => {
     } catch (err) {
       console.error(err)
       process.exit(1)
-      break
     }
   }
 }

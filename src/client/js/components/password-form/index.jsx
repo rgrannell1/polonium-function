@@ -5,10 +5,10 @@ import {connect} from 'react-redux'
 import WebsiteInput from '../website-input/index.jsx'
 import PasswordInput from '../password-input/index.jsx'
 import SubmitButton from '../submit-button/index.jsx'
-import password_form_css from '../password-form/index.css.jsx'
+import passwordFormCss from '../password-form/index.css.jsx'
 
 const PasswordForm = props => {
-  const style = password_form_css(props.colours)
+  const style = passwordFormCss(props.colours)
   return (
     <form style={style.form}>
       <WebsiteInput />

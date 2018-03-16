@@ -1,12 +1,12 @@
 
 import React from 'react'
 import constants from '../../constants.js'
-import password_input_css from '../password-input/index.css.jsx'
+import passwordInputCss from '../password-input/index.css.jsx'
 import {connect} from 'react-redux'
 import actions from '../../actions.js'
 
 const PasswordInput = props => {
-  const style = password_input_css(props.colours)
+  const style = passwordInputCss(props.colours)
   return (
     <div style={style.password_input_container}>
       <label htmlFor='password'>Master Password</label>

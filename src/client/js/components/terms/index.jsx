@@ -1,13 +1,12 @@
 
 import React from 'react'
 
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-import terms_css from './index.css.jsx'
+import termsCss from './index.css.jsx'
 
 const Terms = props => {
-  const style = terms_css(props.colours)
+  const style = termsCss(props.colours)
   return (
     <div style={style.container}>
       <article style={style.article}>
@@ -36,10 +35,6 @@ const Terms = props => {
       </article>
     </div>
   )
-}
-
-Terms.propTypes = {
-
 }
 
 /**

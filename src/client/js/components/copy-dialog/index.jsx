@@ -3,7 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import copy_dialog_css from './index.css.jsx'
+import copyDialogCss from './index.css.jsx'
 import {hasProp, prop} from '../../utils.js'
 import actions from '../../actions.js'
 
@@ -16,7 +16,7 @@ const CopyDialog = props => {
     return null
   }
 
-  const style = copy_dialog_css(props.colours)
+  const style = copyDialogCss(props.colours)
   return (
     <div style={style.modal}>
       <h2

@@ -5,7 +5,7 @@
  * @param  {Object} colours an object containing colours
  * @return {Object} an inline style
  */
-const loading_bar_css = colours => {
+const loadingBarCss = colours => {
   return {
     loading_bar_active: {
       position: 'relative',
@@ -49,4 +49,4 @@ const loading_bar_css = colours => {
   }
 }
 
-export default loading_bar_css
+export default loadingBarCss

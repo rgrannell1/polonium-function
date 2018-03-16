@@ -5,7 +5,7 @@
  * @param  {Object} colours an object containing colours
  * @return {Object} an inline style
  */
-const dropdown_css = colours => {
+const dropdownCss = colours => {
   return {
     settings_menu: {
       background: colours.white,
@@ -22,4 +22,4 @@ const dropdown_css = colours => {
   }
 }
 
-export default dropdown_css
+export default dropdownCss

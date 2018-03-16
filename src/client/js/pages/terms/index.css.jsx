@@ -1,7 +1,5 @@
 
-import {colours} from '../../constants.js'
-
-const terms_css = () => {
+const termsCss = () => {
   return {
     container: {
       display: 'grid'
@@ -9,4 +7,4 @@ const terms_css = () => {
   }
 }
 
-export default terms_css
+export default termsCss

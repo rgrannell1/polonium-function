@@ -1,5 +1,5 @@
 
-const password_form_css = colours => {
+const passwordFormCss = colours => {
   return {
     website_input_error: {
       gridColumnStart: 2,
@@ -31,4 +31,4 @@ const password_form_css = colours => {
   }
 }
 
-export default password_form_css
+export default passwordFormCss

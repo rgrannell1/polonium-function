@@ -1,5 +1,5 @@
 
-const website_input_css = colours => {
+const websiteInputCss = colours => {
   return {
     website_input_container: {
       gridColumnStart: 2,
@@ -17,4 +17,4 @@ const website_input_css = colours => {
   }
 }
 
-export default website_input_css
+export default websiteInputCss

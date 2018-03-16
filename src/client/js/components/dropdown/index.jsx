@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {
   Link
 } from 'react-router-dom'
-import dropdown_css from './index.css.jsx'
+import dropdownCss from './index.css.jsx'
 
 /**
  * A dropdown component.
@@ -20,7 +20,7 @@ const Dropdown = props => {
   if (!props.dropdownShown) {
     return null
   } else {
-    const style = dropdown_css(props.colours)
+    const style = dropdownCss(props.colours)
     return (
       <ul style={style.settings_menu}>
         {props.links.map(({text, href}) => (

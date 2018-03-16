@@ -1,5 +1,5 @@
 
-const password_input_css = () => {
+const passwordInputCss = () => {
   return {
     password_input_container: {
       gridColumnStart: 2,
@@ -17,4 +17,4 @@ const password_input_css = () => {
   }
 }
 
-export default password_input_css
+export default passwordInputCss

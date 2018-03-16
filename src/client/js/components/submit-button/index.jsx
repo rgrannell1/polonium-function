@@ -1,8 +1,7 @@
 
 import React from 'react'
-import constants from '../../constants.js'
 import {prop} from '../../utils.js'
-import submit_button_css from '../submit-button/index.css.jsx'
+import submitButtonCss from '../submit-button/index.css.jsx'
 import {connect} from 'react-redux'
 import actions from '../../actions.js'
 import services from '../../services/index.js'
@@ -19,7 +18,7 @@ const buttonText = state => {
 }
 
 const styleText = (buttonState, colours) => {
-  const styles = submit_button_css(colours)
+  const styles = submitButtonCss(colours)
   const specifics = {
     default: styles.submit_button_default,
     active: styles.submit_button_active,

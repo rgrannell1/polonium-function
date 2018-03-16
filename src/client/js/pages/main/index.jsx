@@ -1,6 +1,5 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Header from '../../components/header/index.jsx'
 import Dropdown from '../../components/dropdown/index.jsx'
@@ -9,7 +8,7 @@ import PasswordForm from '../../components/password-form/index.jsx'
 import CopyDialog from '../../components/copy-dialog/index.jsx'
 import Underlay from '../../components/underlay/index.jsx'
 
-import main_css from './index.css.jsx'
+import mainCss from './index.css.jsx'
 
 /**
  * The Polonium app component
@@ -21,7 +20,7 @@ import main_css from './index.css.jsx'
  * @return {Element}
  */
 const MainPage = props => {
-  const style = main_css(props.colours)
+  const style = mainCss(props.colours)
   return (
     <div style={style.container}>
       <Header title={props.title} />

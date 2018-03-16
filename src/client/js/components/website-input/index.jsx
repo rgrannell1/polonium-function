@@ -3,7 +3,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import constants from '../../constants.js'
-import website_input_css from '../website-input/index.css.jsx'
+import websiteInputCss from '../website-input/index.css.jsx'
 import actions from '../../actions.js'
 
 /**
@@ -16,7 +16,7 @@ import actions from '../../actions.js'
  * @return {Element}
  */
 const WebsiteInput = props => {
-  const style = website_input_css(props.colours)
+  const style = websiteInputCss(props.colours)
   return (
     <div style={style.website_input_container}>
       <label htmlFor='website'>Site</label>

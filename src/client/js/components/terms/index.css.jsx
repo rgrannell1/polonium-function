@@ -1,13 +1,11 @@
 
-import constants from '../../constants.js'
-
 /**
  * The header css
  *
  * @param  {Object} colours an object containing colours
  * @return {Object} an inline style
  */
-const terms_css = colours => {
+const termsCss = colours => {
   return {
     '@font-face': {
       'font-family': 'Nunito',
@@ -36,4 +34,4 @@ const terms_css = colours => {
   }
 }
 
-export default terms_css
+export default termsCss

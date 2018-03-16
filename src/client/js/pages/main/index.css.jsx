@@ -1,7 +1,5 @@
 
-import {colours} from '../../constants.js'
-
-const main_css = () => {
+const mainCss = () => {
   return {
     container: {
       display: 'grid'
@@ -9,4 +7,4 @@ const main_css = () => {
   }
 }
 
-export default main_css
+export default mainCss
