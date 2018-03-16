@@ -13,7 +13,7 @@ const submit_button_css = colours => {
       border: `1px solid ${colours.font}`,
       color: colours.white,
       borderRadius: '4px',
-      cursor: 'pointer',
+      cursor: 'pointer'
     },
     'submit_button:focus': {
       border: 'none',

@@ -39,9 +39,9 @@ const styleText = (buttonState, colours) => {
 const SubmitButton = ({colours, website, password, buttonState, clickButton}) => {
   return (
     <input
-      id="submit"
+      id='submit'
       style={styleText(buttonState, colours)}
-      type="button"
+      type='button'
       value={buttonText(buttonState)}
       onClick={() => clickButton(buttonState, website, password)} />
   )

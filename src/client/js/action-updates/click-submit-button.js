@@ -1,7 +1,4 @@
 
-import services from '../services/index.js'
-import {dispatchAction} from '../utils.js'
-
 /**
  * Update the state to handle the submit button click.
  *

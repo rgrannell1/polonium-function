@@ -24,7 +24,7 @@ const Underlay = props => {
 
   const style = underlay_css(props.colours)
   return (
-    <div style={style.underlay}/>
+    <div style={style.underlay} />
   )
 }
 

@@ -1,11 +1,9 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {
   Link
 } from 'react-router-dom'
-import constants from '../../constants.js'
 import dropdown_css from './index.css.jsx'
 
 /**

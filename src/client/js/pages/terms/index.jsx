@@ -1,10 +1,8 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Header from '../../components/header/index.jsx'
 import Dropdown from '../../components/dropdown/index.jsx'
-import LoadingBar from '../../components/loading-bar/index.jsx'
 import Terms from '../../components/terms/index.jsx'
 
 import terms_css from './index.css.jsx'
@@ -25,7 +23,7 @@ const TermsPage = props => {
       <Header title={props.title} />
       <main>
         <Dropdown links={props.links} />
-        <Terms/>
+        <Terms />
       </main>
     </div>
   )

@@ -9,16 +9,15 @@ const PasswordInput = props => {
   const style = password_input_css(props.colours)
   return (
     <div style={style.password_input_container}>
-      <label htmlFor="password">Master Password</label>
+      <label htmlFor='password'>Master Password</label>
       <input
-        id="password"
-        type="password"
+        id='password'
+        type='password'
         style={style.password_input}
-        required=""
+        required=''
         minLength={constants.limits.minimumPasswordLength}
         onInput={event => props.updatePassword(event)}
-        pattern={constants.patterns.password}>
-      </input>
+        pattern={constants.patterns.password} />
     </div>
   )
 }

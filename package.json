@@ -6,6 +6,7 @@
   "scripts": {
     "deploy:production": "serverless deploy",
     "build": "./node_modules/.bin/webpack",
+    "build:fix_source": "./node_modules/.bin/standard --fix",
     "build:watch": "./node_modules/.bin/webpack -w",
     "lint:depcheck": "node node_modules/.bin/depcheck",
     "lint:buddy": "node node_modules/.bin/buddy routes index.js index-local.js public/js shared/",
@@ -15,7 +16,8 @@
     "test": "npm run build",
     "test:no_salt": "echo '{\"salt\": \"\", \"password\": \"0123456789abcdef\"}' | http POST localhost:3000/http/password",
     "test:no_password": "echo '{\"salt\": \"abc\", \"password\": \"\"}' | http POST localhost:3000/http/password",
-    "test:valid_credentials": "echo '{\"salt\": \"abc\", \"password\": \"0123456789abcdef\"}' | http POST localhost:3000/http/password"
+    "test:valid_credentials": "echo '{\"salt\": \"abc\", \"password\": \"0123456789abcdef\"}' | http POST localhost:3000/http/password",
+    "test:lighthouse": "node_modules/.bin/lighthouse http://localhost:3000/http/ --view"
   },
   "author": "Ryan Grannell",
   "license": "MIT",
@@ -40,6 +42,7 @@
     "geoip-lite": "^1.2.1",
     "history": "^3.0.0",
     "json-parse-stream": "^0.0.2",
+    "lighthouse": "^2.9.2",
     "merge-stream": "^1.0.1",
     "polonium": "rgrannell1/polonium-lib",
     "prop-types": "^15.6.1",

@@ -1,6 +1,5 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import WebsiteInput from '../website-input/index.jsx'
@@ -12,11 +11,11 @@ const PasswordForm = props => {
   const style = password_form_css(props.colours)
   return (
     <form style={style.form}>
-      <WebsiteInput/>
+      <WebsiteInput />
       <p style={style.website_input_error}>{props.websiteError}</p>
-      <PasswordInput/>
+      <PasswordInput />
       <p style={style.password_input_error}>{props.passwordError}</p>
-      <SubmitButton/>
+      <SubmitButton />
     </form>
   )
 }
@@ -26,7 +25,7 @@ PasswordForm.propTypes = {
 }
 
 const mapStateToProps = state => {
-  const {website, password, triggered} = state.app
+  const {website, password} = state.app
 
   let websiteError = '\xa0'
   let passwordError = '\xa0'

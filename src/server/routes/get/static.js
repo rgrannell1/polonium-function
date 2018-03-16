@@ -5,7 +5,7 @@ const log = require('../../shared/logging')
 
 const staticRouter = express.static(constants.paths.static)
 
-const static = (...args) => {
+const staticRoute = (...args) => {
   const [req] = [...args]
   req.ctx.routes.push(static.name)
   log.info(Object.assign({}, req.ctx, {
@@ -14,4 +14,4 @@ const static = (...args) => {
   return staticRouter(...args)
 }
 
-module.exports = static
+module.exports = staticRoute

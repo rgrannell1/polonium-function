@@ -41,3 +41,4 @@ mithril*.js
 data/
 src/client/dist/*
 docs/*
+localhost_*

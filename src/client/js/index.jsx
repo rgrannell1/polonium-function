@@ -1,15 +1,12 @@
 
 import React from 'react'
 import {render} from 'react-dom'
-import PropTypes from 'prop-types'
 import {Provider} from 'react-redux'
 import {
   BrowserRouter,
-  HashRouter,
   Route,
   Switch
 } from 'react-router-dom'
-import Clipboard from 'clipboard'
 
 import MainPage from './pages/main/index.jsx'
 import TermsPage from './pages/terms/index.jsx'
@@ -46,11 +43,11 @@ const element = (
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/http" component={MainPage}/>
-        <Route exact path="/http/terms" component={TermsPage}/>
+        <Route exact path='/http' component={MainPage} />
+        <Route exact path='/http/terms' component={TermsPage} />
       </Switch>
     </BrowserRouter>
   </Provider>
 )
 
-render(element, document.getElementById('root'));
+render(element, document.getElementById('root'))

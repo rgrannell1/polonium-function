@@ -1,6 +1,4 @@
 
-import constants from '../../constants.js'
-
 /**
  * The copy-dialog css
  *

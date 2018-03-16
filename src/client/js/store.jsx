@@ -1,5 +1,5 @@
 
-import {createStore, combineReducers, applyMiddleware} from "redux"
+import {createStore, combineReducers, applyMiddleware} from 'redux'
 import logger from 'redux-logger'
 import {routerReducer} from 'react-router-redux'
 
@@ -12,9 +12,6 @@ import actionUpdates from './action-updates/index.js'
  * @return {Store}  a Redux store
  */
 const createAppStore = defaults => {
-  if (!defaults.baseUrl) {
-    throw 'missing baseurl'
-  }
   const reducers = combineReducers({
     app: actionUpdates,
     constants: () => Object.assign({}, defaults),

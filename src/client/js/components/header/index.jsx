@@ -23,7 +23,7 @@ const Header = props => {
       <a href={props.link} style={style.link}>
         <h1 style={style.brand_title}>{props.title}</h1>
       </a>
-      <label style={style.burger_menu} onClick={props.clickBurgerMenu} htmlFor="slide" title="Main Menu">⋮</label>
+      <label style={style.burger_menu} onClick={props.clickBurgerMenu} htmlFor='slide' title='Main Menu'>⋮</label>
     </header>
   )
 }

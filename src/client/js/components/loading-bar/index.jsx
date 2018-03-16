@@ -1,10 +1,8 @@
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import loading_bar_css from '../loading-bar/index.css.jsx'
-
 
 /**
  * The Polonium loading-bar component
@@ -26,9 +24,9 @@ const LoadingBar = props => {
   return (
     <div style={loadingBarStyle}>
       <style>{style.keyframeContent}</style>
-      <div style={Object.assign({}, style.bar, style.bar_one)}></div>
-      <div style={Object.assign({}, style.bar, style.bar_two)}></div>
-      <div style={Object.assign({}, style.bar, style.bar_three)}></div>
+      <div style={Object.assign({}, style.bar, style.bar_one)} />
+      <div style={Object.assign({}, style.bar, style.bar_two)} />
+      <div style={Object.assign({}, style.bar, style.bar_three)} />
     </div>
   )
 }

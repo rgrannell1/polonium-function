@@ -19,18 +19,17 @@ const WebsiteInput = props => {
   const style = website_input_css(props.colours)
   return (
     <div style={style.website_input_container}>
-      <label htmlFor="website">Site</label>
+      <label htmlFor='website'>Site</label>
       <input
-        id="website"
+        id='website'
         style={style.website_input}
-        type="text"
-        required=""
+        type='text'
+        required=''
         minLength={constants.limits.minimumWebsiteLength}
         onInput={event => props.updateWebsite(event)}
-        autoCorrect="off"
-        autoCapitalize="none"
-        pattern={constants.patterns.website}>
-      </input>
+        autoCorrect='off'
+        autoCapitalize='none'
+        pattern={constants.patterns.website} />
     </div>
   )
 }
@@ -44,8 +43,10 @@ const validateWebsite = text => {
   const isCorrectLength = text && text.length >= constants.limits.minimumWebsiteLength
   const matchesPattern = (new RegExp(constants.patterns.website)).test(text)
 
-  if (!isCorrectLength) { error = `Website must be at least
-  ${constants.limits.minimumWebsiteLength} character long` } else if
+  if (!isCorrectLength) {
+    error = `Website must be at least
+  ${constants.limits.minimumWebsiteLength} character long`
+  } else if
   (!matchesPattern) { error = `Invalid character set in website` }
 
   return error

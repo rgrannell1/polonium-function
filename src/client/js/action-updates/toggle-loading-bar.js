@@ -1,6 +1,4 @@
 
-import {dispatchAction} from '../utils.js'
-
 /**
  * Update the state to
  *

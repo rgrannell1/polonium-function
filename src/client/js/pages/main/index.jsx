@@ -25,12 +25,12 @@ const MainPage = props => {
   return (
     <div style={style.container}>
       <Header title={props.title} />
-      <LoadingBar active={true}></LoadingBar>
+      <LoadingBar active />
       <main>
         <Dropdown links={props.links} />
         <Underlay />
-        <CopyDialog/>
-        <PasswordForm/>
+        <CopyDialog />
+        <PasswordForm />
       </main>
     </div>
   )
