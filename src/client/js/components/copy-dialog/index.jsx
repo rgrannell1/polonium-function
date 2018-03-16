@@ -55,7 +55,7 @@ const mapStateToProps = state => {
   return {
     colours: state.constants.colours,
     title: state.constants.copyDialog.title,
-    display: hasProp('app.derivedPassword.text', state),
+    display: hasProp('app.derivedPassword.text', state) && state.app.derivedPassword.text,
     derivedPassword: prop('app.derivedPassword.text', state)
   }
 }

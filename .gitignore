@@ -36,8 +36,6 @@ node_modules
 .DS_Store
 .tmp
 
-mithril*.js
-
 data/
 src/client/dist/*
 docs/*

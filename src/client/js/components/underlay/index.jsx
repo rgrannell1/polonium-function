@@ -27,7 +27,7 @@ const Underlay = props => {
 
 const mapStateToProps = state => {
   return {
-    display: hasProp('app.derivedPassword.text', state)
+    display: hasProp('app.derivedPassword.text', state) && state.app.derivedPassword.text
   }
 }
 
