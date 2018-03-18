@@ -30,6 +30,12 @@ const termsCss = colours => {
     },
     p: {
       lineSpacing: '1.2em'
+    },
+    ul: {
+      margin: '1.2em 0'
+    },
+    li: {
+      listStyleType: 'none'
     }
   }
 }

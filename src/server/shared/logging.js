@@ -1,16 +1,21 @@
 
 const util = require('util')
+const configModule = require('../config')
 
 const logger = { }
 
 const levelLogger = level => object => {
   object.timestamp = Date.now()
 
-  const content = process.env.NODE_ENV === 'development'
-    ? util.inspect(object, {depth: null, colors: true})
-    : JSON.stringify(object)
+  const config = configModule()
 
-  console[level](content)
+  if (!config.logging.supress) {
+    const content = config.logging.human
+      ? util.inspect(object, {depth: null, colors: true})
+      : JSON.stringify(object)
+
+    console[level](content)
+  }
 }
 
 logger.info = levelLogger('info')

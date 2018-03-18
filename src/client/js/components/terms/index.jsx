@@ -7,6 +7,7 @@ import termsCss from './index.css.jsx'
 
 const Terms = props => {
   const style = termsCss(props.colours)
+  const {li} = style
   return (
     <div style={style.container}>
       <article style={style.article}>
@@ -17,17 +18,17 @@ const Terms = props => {
 
         <h3 style={style.h3}>Stored information</h3>
         <p style={style.p}>For security & analytics we log:</p>
-        <ul>
-          <li>IP addresses</li>
-          <li>location information</li>
-          <li>The browser user-agent</li>
-          <li>The time</li>
-          <li>Connection bitrates</li>
+        <ul style={style.ul}>
+          <li style={li}>IP addresses</li>
+          <li style={li}>location information</li>
+          <li style={li}>The browser user-agent</li>
+          <li style={li}>The time</li>
+          <li style={li}>Connection bitrates</li>
         </ul>
         <p style={style.p}>We do not store:</p>
         <ul>
-          <li>The website field</li>
-          <li>The master password field</li>
+          <li style={li}>The website field</li>
+          <li style={li}>The master password field</li>
         </ul>
 
         <h3 style={style.h3}>Information transfer</h3>

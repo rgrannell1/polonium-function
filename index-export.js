@@ -11,6 +11,4 @@ httpRouter.use(http)
 
 app.use('/http', httpRouter)
 
-app.listen(3000, '0.0.0.0', () => {
-  console.log('app listening on port 3000')
-})
+module.exports = app

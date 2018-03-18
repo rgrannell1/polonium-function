@@ -13,6 +13,7 @@ const PasswordInput = props => {
       <input
         id='password'
         type='password'
+        data-test-id='password_input'
         style={style.password_input}
         required=''
         minLength={constants.limits.minimumPasswordLength}

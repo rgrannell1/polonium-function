@@ -22,6 +22,7 @@ const WebsiteInput = props => {
       <label htmlFor='website'>Site</label>
       <input
         id='website'
+        data-test-id='website_input'
         style={style.website_input}
         type='text'
         required=''
