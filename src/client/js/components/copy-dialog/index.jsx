@@ -11,6 +11,21 @@ const onFocus = () => {
   document.getElementById('derived_password').select()
 }
 
+const clickCopyButton = () => {
+  const elem = document.getElementById('derived_password') //.innerText
+  elem.select()
+  try {
+    const success = document.execCommand('copy')
+    if (success) {
+      console.error('copied to clipboard.')
+    } else {
+      console.error('failed to copy password.')
+    }
+  } catch (err) {
+    console.error('failed to copy password.')
+  }
+}
+
 const CopyDialog = props => {
   if (!props.display) {
     return null
@@ -34,7 +49,7 @@ const CopyDialog = props => {
         style={style.copy_button}
         type='button'
         spellCheck='false'
-        data-clipboard-target='#derived_password'
+        onClick={() => clickCopyButton()}
         value='Copy' />
       <input
         id='close_modal'
