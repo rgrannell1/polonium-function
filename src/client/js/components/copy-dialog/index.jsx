@@ -11,24 +11,20 @@ const onFocus = () => {
   document.getElementById('derived_password').select()
 }
 
-const clickCopyButton = () => {
-  const elem = document.getElementById('derived_password') //.innerText
-  elem.select()
-  try {
-    const success = document.execCommand('copy')
-    if (success) {
-      console.error('copied to clipboard.')
-    } else {
-      console.error('failed to copy password.')
-    }
-  } catch (err) {
-    console.error('failed to copy password.')
-  }
-}
-
 const CopyDialog = props => {
   if (!props.display) {
     return null
+  }
+
+  const {copyButton} = props
+  let copyText = 'Copy'
+
+  if (copyButton && copyButton.state === 'copied') {
+    if (copyButton.hasError) {
+      copyText = 'Failed!'
+    } else {
+      copyText = 'Copied'
+    }
   }
 
   const style = copyDialogCss(props.colours)
@@ -42,15 +38,15 @@ const CopyDialog = props => {
         style={style.derived_password_field}
         type='text'
         autoFocus='autofocus'
+        spellCheck='false'
         onFocus={onFocus}
         value={props.derivedPassword} />
       <input
         id='copy'
         style={style.copy_button}
         type='button'
-        spellCheck='false'
-        onClick={() => clickCopyButton()}
-        value='Copy' />
+        onClick={() => props.clickCopyButton()}
+        value={copyText} />
       <input
         id='close_modal'
         style={style.close_modal}
@@ -68,6 +64,7 @@ CopyDialog.propTypes = {
 
 const mapStateToProps = state => {
   return {
+    copyButton: prop('app.copyButton', state),
     colours: state.constants.colours,
     title: state.constants.copyDialog.title,
     display: hasProp('app.derivedPassword.text', state) && state.app.derivedPassword.text,
@@ -79,6 +76,20 @@ const mapDispatchToProps = dispatch => {
   return {
     closeDialog () {
       dispatch(actions.close_dialog())
+    },
+    clickCopyButton () {
+      const elem = document.getElementById('derived_password')
+      elem.select()
+      try {
+        const success = document.execCommand('copy')
+        if (success) {
+          dispatch(actions.acknowledge_copy(false))
+        } else {
+          dispatch(actions.acknowledge_copy(true))
+        }
+      } catch (err) {
+        dispatch(actions.acknowledge_copy(true))
+      }
     }
   }
 }

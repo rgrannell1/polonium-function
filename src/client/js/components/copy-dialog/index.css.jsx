@@ -54,6 +54,7 @@ const copyDialogCss = colours => {
     close_modal: {
       background: 'white',
       border: 'none',
+      cursor: 'pointer',
       fontWeight: 'bold'
     }
   }

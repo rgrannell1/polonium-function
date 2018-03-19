@@ -75,4 +75,11 @@ actions.close_dialog = () => {
   }
 }
 
+actions.acknowledge_copy = failed => {
+  return {
+    type: 'ACKNOWLEDGE_COPY',
+    error: failed
+  }
+}
+
 export default actions

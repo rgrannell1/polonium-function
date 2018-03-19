@@ -8,7 +8,10 @@
  */
 const closeDialog = (state, action) => {
   const newState = Object.assign({}, state, {
-    derivedPassword: undefined
+    derivedPassword: undefined,
+    copyButton: {
+      state: 'default'
+    }
   })
   newState.submitButton.state = 'default'
 
