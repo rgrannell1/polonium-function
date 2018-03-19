@@ -16,18 +16,25 @@ const CopyDialog = props => {
     return null
   }
 
+  const style = copyDialogCss(props.colours)
+  const copyButtonStyle = Object.assign({}, style.copy_button)
+
   const {copyButton} = props
-  let copyText = 'Copy'
+  let copyText = ''
 
   if (copyButton && copyButton.state === 'copied') {
     if (copyButton.hasError) {
       copyText = 'Failed!'
+      Object.assign(copyButtonStyle, style.copy_button_error)
     } else {
       copyText = 'Copied'
+      Object.assign(copyButtonStyle, style.copy_button_copied)
     }
+  } else {
+    copyText = 'Copy'
+    Object.assign(copyButtonStyle, style.copy_button_default)
   }
 
-  const style = copyDialogCss(props.colours)
   return (
     <div style={style.modal}>
       <h2
@@ -43,7 +50,7 @@ const CopyDialog = props => {
         value={props.derivedPassword} />
       <input
         id='copy'
-        style={style.copy_button}
+        style={copyButtonStyle}
         type='button'
         onClick={() => props.clickCopyButton()}
         value={copyText} />

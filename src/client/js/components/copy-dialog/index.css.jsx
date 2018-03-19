@@ -45,11 +45,20 @@ const copyDialogCss = colours => {
       border: 'none',
       gridRow: 2,
       gridColumnStart: 2,
-      background: 'rgb(61, 41, 255)',
       color: 'white',
       padding: '10px',
       cursor: 'pointer',
-      marginRight: '25px'
+      marginRight: '25px',
+      minWidth: '6em'
+    },
+    copy_button_default: {
+      background: colours.primary,
+    },
+    copy_button_copied: {
+      background: colours.primaryLight,
+    },
+    copy_button_error: {
+      background: colours.error,
     },
     close_modal: {
       background: 'white',
