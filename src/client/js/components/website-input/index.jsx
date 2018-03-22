@@ -29,6 +29,7 @@ const WebsiteInput = props => {
         minLength={constants.limits.minimumWebsiteLength}
         onInput={event => props.updateWebsite(event)}
         autoCorrect='off'
+        spellCheck='false'
         autoCapitalize='none'
         pattern={constants.patterns.website} />
     </div>

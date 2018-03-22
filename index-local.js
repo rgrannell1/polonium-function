@@ -1,6 +1,5 @@
 
 const express = require('express')
-const neodoc = require('neodoc')
 const httpRouter = express.Router()
 const {http} = require('./index')
 

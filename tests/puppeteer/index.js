@@ -1,6 +1,6 @@
 
 const puppeteer = require('puppeteer')
-const app = require('../../index-export.js')
+// const app = require('../../index-export.js')
 
 const constants = {
   port: 3000,
@@ -22,7 +22,7 @@ tests.indexPageLoaded = async page => {
     }
   })
 
-  return await Promise.all(ids)
+  return Promise.all(ids)
     .then(elems => {
       const asserted = elems.map(({id, elem}) => {
         return elem === null
@@ -32,6 +32,7 @@ tests.indexPageLoaded = async page => {
       return Promise.all(asserted)
     })
 }
+/*
 
 const startServer = () => {
   return new Promise((resolve, reject) => {
@@ -40,6 +41,7 @@ const startServer = () => {
     })
   })
 }
+*/
 
 const runner = async tester => {
   const browser = await puppeteer.launch({
@@ -47,7 +49,6 @@ const runner = async tester => {
   })
   const page = await browser.newPage()
 
-  const server = await startServer()
   await page.goto(`http://localhost:${constants.port}/http/`, {
     timeout: constants.loadTime
   })

@@ -13,7 +13,7 @@ app.use(router)
  * @param  {object} res
  * @return {Server}
  */
-module.exports.http = (req, res) => {
+exports.http = function http (req, res) {
   if (!req.url) {
     req.url = '/'
     req.path = '/'

@@ -9,4 +9,18 @@ License | MIT
 ## Releases
 
 #### v1.0.0 (commit ID)
-- Deployment time: TBD
+- Deployment time: March 22nd 2018
+
+#### Changes
+
+- Initial release
+
+#### Known issues
+
+- A subdepency spams an ip-address related error
+- Error-form behaviour is inconsistent
+- Home URL does not work
+
+#### Tests
+
+- See releases/v1.0.0.md (1a2d6be)

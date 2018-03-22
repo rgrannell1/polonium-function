@@ -52,13 +52,13 @@ const copyDialogCss = colours => {
       minWidth: '6em'
     },
     copy_button_default: {
-      background: colours.primary,
+      background: colours.primary
     },
     copy_button_copied: {
-      background: colours.primaryLight,
+      background: colours.primaryLight
     },
     copy_button_error: {
-      background: colours.error,
+      background: colours.error
     },
     close_modal: {
       background: 'white',
