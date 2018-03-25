@@ -10,7 +10,7 @@ License | MIT
 
 #### v1.0.0 (commit ID)
 - Deployment time: March 22nd 2018
-
+- Manifest color doesn't match primary colors
 #### Changes
 
 - Initial release
@@ -20,6 +20,7 @@ License | MIT
 - A subdepency spams an ip-address related error
 - Error-form behaviour is inconsistent
 - Home URL does not work
+
 
 #### Tests
 
