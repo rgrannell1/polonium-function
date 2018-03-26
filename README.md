@@ -20,7 +20,7 @@ License | MIT
 - A subdepency spams an ip-address related error
 - Error-form behaviour is inconsistent
 - Home URL does not work
-
+- Margin missing from the bottom of page
 
 #### Tests
 
