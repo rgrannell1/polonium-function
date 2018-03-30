@@ -8,7 +8,7 @@ License | MIT
 
 ## Releases
 
-#### v1.0.0 (commit ID)
+#### v1.0.0 (0f9870)
 - Deployment time: March 22nd 2018
 - Manifest color doesn't match primary colors
 #### Changes
