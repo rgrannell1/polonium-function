@@ -61,10 +61,20 @@ const mapStateToProps = state => {
   }
 }
 
+const validate = {
+  salt (salt) {
+    return salt && salt.length >= 1
+  },
+  password (password) {
+    return password && password.length >= 12
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     clickButton (buttonState, salt, password) {
-      const isAllowed = buttonState !== 'active'
+      const isActive = buttonState === 'active'
+      const isAllowed = !isActive && validate.salt(salt) && validate.password(password)
 
       if (isAllowed) {
         dispatch(actions.click_submit_button(buttonState))
