@@ -1,0 +1,15 @@
+{
+  "name": "Polonium",
+  "short_name": "Polonium",
+  "start_url": "/http/",
+  "display":   "standalone",
+  "background_color": "#3d29ff",
+  "theme_color": "#3d29ff",
+  "description": "a stateless password manager",
+  "icons": [
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512"
+    }
+  ]
+}

@@ -1,4 +1,12 @@
 
+/**
+ * Return a property from an object.
+ *
+ * @param  {string} prop  a dot-delimited chain of properties.
+ * @param  {object} obj   the target object.
+ * @param  {any} fallback a value to return if the object property-chain hits a dead-end.
+ * @return {any}          an object property.
+ */
 const prop = (prop, obj, fallback = undefined) => {
   const parts = prop.split('.')
   let ref = obj
@@ -12,6 +20,13 @@ const prop = (prop, obj, fallback = undefined) => {
   return ref
 }
 
+/**
+ * Does a property exist within an object?
+ *
+ * @param  {string} prop a dot-delimited chain of properties.
+ * @param  {object} obj the target object.
+ * @return {boolean} an indicator of whether or not a property exists.
+ */
 const hasProp = (prop, obj) => {
   const parts = prop.split('.')
   let ref = obj
