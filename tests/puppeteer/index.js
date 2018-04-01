@@ -33,7 +33,15 @@ tests.indexPageLoaded = async page => {
   return Promise.all(ids)
     .then(elems => {
       const asserted = elems.map(({id, elem}) => {
-        return elem === null
+        const elemMissing = elem === null
+
+        if (elemMissing) {
+          log.failure(`id missing`, {id})
+        } else {
+          log.success(`id present`, {id})
+        }
+
+        return elemMissing
           ? Promise.reject(new Error(`"${id}" not present.`))
           : Promise.resolve()
       })
@@ -58,7 +66,6 @@ const runner = async tester => {
 
   log.info('Created browser page', {})
 
-  process.env.NODE_ENV = 'system-test'
   const server = await startServer()
   await page.goto(constants.url, {
     timeout: constants.loadTime
@@ -70,12 +77,16 @@ const runner = async tester => {
   })
 
   await tester(page)
+  log.success('Test terminated without error.', {})
+
   // server.close()
 
   // await page.close()
   // await browser.close()
   process.exit(0)
 }
+
+process.env.NODE_ENV = 'system-test'
 
 runner(tests.indexPageLoaded).catch(err => {
   log.failure('an error occurred during testing', {err})
