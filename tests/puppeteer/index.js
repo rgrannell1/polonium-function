@@ -51,6 +51,11 @@ const testRunner = async tester => {
 //  process.exit(0)
 }
 
+/**
+ * Run every browser-based test in an isolated fashion.
+ *
+ * @return {undefined}
+ */
 const testSuiteRunner = async () => {
   for (let testName of Object.keys(tests)) {
     let test = tests[testName]
@@ -60,6 +65,7 @@ const testSuiteRunner = async () => {
       await testRunner(test)
     } catch (err) {
       log.failure(`Failed Test "${testName}" (${test.description})`, {err}, {spaceAfter: 1})
+      process.exit(1)
     }
     log.info(`Passed Test "${testName}" (${test.description})`, {}, {spaceAfter: 1, spaceBefore: 1})
   }
