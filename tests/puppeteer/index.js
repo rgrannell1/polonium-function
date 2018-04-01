@@ -2,6 +2,7 @@
 const {log} = require('../utils')
 const puppeteer = require('puppeteer')
 const app = require('../../index-export.js')
+const tests = require('./tests')
 
 const constants = {
   port: 3000,
@@ -14,57 +15,22 @@ const constants = {
   }
 }
 
-const tests = { }
-
-/**
- * Check whether the page loads correctly, based on IP's present.
- *
- * @param  {Page} page a puppeteer page.
- * @return {Promise} a result promise.
- */
-tests.indexPageLoaded = async page => {
-  const ids = constants.steps.indexPageLoaded.expectedIds.map(id => {
-    return {
-      id,
-      elem: page.$(`[data-test-id="${id}"]`)
-    }
-  })
-
-  return Promise.all(ids)
-    .then(elems => {
-      const asserted = elems.map(({id, elem}) => {
-        const elemMissing = elem === null
-
-        if (elemMissing) {
-          log.failure(`id missing`, {id})
-        } else {
-          log.success(`id present`, {id})
-        }
-
-        return elemMissing
-          ? Promise.reject(new Error(`"${id}" not present.`))
-          : Promise.resolve()
-      })
-      return Promise.all(asserted)
-    })
-}
-
 const startServer = () => {
   return new Promise((resolve, reject) => {
     const server = app.listen(constants.port, () => {
-      log.success(`server started on port ${constants.port}`)
+      log.success(`server started on port ${constants.port}`, {}, {indent: 2})
       resolve(server)
     })
   })
 }
 
-const runner = async tester => {
+const testRunner = async tester => {
   const browser = await puppeteer.launch({
     headless: false
   })
   const page = await browser.newPage()
 
-  log.info('Created browser page', {})
+  log.info('Created browser page', {}, {indent: 2})
 
   const server = await startServer()
   await page.goto(constants.url, {
@@ -74,21 +40,31 @@ const runner = async tester => {
   log.info('Arrived at target URL', {
     url: constants.url,
     timeout: constants.loadTime
-  })
+  }, {indent: 2})
 
   await tester(page)
-  log.success('Test terminated without error.', {})
 
   // server.close()
 
   // await page.close()
   // await browser.close()
+//  process.exit(0)
+}
+
+const testSuiteRunner = async () => {
+  for (let testName of Object.keys(tests)) {
+    let test = tests[testName]
+
+    log.info(`Running Test "${testName}" (${test.description})`, {}, {spaceAfter: 1})
+    try {
+      await testRunner(test)
+    } catch (err) {
+      log.failure(`Failed Test "${testName}" (${test.description})`, {err}, {spaceAfter: 1})
+    }
+    log.info(`Passed Test "${testName}" (${test.description})`, {}, {spaceAfter: 1, spaceBefore: 1})
+  }
   process.exit(0)
 }
 
 process.env.NODE_ENV = 'system-test'
-
-runner(tests.indexPageLoaded).catch(err => {
-  log.failure('an error occurred during testing', {err})
-  process.exit(1)
-})
+testSuiteRunner()
