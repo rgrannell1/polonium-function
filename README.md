@@ -8,9 +8,9 @@ License | MIT
 
 ## Releases
 
-#### v1.0.0 (commit ID)
+#### v1.0.0 (0f9870)
 - Deployment time: March 22nd 2018
-
+- Manifest color doesn't match primary colors
 #### Changes
 
 - Initial release
@@ -20,6 +20,7 @@ License | MIT
 - A subdepency spams an ip-address related error
 - Error-form behaviour is inconsistent
 - Home URL does not work
+- Margin missing from the bottom of page
 
 #### Tests
 
