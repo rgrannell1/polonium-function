@@ -1,6 +1,5 @@
 
 import {createStore, combineReducers, applyMiddleware} from 'redux'
-import logger from 'redux-logger'
 import {routerReducer} from 'react-router-redux'
 
 import actionUpdates from './action-updates/index.js'
@@ -18,7 +17,7 @@ const createAppStore = defaults => {
     routing: routerReducer
   })
 
-  return createStore(reducers, { }, applyMiddleware(logger))
+  return createStore(reducers, { })
 }
 
 export default createAppStore
