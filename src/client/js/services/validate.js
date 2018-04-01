@@ -1,10 +1,12 @@
 
+import constants from '../constants.js'
+
 const validate = {
   salt (salt) {
-    return salt && salt.length >= 1
+    return salt && salt.length >= constants.limits.minimumWebsiteLength
   },
   password (password) {
-    return password && password.length >= 12
+    return password && password.length >= constants.limits.minimumPasswordLength
   }
 }
 
