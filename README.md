@@ -31,42 +31,42 @@ License | MIT
 
 ### Deployment
 ```
-deploy:production
+deploy:production    deploy a primary instance to Google Functions
 ```
 
-### Build
+### Building
 ```
-build":
-build:fix_source
-build:watch
-```
-
-### Lint
-
-```
-lint:depcheck
-lint:buddy
-lint:source
+build                       compile client-side code using webpack
+build:fix_source            use eslint to fix the source-code
+build:watch                 run 'build' each time a file is updated
 ```
 
-### Run
+### Linting
 
 ```
-run:remote
-run:local
+lint:depcheck               run a check for unused dependencies
+lint:buddy                  run a check for unused variables
+lint:source                 run a standard js lint
+lint:lighthouse             run a lighthouse audit
 ```
 
-### Test
+### Running
 
 ```
-test
-test:no_salt
-test:no_password
-test:valid_credentials
-test:lighthouse
+run:remote                  invoke the remote function
+run:local                   run the polonium server locally
+```
+
+### Testing
+
+```
+test                        run automated tests
+test:no_salt                send a request containing no salt-value
+test:no_password            send a request containing no password-value
+test:valid_credentials      send a request containing valid credentials
 ```
 ### Miscellaneous
 
 ```
-service:elasticsearch
+service:elasticsearch       run local elasticsearch instance for log-analysis
 ```
