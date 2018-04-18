@@ -2,19 +2,14 @@
 const {log} = require('../utils')
 const puppeteer = require('puppeteer')
 const app = require('../../index-export.js')
+const constants = require('./constants')
 const tests = require('./tests')
 
-const constants = {
-  port: 3000,
-  url: 'http://localhost:3000/http/',
-  loadTime: 10 * 1000,
-  steps: {
-    indexPageLoaded: {
-      expectedIds: ['password_input', 'website_input']
-    }
-  }
-}
-
+/**
+ * Start the polonium server, in a promise wrapper.
+ *
+ * @return {Promise} a promise resolving with a server.
+ */
 const startServer = () => {
   return new Promise((resolve, reject) => {
     const server = app.listen(constants.port, () => {
@@ -24,7 +19,13 @@ const startServer = () => {
   })
 }
 
-const testRunner = async tester => {
+/**
+ * Run an individual test with a setup browser instance.
+ *
+ * @param  {function} test a puppeteer page.
+ * @return {undefined}
+ */
+const testRunner = async test => {
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -43,13 +44,7 @@ const testRunner = async tester => {
     timeout: constants.loadTime
   }, {indent: 2})
 
-  await tester(page)
-
-  // server.close()
-
-  // await page.close()
-  // await browser.close()
-//  process.exit(0)
+  await test(page)
 }
 
 /**

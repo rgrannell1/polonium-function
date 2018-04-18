@@ -1,13 +1,6 @@
 
 const {log} = require('../../utils')
-
-const constants = {
-  steps: {
-    indexPageLoaded: {
-      expectedIds: ['password_input', 'website_input']
-    }
-  }
-}
+const constants = require('../constants')
 
 /**
  * Check whether the page loads correctly, based on IP's present.
@@ -29,9 +22,9 @@ const indexPageIdsPresent = async page => {
         const elemMissing = elem === null
 
         if (elemMissing) {
-          log.failure(`id missing`, {id}, {indent: 2})
+          log.failure(`data-test-id missing`, {id}, {indent: 2})
         } else {
-          log.success(`id present`, {id}, {indent: 2})
+          log.success(`data-test-id present`, {id}, {indent: 2})
         }
 
         return elemMissing

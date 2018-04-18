@@ -31,7 +31,7 @@ License | MIT
 
 ### Deployment
 ```
-deploy:production    deploy a primary instance to Google Functions
+deploy:production           deploy a primary instance to Google Functions
 ```
 
 ### Building
