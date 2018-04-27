@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+
+const password = '0123456789'
+const importOpts = {
+  format: 'raw',
+  keyData: new TextEncoder().encode(password),
+  algo: 'PBKDF2',
+  extractable: false,
+  usages: ['deriveKey']
+}
+const passwordKey = crypto.subtle.importKey(
+  importOpts.format,
+  importOpts.keyData,
+  importOpts.algo,
+  importOpts.extractable,
+  importOpts.usages
+)
+
+const deriveOpts = {
+  algorithm: {
+    name: 'PBKDF2',
+    salt: 'website',
+    iterations: 10000,
+    hash: 'SHA1'
+  },
+  masterKey: passwordKey,
+  derivedKeyAlgorithm: '',
+  extractable: '',
+  keyUsages: ''
+}
+async function main () {
+  const result = await crypto.subtle.deriveKey(
+    deriveOpts.algorithm,
+    deriveOpts.masterKey,
+    deriveOpts.key,
+    deriveOpts.extractable,
+    deriveOpts.keyUsages
+  )
+}
+
+main()
+
+</script>
+</html>

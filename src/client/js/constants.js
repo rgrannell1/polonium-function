@@ -6,7 +6,7 @@
  */
 export default {
   urls: {
-    host: `https://${window.location.host}/http`
+    host: `https://${location.host}/http`
   },
   options: {
     rounds: 1000000,

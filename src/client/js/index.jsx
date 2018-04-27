@@ -51,3 +51,7 @@ const element = (
 )
 
 render(element, document.getElementById('root'))
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./dist/cache.js');
+}

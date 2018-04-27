@@ -1,6 +1,6 @@
 
-if (!window.fetch || typeof window.fetch !== 'function') {
-  window.alert('This browser does not support "fetch"')
+if (!fetch || typeof fetch !== 'function') {
+  alert('This browser does not support "fetch"')
 }
 
 /**
@@ -18,7 +18,7 @@ const fetchPassword = opts => {
     console.error('salt not provided.')
     return Promise.resolve()
   }
-  const onFetch = window.fetch('/http/password', {
+  const onFetch = fetch('/http/password', {
     method: 'POST',
     referrer: 'no-referrer',
     cache: 'no-store',
