@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy:production": "serverless deploy",
+    "deploy:production": "export NODE_ENV=production; serverless deploy",
     "build": "./node_modules/.bin/webpack",
     "build:fix_source": "./node_modules/.bin/standard --fix",
     "build:watch": "./node_modules/.bin/webpack -w",
@@ -66,6 +66,7 @@
     "webpack": "^3.11.0"
   },
   "devDependencies": {
-    "chalk": "^2.3.2"
+    "chalk": "^2.3.2",
+    "uglifyjs-webpack-plugin": "^1.2.5"
   }
 }

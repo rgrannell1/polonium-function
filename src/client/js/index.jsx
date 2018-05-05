@@ -55,3 +55,17 @@ render(element, document.getElementById('root'))
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./dist/cache.js');
 }
+
+const reactions = {}
+
+reactions.beforeInstallPrompt = async event => {
+  const choice = await event.userChoice;
+
+  if (choice.outcome === 'dismissed') {
+    console.log('user cancelled home-screen install')
+  } else {
+    console.log('added to home screen')
+  }
+}
+
+window.addEventListener('beforeinstallprompt', reactions.beforeInstallPrompt)

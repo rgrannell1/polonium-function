@@ -1,30 +1,44 @@
 
 const constants = {
   cacheUrls: [
-    'http/dist/bundle.js'
+    './bundle.js',
+    '..'
   ],
   cacheNames: ['precache-v1', 'runtime']
 }
 
+const PRECACHE = 'precache-v1'
+
 const reactions = {}
 
 reactions.onInstall = async event => {
-  const cache = await caches.open('v1')
-  return cache.addAll(constants.cacheUrls)
+  console.log('cache "install" started.')
+  event.waitUntil(
+    caches.open(PRECACHE)
+      .then(cache => cache.addAll(constants.cacheUrls))
+      .then(self.skipWaiting())
+      .then(() => console.log('cache "install" ended'))
+  )
 }
 
-/*
-
 reactions.onActivate = async event => {
-  const cacheNames = await caches.keys()
-  const deleteable = cacheNames.filter(cache => !cacheNames.includes(caches))
-  const deleteOldCaches = Promise.all(deleteable.map(deleted => caches.delete(deleted)))
-
-  await deleteOldCaches
-  event.waitUntil(deleteOldCaches.then(() => self.clients.claim()))
+  console.log('cache "activate" started.')
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return cacheNames.filter(cacheName => !constants.cacheNames.includes(cacheName))
+    }).then(cachesToDelete => {
+      return Promise.all(cachesToDelete.map(cacheToDelete => {
+        return caches.delete(cacheToDelete)
+      }))
+    })
+      .then(() => self.clients.claim())
+      .then(() => console.log('cache "activate" ended.'))
+  )
 }
 
 reactions.onFetch = async event => {
+  console.log('cache "fetch" started.')
+
   const isSameOrigin = event.request.url.startsWith(self.location.origin)
 
   if (isSameOrigin) {
@@ -43,6 +57,5 @@ reactions.onFetch = async event => {
 }
 self.addEventListener('activate', reactions.onActivate)
 self.addEventListener('fetch', reactions.onFetch)
-*/
 
 self.addEventListener('install', reactions.onInstall)
