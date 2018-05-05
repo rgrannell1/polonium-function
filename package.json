@@ -42,6 +42,7 @@
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-standard": "^3.0.1",
     "express": "^4.16.2",
+    "express-static-gzip": "^0.3.2",
     "geoip-lite": "^1.2.1",
     "history": "^3.0.0",
     "json-parse-stream": "^0.0.2",
@@ -67,6 +68,7 @@
   },
   "devDependencies": {
     "chalk": "^2.3.2",
+    "compression-webpack-plugin": "^1.1.11",
     "uglifyjs-webpack-plugin": "^1.2.5"
   }
 }

@@ -1,9 +1,10 @@
 
 const express = require('express')
+const expressStaticGzip = require('express-static-gzip')
 const constants = require('../../shared/constants')
 const log = require('../../shared/logging')
 
-const staticRouter = express.static(constants.paths.static)
+const staticRouter = expressStaticGzip(constants.paths.static)
 
 const staticRoute = (...args) => {
   const [req] = [...args]

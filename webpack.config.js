@@ -2,6 +2,7 @@
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 const webpack = require('webpack')
 
 const BUILD_DIR = path.resolve(__dirname, 'src/client/dist')
@@ -19,7 +20,13 @@ const config = {
         from: path.join(JS_DIR, 'services/cache.js')
       }
     ]),
-    new UglifyJSPlugin({include: /\.min\.js$/})
+    new CompressionPlugin({
+      include: /\.min\.js$/,
+      algorithm: 'gzip'
+    }),
+    new UglifyJSPlugin({
+      include: /\.min\.js$/
+    })
   ],
   devtool: 'source-map',
   module: {
