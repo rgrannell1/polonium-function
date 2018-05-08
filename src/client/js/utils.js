@@ -40,4 +40,16 @@ const hasProp = (prop, obj) => {
   return true
 }
 
-export {prop, hasProp}
+const logger = (level, message, props) => {
+  console[level](message + JSON.stringify(props, null, 2))
+}
+
+const error = logger.bind(null, 'error')
+const log = logger.bind(null, 'log')
+
+export {
+  prop,
+  hasProp,
+  error,
+  log
+}
