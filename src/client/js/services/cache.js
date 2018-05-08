@@ -4,17 +4,15 @@ const constants = {
     './bundle.js',
     '..'
   ],
-  cacheNames: ['precache-v1', 'runtime']
+  cacheName: 'v1'
 }
-
-const PRECACHE = 'precache-v1'
 
 const reactions = {}
 
 reactions.onInstall = async event => {
   console.log('cache "install" started.')
   event.waitUntil(
-    caches.open(PRECACHE)
+    caches.open(constants.cacheName)
       .then(cache => cache.addAll(constants.cacheUrls))
       .then(self.skipWaiting())
       .then(() => console.log('cache "install" ended'))
@@ -24,13 +22,7 @@ reactions.onInstall = async event => {
 reactions.onActivate = async event => {
   console.log('cache "activate" started.')
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return cacheNames.filter(cacheName => !constants.cacheNames.includes(cacheName))
-    }).then(cachesToDelete => {
-      return Promise.all(cachesToDelete.map(cacheToDelete => {
-        return caches.delete(cacheToDelete)
-      }))
-    })
+    Promise.resolve()
       .then(() => self.clients.claim())
       .then(() => console.log('cache "activate" ended.'))
   )
@@ -47,7 +39,7 @@ reactions.onFetch = async event => {
       return cachedResponse
     }
 
-    const runtimeCache = await caches.open('runtime')
+    const runtimeCache = await caches.open(constants.cacheName)
     const fetchResponse = await fetch(event.request)
 
     await cache.put(event.request, response.clone())
@@ -55,7 +47,9 @@ reactions.onFetch = async event => {
     return event.respondWith(response)
   }
 }
-self.addEventListener('activate', reactions.onActivate)
-self.addEventListener('fetch', reactions.onFetch)
 
+console.log('cache-file loading')
+
+self.addEventListener('activate', reactions.onActivate)
 self.addEventListener('install', reactions.onInstall)
+self.addEventListener('fetch', reactions.onFetch)
