@@ -1,7 +1,7 @@
 
 const constants = {
   cacheUrls: [
-    './bundle.js',
+    './bundle.min.js',
     '..'
   ],
   cacheName: 'v1'
@@ -29,23 +29,27 @@ reactions.onActivate = async event => {
 }
 
 reactions.onFetch = async event => {
-  console.log('cache "fetch" started.')
+  console.log(`cache "fetch" started for ${event.request.method} ${event.request.url}`)
 
-  const isSameOrigin = event.request.url.startsWith(self.location.origin)
+  event.respondWith((async () => {
+    const isSameOrigin = event.request.url.startsWith(self.location.origin)
 
-  if (isSameOrigin) {
-    const cachedResponse = await caches.match(event.request)
-    if (cachedResponse) {
-      return cachedResponse
+    if (isSameOrigin) {
+      const cachedResponse = await caches.match(event.request)
+      if (cachedResponse) {
+        return cachedResponse
+      }
+
+      const fetchResponse = await fetch(event.request)
+
+      const cache = await caches.open(constants.cacheName)
+      await cache.put(event.request, event.response.clone())
+
+      return event.respondWith(event.response)
+    } else {
+      console.log('cross-origin request')
     }
-
-    const runtimeCache = await caches.open(constants.cacheName)
-    const fetchResponse = await fetch(event.request)
-
-    await cache.put(event.request, response.clone())
-
-    return event.respondWith(response)
-  }
+  })())
 }
 
 console.log('cache-file loading')
