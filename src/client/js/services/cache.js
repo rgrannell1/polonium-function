@@ -1,8 +1,10 @@
+/* eslint-env serviceworker */
 
 const constants = {
   cacheUrls: [
-    './bundle.min.js',
-    '..'
+    '/http/dist/bundle.min.js',
+    '/http',
+    '/http/dist/data/manifest.json'
   ],
   cacheName: 'v1'
 }
