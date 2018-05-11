@@ -32,23 +32,20 @@ reactions.onFetch = async event => {
   console.log(`cache "fetch" started for ${event.request.method} ${event.request.url}`)
 
   event.respondWith((async () => {
-    const isSameOrigin = event.request.url.startsWith(self.location.origin)
+    const cachedResponse = await caches.match(event.request)
 
-    if (isSameOrigin) {
-      const cachedResponse = await caches.match(event.request)
-      if (cachedResponse) {
-        return cachedResponse
-      }
-
-      const fetchResponse = await fetch(event.request)
-
-      const cache = await caches.open(constants.cacheName)
-      await cache.put(event.request, event.response.clone())
-
-      return event.respondWith(event.response)
-    } else {
-      console.log('cross-origin request')
+    if (cachedResponse) {
+      console.log(`cache "fetch" using cached request for ${event.request.method} ${event.request.url}`)
+      return cachedResponse
     }
+    const response = await fetch(event.request)
+    const resClone = response.clone()
+
+    const appCache = await caches.open(constants.cacheName)
+    appCache.put(event.request, resClone)
+
+    console.log(`cache "fetch" using new request for ${event.request.method} ${event.request.url}`)
+    return resClone
   })())
 }
 

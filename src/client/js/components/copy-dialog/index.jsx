@@ -43,6 +43,7 @@ const CopyDialog = props => {
       <input
         id='derived_password'
         style={style.derived_password_field}
+        data-test-id='derived_password_field'
         type='text'
         autoFocus='autofocus'
         spellCheck='false'
@@ -51,6 +52,7 @@ const CopyDialog = props => {
       <input
         id='copy'
         style={copyButtonStyle}
+        data-test-id='copy_password_button'
         type='button'
         onClick={() => props.clickCopyButton()}
         value={copyText} />

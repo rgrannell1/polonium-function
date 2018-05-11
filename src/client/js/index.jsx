@@ -18,7 +18,7 @@ const rgb = (r, g, b) => `rgb(${[r, g, b]})`
 const initialState = {
   dropdownShown: false,
   title: 'Polonium',
-  baseUrl: '/http',
+  baseUrl: '/http/',
   links: [
     {href: '/http/terms', text: 'Privacy & Security'}
   ],
@@ -43,7 +43,7 @@ const element = (
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route exact path='/http' component={MainPage} />
+        <Route exact path='/http/' component={MainPage} />
         <Route exact path='/http/terms' component={TermsPage} />
       </Switch>
     </BrowserRouter>

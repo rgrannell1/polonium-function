@@ -20,7 +20,7 @@ const Header = props => {
   const style = headerCss(props.colours)
   return (
     <header style={style.main_head}>
-      <a href={props.link} style={style.link}>
+      <a data-test-id="brand_link" href={props.link} style={style.link}>
         <h1 style={style.brand_title}>{props.title}</h1>
       </a>
       <label style={style.burger_menu} onClick={props.clickBurgerMenu} htmlFor='slide' title='Main Menu'>⋮</label>

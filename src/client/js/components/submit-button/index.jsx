@@ -40,6 +40,7 @@ const SubmitButton = ({colours, website, password, buttonState, clickButton}) =>
     <input
       id='submit'
       style={styleText(buttonState, colours)}
+      data-test-id='submit_button'
       type='button'
       value={buttonText(buttonState)}
       onClick={() => clickButton(buttonState, website, password)} />

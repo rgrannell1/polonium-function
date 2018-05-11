@@ -44,7 +44,13 @@ const testRunner = async test => {
     timeout: constants.loadTime
   }, {indent: 2})
 
-  await test(page)
+  try {
+    await test(page)
+  } catch (err) {
+    throw err
+  } finally {
+    server.close()
+  }
 }
 
 /**
@@ -56,14 +62,14 @@ const testSuiteRunner = async () => {
   for (let testName of Object.keys(tests)) {
     let test = tests[testName]
 
-    log.info(`Running Test "${testName}" (${test.description})`, {}, {spaceAfter: 1})
+    log.info(`++ Running Test "${testName}" (${test.description})`, {}, {spaceAfter: 1})
     try {
       await testRunner(test)
     } catch (err) {
-      log.failure(`Failed Test "${testName}" (${test.description})`, {err}, {spaceAfter: 1})
+      log.failure(`++ Failed Test "${testName}" (${test.description})`, {err}, {spaceAfter: 1})
       process.exit(1)
     }
-    log.info(`Passed Test "${testName}" (${test.description})`, {}, {spaceAfter: 1, spaceBefore: 1})
+    log.info(`++ Passed Test "${testName}" (${test.description})`, {}, {spaceAfter: 1, spaceBefore: 1})
   }
   process.exit(0)
 }
