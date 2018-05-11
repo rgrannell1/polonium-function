@@ -1,5 +1,5 @@
 
-const {log} = require('../../utils')
+const {log, puppeteer} = require('../../utils')
 const constants = require('../constants')
 
 /**
@@ -35,8 +35,7 @@ const indexPagesPasswordValid = async page => {
     timeout: copyButtonTimeout
   })
 
-  const res = await page.$('[data-test-id="derived_password_field"]')
-  const derivedPassword = await page.evaluate(x => x.value, res)
+  const derivedPassword = await puppeteer.getValue(page, '[data-test-id="derived_password_field"]')
 
   if (derivedPassword !== constants.steps.indexPagePasswordValid.output) {
     return Promise.reject(new Error('incorrect password returned by Polonium'))

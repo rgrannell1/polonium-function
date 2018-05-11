@@ -60,6 +60,13 @@ log.success = log.bind(null, 'green')
  */
 log.failure = log.bind(null, 'red')
 
+const puppeteer = {}
+
+puppeteer.getValue = async (page, selector) => {
+  return page.evaluate(x => x.value, await page.$(selector))
+}
+
 module.exports = {
-  log
+  log,
+  puppeteer
 }
