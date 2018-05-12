@@ -1,3 +1,4 @@
+/* eslint-env browser */
 
 if (!fetch || typeof fetch !== 'function') {
   alert('This browser does not support "fetch"')

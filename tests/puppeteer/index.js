@@ -1,4 +1,5 @@
 
+const chalk = require('chalk')
 const {log} = require('../utils')
 const puppeteer = require('puppeteer')
 const app = require('../../index-export.js')
@@ -62,14 +63,14 @@ const testSuiteRunner = async () => {
   for (let testName of Object.keys(tests)) {
     let test = tests[testName]
 
-    log.info(`++ Running Test "${testName}" (${test.description})`, {}, {spaceAfter: 1})
+    log.info(`${chalk.white('☐')} Running Test "${testName}" (${chalk.blue(test.description)})`, {}, {spaceAfter: 1})
     try {
       await testRunner(test)
     } catch (err) {
-      log.failure(`++ Failed Test "${testName}" (${test.description})`, {err}, {spaceAfter: 1})
+      log.failure(`${chalk.red('☒ FAILED')} test "${testName}" (${chalk.blue(test.description)})`, {err}, {spaceAfter: 1})
       process.exit(1)
     }
-    log.info(`++ Passed Test "${testName}" (${test.description})`, {}, {spaceAfter: 1, spaceBefore: 1})
+    log.info(`${chalk.green('☑ PASSED')} Test "${testName}" (${chalk.blue(test.description)})`, {}, {spaceAfter: 1, spaceBefore: 1})
   }
   process.exit(0)
 }

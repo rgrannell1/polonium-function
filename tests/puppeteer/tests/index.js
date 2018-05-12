@@ -1,6 +1,7 @@
 
 module.exports = {
   indexPageIdsPresent: require('./index-page-ids-present'),
-  indexPagesPasswordValid: require('./index-page-password-valid'),
+  indexPagePasswordValid: require('./index-page-password-valid'),
+  indexPageCache: require('./index-page-cache'),
   indexPageLinks: require('./index-page-links')
 }

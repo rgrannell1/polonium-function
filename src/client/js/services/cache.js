@@ -1,4 +1,4 @@
-/* eslint-env serviceworker */
+/* eslint-env browser, serviceworker */
 
 const constants = {
   cacheUrls: [
@@ -15,7 +15,10 @@ reactions.onInstall = async event => {
   console.log('cache "install" started.')
   event.waitUntil(
     caches.open(constants.cacheName)
-      .then(cache => cache.addAll(constants.cacheUrls))
+      .then(cache => {
+        console.log(`attempting to cache ${constants.cacheUrls}`)
+        cache.addAll(constants.cacheUrls)
+      })
       .then(self.skipWaiting())
       .then(() => console.log('cache "install" ended'))
   )
