@@ -35,7 +35,7 @@ const termsCss = colours => {
       margin: '1.2em 0'
     },
     li: {
-      listStyleType: 'none'
+
     }
   }
 }

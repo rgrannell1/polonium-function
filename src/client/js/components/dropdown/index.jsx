@@ -25,7 +25,7 @@ const Dropdown = props => {
       <ul style={style.settings_menu}>
         {props.links.map(({text, href}) => (
           <li key={text}>
-            <Link to={href}>{text}</Link>
+            <Link to={href} style={style.link}>{text}</Link>
           </li>
         ))}
       </ul>
