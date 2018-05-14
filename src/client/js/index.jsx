@@ -20,6 +20,11 @@ const initialState = {
   title: 'Polonium',
   baseUrl: '/http/',
   links: [
+    {href: '/http/terms', text: '⚙ Privacy & Security'},
+    {href: '/http/terms', text: '⚙ Privacy & Security'},
+    {href: '/http/terms', text: '⚙ Privacy & Security'},
+    {href: '/http/terms', text: '⚙ Privacy & Security'},
+    {href: '/http/terms', text: '⚙ Privacy & Security'},
     {href: '/http/terms', text: '⚙ Privacy & Security'}
   ],
   colours: {
