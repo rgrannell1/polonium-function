@@ -30,19 +30,19 @@ const addColumn = ({query, columns}, opts) => {
   return chain({addColumn, done}, {query, columns})
 }
 
-sql.createTable = ({name}) => {
-  let query = `CREATE TABLE ${name}`
+sql.createTable = ({name, ifNotExists}) => {
+  let query = `CREATE TABLE`
+
+  if (ifNotExists) {
+    query += ' IF NOT EXISTS'
+  }
+
+  query += ` ${name}`
 
   return chain({addColumn}, {
     query,
     columns: []
   })
 }
-
-sql.createTable({name: 'screenshots'})
-  .addColumn({name: 'id', type: 'integer', autoIncrement: true})
-  .addColumn({name: 'version', type: 'text', notNull: true})
-  .addColumn({name: 'screenshot', type: 'text' })
-  .done()
 
 module.exports = sql

@@ -1,5 +1,5 @@
 
-const {log, puppeteer} = require('../../utils')
+const {log, puppeteer} = require('../../../src/shared')
 const constants = require('../constants')
 
 /**

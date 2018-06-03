@@ -1,5 +1,5 @@
 
-const {log, puppeteer} = require('../../utils')
+const {log, puppeteer} = require('../../../src/shared')
 
 /**
  * Check whether the page returns a valid password.

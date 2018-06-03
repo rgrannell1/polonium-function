@@ -1,6 +1,6 @@
 
 const chalk = require('chalk')
-const {log} = require('../utils')
+const {log} = require('../../src/shared')
 const puppeteer = require('puppeteer')
 const app = require('../../index-export.js')
 const constants = require('./constants')
@@ -75,5 +75,4 @@ const testSuiteRunner = async () => {
   process.exit(0)
 }
 
-process.env.NODE_ENV = 'system-test'
-testSuiteRunner()
+module.exports = testSuiteRunner

@@ -1,5 +1,5 @@
 
-const {log} = require('../../utils')
+const {log} = require('../../../src/shared')
 const constants = require('../constants')
 
 /**
