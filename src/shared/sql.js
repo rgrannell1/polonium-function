@@ -1,5 +1,6 @@
 
 const chain = require('./chain')
+const {expect} = require('chai')
 
 const sql = {}
 
@@ -9,6 +10,10 @@ const done = ({query, columns}) => {
 
 const addColumn = ({query, columns}, opts) => {
   const {name, type} = opts
+
+  if (!addColumn.types.has(type.toUpperCase())) {
+    throw new Error(`invalid type "${type}"`)
+  }
 
   const constraints = {
     primaryKey: 'PRIMARY KEY',
@@ -29,6 +34,8 @@ const addColumn = ({query, columns}, opts) => {
 
   return chain({addColumn, done}, {query, columns})
 }
+
+addColumn.types = new Set(['INTEGER', 'TEXT'])
 
 sql.createTable = ({name, ifNotExists}) => {
   let query = `CREATE TABLE`

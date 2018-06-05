@@ -14,9 +14,7 @@
     "lint:lighthouse": "node_modules/.bin/lighthouse http://localhost:3000/http/ --view",
     "run:remote": "serverless invoke --function first",
     "run:local": "export NODE_ENV=development; find src -name '*.js' -type f -follow -print | entr -r node index-local.js",
-    "test": "node tests/puppeteer/index.js",
-    "test:no_salt": "echo '{\"salt\": \"\", \"password\": \"0123456789abcdef\"}' | http POST localhost:3000/http/password",
-    "test:no_password": "echo '{\"salt\": \"abc\", \"password\": \"\"}' | http POST localhost:3000/http/password",
+    "test": "node src/build/index.js test",
     "test:valid_credentials": "echo '{\"salt\": \"abc\", \"password\": \"0123456789abcdef\"}' | http POST localhost:3000/http/password",
     "service:elasticsearch": "docker-compose -f src/build/docker-compose.yml up"
   },

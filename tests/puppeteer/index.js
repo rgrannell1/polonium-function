@@ -26,19 +26,17 @@ const startServer = () => {
  * @param  {function} test a puppeteer page.
  * @return {undefined}
  */
-const testRunner = async test => {
+const testRunner = async ({test, headless}) => {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
   const page = await browser.newPage()
 
-  log.info('Created browser page', {}, {indent: 2})
+  log.info('created browser page', {}, {indent: 2})
 
   const server = await startServer()
-  await page.goto(constants.url, {
-    timeout: constants.loadTime
-  })
+  await page.goto(`http://${constants.url}`, {timeout: constants.loadTime})
 
   log.info('Arrived at target URL', {
     url: constants.url,
@@ -59,13 +57,13 @@ const testRunner = async test => {
  *
  * @return {undefined}
  */
-const testSuiteRunner = async () => {
+const testSuiteRunner = async (testArgs) => {
   for (let testName of Object.keys(tests)) {
     let test = tests[testName]
 
     log.info(`${chalk.white('☐')} Running Test "${testName}" (${chalk.blue(test.description)})`, {}, {spaceAfter: 1})
     try {
-      await testRunner(test)
+      await testRunner(Object.assign({}, {testArgs, test}))
     } catch (err) {
       log.failure(`${chalk.red('☒ FAILED')} test "${testName}" (${chalk.blue(test.description)})`, {err}, {spaceAfter: 1})
       process.exit(1)
