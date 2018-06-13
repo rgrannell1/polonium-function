@@ -28,7 +28,7 @@ const startServer = () => {
  */
 const testRunner = async ({test, headless}) => {
   const browser = await puppeteer.launch({
-    headless: true,
+    headless,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   })
   const page = await browser.newPage()
@@ -63,7 +63,7 @@ const testSuiteRunner = async (testArgs) => {
 
     log.info(`${chalk.white('☐')} Running Test "${testName}" (${chalk.blue(test.description)})`, {}, {spaceAfter: 1})
     try {
-      await testRunner(Object.assign({}, {testArgs, test}))
+      await testRunner(Object.assign({}, testArgs, {test}))
     } catch (err) {
       log.failure(`${chalk.red('☒ FAILED')} test "${testName}" (${chalk.blue(test.description)})`, {err}, {spaceAfter: 1})
       process.exit(1)

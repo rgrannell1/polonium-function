@@ -5,7 +5,7 @@ const buildCommands = require('./commands')
 const cli = {}
 cli.main = `
 Usage:
-  script <command>
+  script <command> [--headless]
 Description:
   Run build-commands for polonium-function
 `
@@ -18,8 +18,14 @@ Description:
 `
 
 const processArgs = args => {
-  console.log(args)
-  return args
+  const processed = {}
+
+  Object.keys(args).forEach(argName => {
+    let key = argName.startsWith('--') ? argName.slice(2) : argName
+    processed[key] = args[argName]
+  })
+
+  return processed
 }
 
 /**
@@ -28,9 +34,7 @@ const processArgs = args => {
  * @return {Promise} A promise with
  */
 const invokeCommand = () => {
-  const args = processArgs(neodoc.run(cli.main, {
-    allowUnknown: true
-  }))
+  const args = processArgs(neodoc.run(cli.main))
 
   const commands = {
     selected: args['<command>'],

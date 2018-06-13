@@ -23,13 +23,14 @@ puppeteer.displayCachedLinks = async page => {
     requests.set(req.url, req)
   })
 
-  return
   console.assert(await page.evaluate('navigator.serviceWorker.controller'), 'page has active service worker')
 
   await page.reload({waitUntil: 'networkidle0'})
 
   Array.from(requests.values()).forEach(req => {
-    const isSWRequest = req.response().fromServiceWorker()
+    const isSWRequest = req.response() && req.response().fromServiceWorker
+      ? req.response().fromServiceWorker()
+      : false
     const message = isSWRequest ? chalk.green('url cached ✓') : chalk.red('url reloaded ✗')
     const displayUrl = req.url().slice(0, 70)
 
